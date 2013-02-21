@@ -1,0 +1,33 @@
+!!! 5
+%html{lang: 'en'}
+  %head
+    %title XYZ administration
+    %meta{name:"viewport", content:"width=device-width, initial-scale=1.0"}
+    = stylesheet_link_tag    'flms/admin/admin', media: 'all'
+    = javascript_include_tag 'flms/admin/admin'
+    = csrf_meta_tags
+
+  %body{class: "#{params[:controller].sub('/', ' ')} #{params[:action]}"}
+    - unless notice.blank?
+      %p.notice= notice
+    - unless alert.blank?
+      %p.alert= alert
+
+    .container-narrow
+
+      .masthead
+        %ul.nav.nav-pills.pull-right
+          - clazz = params[:controller] == 'flms/admin' ? 'active' : ''
+          %li{class: clazz}
+            %a{href: "/flms/admin"} Home
+          - clazz = params[:controller] == 'flms/pages' ? 'active' : ''
+          %li{class: clazz}
+            %a{href: "/flms/pages"} Pages
+          - clazz = params[:controller] == 'flms/users' ? 'active' : ''
+          %li{class: clazz}
+            %a{href: "/flms/users"} Users
+        %h3.muted XYZ website administration
+      -#%hr
+
+      = yield
+

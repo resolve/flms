@@ -1,0 +1,30 @@
+= form_for [:admin, @page], html: {class: 'form-horizontal'} do |f|
+  %fieldset
+    %legend= caption
+
+  - if @page.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@page.errors.count, "error")} prohibited this page from being saved:"
+      %ul
+        - @page.errors.full_messages.each do |msg|
+          %li= msg
+
+  .control-group
+    = f.label :title, class: 'control-label'
+    .controls
+      = f.text_field :title, autofocus: true
+      %span.help-inline The internal title of this page.
+
+  .control-group
+    = f.label :url, class: 'control-label'
+    .controls
+      = f.text_field :url
+      %span.help-inline The URL under which this page should be accessible on the web.
+
+  .control-group
+    .controls
+      .actions
+        = f.submit class: 'btn btn-primary'
+        &nbsp; &nbsp; &nbsp;
+        = link_to 'Back', admin_pages_path
+
