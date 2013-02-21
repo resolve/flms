@@ -1,0 +1,19 @@
+%br
+%h4 All users
+
+%table.table.table-striped.table-hover
+  %thead
+    %tr
+      %th Email
+      %th
+
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.email
+        %td= link_to 'delete', user_path(user), method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New user', new_user_path, class: 'btn btn-success'
+

@@ -1,0 +1,28 @@
+= form_for @user, html: {class: 'form-horizontal'} do |f|
+  %fieldset
+    %legend= caption
+
+  - if @user.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
+
+  .control-group
+    = f.label :email, class: 'control-label'
+    .controls
+      = f.email_field :email, autofocus: true
+
+  .control-group
+    = f.label :password, class: 'control-label'
+    .controls
+      = f.password_field :password
+
+  .control-group
+    .controls
+      .actions
+        = f.submit class: 'btn btn-primary'
+        &nbsp; &nbsp; &nbsp;
+        = link_to 'Back', users_path
+
