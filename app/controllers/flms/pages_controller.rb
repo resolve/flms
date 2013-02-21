@@ -2,7 +2,7 @@ require_dependency "flms/application_controller"
 
 module Flms
   class PagesController < ApplicationController
-    #load_and_authorize_resource class: 'Flms::Page', find_by: :url
+    before_filter :authenticate_user!
     layout 'flms/admin'
 
     def index
