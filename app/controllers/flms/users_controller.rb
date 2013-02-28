@@ -6,15 +6,15 @@ module Flms
     layout 'flms/admin'
 
     def index
-      @users = User.all
+      @users = Flms::User.all
     end
 
     def new
-      @user = User.new
+      @user = Flms::User.new
     end
 
     def create
-      @user = User.new params[:user]
+      @user = Flms::User.new params[:user]
       if @user.save
         redirect_to users_path, notice: 'User created.'
       else
@@ -23,7 +23,7 @@ module Flms
     end
 
     def destroy
-      @user = User.find params[:id]
+      @user = Flms::User.find params[:id]
       @user.destroy
       redirect_to users_path
     end

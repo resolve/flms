@@ -1,0 +1,18 @@
+!!! 5
+%html{lang: 'en'}
+  %head
+    %title XYZ administration
+    %meta{name:"viewport", content:"width=device-width, initial-scale=1.0"}
+    = stylesheet_link_tag    'flms/flms', media: 'all'
+    = javascript_include_tag 'flms/flms'
+    = csrf_meta_tags
+
+  %body{class: "#{params[:controller].sub('/', ' ')} #{params[:action]}"}
+    - unless notice.blank?
+      %p.notice= notice
+    - unless alert.blank?
+      %p.alert= alert
+
+    .login.container
+      = yield
+

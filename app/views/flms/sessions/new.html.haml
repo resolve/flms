@@ -1,0 +1,21 @@
+= form_for resource, as: resource_name, url: '', html: {class: 'form-signin'} do |f|
+  %h2.form-signin-heading Please sign in
+  %br
+
+  = f.email_field :email, { autofocus: true,
+                            class: 'input-block-level',
+                            placeholder: 'Email' }
+
+  = f.password_field :password, { placeholder: 'Password', class: 'input-block-level' }
+
+  - if devise_mapping.rememberable?
+    %label.checkbox
+      = f.check_box :remember_me
+      Remember me
+
+  %br
+  = f.submit "Sign in", class: 'btn btn-large btn-primary'
+
+  &nbsp; &nbsp; &nbsp;
+  = link_to 'Forgot password', '/users/password/new'
+

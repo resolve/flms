@@ -8,6 +8,8 @@ require 'rspec/autorun'
 require 'factory_girl_rails'
 require 'faker'
 require 'database_cleaner'
+require 'capybara/rails'
+require 'capybara/rspec'
 
 Rails.backtrace_cleaner.remove_silencers!
 Dir["#{File.dirname __FILE__}/support/**/*.rb"].each {|f| require f}
