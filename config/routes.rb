@@ -12,8 +12,8 @@ Flms::Engine.routes.draw do
     get '/logout', to: 'sessions#destroy', as: :logout
   end
 
-  # Default redirect after login.
-
   resources :pages
   resources :users, only: [:index, :new, :create, :destroy]
+
+  root :to => 'dashboard#index'
 end
