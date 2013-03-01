@@ -7,8 +7,9 @@ Flms::Engine.routes.draw do
              path_names: { sign_out: 'logout' }
 
   devise_scope :user do
-    get '/login' => 'sessions#new', :as => :login
-    post '/login' => 'sessions#create'
+    get '/login', to: 'sessions#new', as: :login
+    post '/login', to: 'sessions#create'
+    get '/logout', to: 'sessions#destroy', as: :logout
   end
 
   # Default redirect after login.
