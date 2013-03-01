@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Pages > Index', js: true do
+feature 'Pages > Index' do
   test_helpers
 
   scenario 'shows all pages' do

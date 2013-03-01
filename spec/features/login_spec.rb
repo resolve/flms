@@ -3,7 +3,7 @@ require 'spec_helper'
 feature 'log in' do
   test_helpers
 
-  scenario 'with valid email and password', js: true do
+  scenario 'with valid email and password' do
     visit '/flms/login'
     fill_in 'Email', with: user_1.email
     fill_in 'Password', with: user_1.password
