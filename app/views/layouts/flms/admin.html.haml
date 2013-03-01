@@ -9,9 +9,9 @@
 
   %body{class: "#{params[:controller].sub('/', ' ')} #{params[:action]}"}
     - unless notice.blank?
-      %p.notice= notice
+      %p.flash.notice= notice
     - unless alert.blank?
-      %p.alert= alert
+      %p.flash.alert= alert
 
     .container-narrow
 
