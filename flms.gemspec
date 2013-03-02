@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Flms::VERSION
   s.authors     = ['Kevin Goslar']
   s.email       = ['kevin.goslar@originate.com']
-  s.homepage    = 'TODO'
+  s.homepage    = 'https://github.com/Originate-Inc/flms'
   s.summary     = 'Floating Layer Management System'
   s.description = 'A CMS for web pages that use interactive layers to present animated content.'
 
