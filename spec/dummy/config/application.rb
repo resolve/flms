@@ -54,6 +54,16 @@ module Dummy
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    config.generators do |g|
+      g.fixture false
+      g.javascripts false
+      g.helpers false
+      g.helper_specs false  # prevent generating helpers
+      g.stylesheets false
+      g.template_engine :haml   # create HAML template
+      g.view_specs false  # prevent generating view specs
+    end
   end
 end
 
