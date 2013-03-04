@@ -10,8 +10,10 @@
   %tbody
     - @pages.each do |page|
       %tr
-        %td= link_to page.title, edit_page_path(page)
-        %td= link_to 'delete', page_path(page), method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to page.title, page_blocks_path(page)
+        %td
+          = link_to 'edit', edit_page_path(page), class: 'btn'
+          = link_to 'delete', page_path(page), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn'
 
 %br
 
