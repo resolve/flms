@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.summary     = 'Floating Layer Management System'
   s.description = 'A CMS for web pages that use interactive layers to present animated content.'
 
-  s.files = Dir['{app,config,db,lib}/**/*'] + ['MIT-LICENSE', 'Rakefile', 'README.md']
+  s.files = Dir['{app,config,db,lib,vendor}/**/*'] + ['MIT-LICENSE', 'Rakefile', 'README.md']
   s.test_files = Dir['spec/**/*']
 
   s.add_dependency 'rails', '~> 3.2.12'

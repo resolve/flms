@@ -2,4 +2,5 @@
  * CSS for the flms pages.
  *
  *= require_tree .
+ *= require jquery-ui
  */
