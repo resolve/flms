@@ -1,7 +1,7 @@
 !!! 5
 %html{lang: 'en'}
   %head
-    %title XYZ administration
+    %title #{Flms.application_name} administration
     %meta{name:"viewport", content:"width=device-width, initial-scale=1.0"}
     = stylesheet_link_tag    'flms/flms', media: 'all'
     = javascript_include_tag 'flms/flms'
@@ -26,7 +26,7 @@
           - clazz = params[:controller] == 'flms/users' ? 'active' : ''
           %li{class: clazz}
             %a{href: "/flms/users"} Users
-        %h3.muted XYZ website administration
+        %h3.muted #{Flms.application_name} administration
       -#%hr
 
       = yield
