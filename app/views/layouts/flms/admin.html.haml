@@ -19,7 +19,7 @@
           - clazz = params[:controller] == 'flms/dashboard' ? 'active' : ''
           %li{class: clazz}
             %a{href: "/flms"} Home
-          - clazz = params[:controller] == 'flms/pages' ? 'active' : ''
+          - clazz = ['flms/pages', 'flms/blocks'].include?(params[:controller]) ? 'active' : ''
           %li{class: clazz}
             %a{href: "/flms/pages"} Pages
           - clazz = params[:controller] == 'flms/users' ? 'active' : ''
