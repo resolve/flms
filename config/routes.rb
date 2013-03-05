@@ -1,9 +1,7 @@
 Flms::Engine.routes.draw do
 
-  resources :blocks, only: [:edit]
-
   resources :pages do
-    resources :blocks, only: [:create, :edit, :index, :new, :update]
+    resources :blocks
   end
 
   devise_for :user,

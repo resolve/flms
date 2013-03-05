@@ -46,9 +46,10 @@ module Flms
     end
 
     def destroy
-      @block = Block.find(params[:id])
+      @page = Page.find_by_url params[:page_id]
+      @block = Block.find params[:id]
       @block.destroy
-      redirect_to blocks_url
+      redirect_to page_blocks_path(@page), notice: 'Block deleted'
     end
   end
 end
