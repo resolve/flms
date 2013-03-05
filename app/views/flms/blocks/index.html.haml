@@ -1,0 +1,19 @@
+%br
+%h4 Blocks on page '#{@page.url}'
+
+%table.table.table-striped.table-hover
+  %thead
+    %tr
+      %th Name
+      %th
+
+  %tbody
+    - @blocks.each do |block|
+      %tr
+        %td= link_to block.name, edit_block_path(block)
+        %td= link_to 'delete', page_blocks_path(@page), method: :delete, data: { confirm: 'Are you sure?' }
+%br
+
+= link_to 'New Block', new_page_block_path(@page), class: 'btn btn-success'
+
+

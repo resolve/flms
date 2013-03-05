@@ -5,6 +5,8 @@ module Flms
     has_many :blocks_pages
     has_many :blocks, through: :blocks_pages
 
+    validates :title, :url, presence: true
+
     def to_param
       url
     end

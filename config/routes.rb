@@ -1,4 +1,11 @@
 Flms::Engine.routes.draw do
+
+  resources :blocks, only: [:edit]
+
+  resources :pages do
+    resources :blocks, only: [:index, :new, :create]
+  end
+
   devise_for :user,
              class_name: 'Flms::User',
              module: :devise,
@@ -12,7 +19,6 @@ Flms::Engine.routes.draw do
     get '/logout', to: 'sessions#destroy', as: :logout
   end
 
-  resources :pages
   resources :users, only: [:index, :new, :create, :destroy]
 
   root :to => 'dashboard#index'
