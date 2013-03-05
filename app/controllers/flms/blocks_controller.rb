@@ -2,6 +2,7 @@ require_dependency "flms/application_controller"
 
 module Flms
   class BlocksController < ApplicationController
+    before_filter :authenticate_user!
     layout 'flms/admin'
 
     def index
@@ -19,6 +20,7 @@ module Flms
     end
 
     def edit
+      @page = Page.find_by_url params[:page_id]
       @block = Block.find(params[:id])
     end
 
@@ -34,9 +36,10 @@ module Flms
     end
 
     def update
+      @page = Page.find_by_url params[:page_id]
       @block = Block.find(params[:id])
       if @block.update_attributes(params[:block])
-        redirect_to @block, notice: 'Block was successfully updated.'
+        redirect_to [@page, :blocks], notice: 'Block was successfully updated.'
       else
         render action: "edit"
       end

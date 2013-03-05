@@ -3,7 +3,7 @@ require 'spec_helper'
 feature 'Blocks > Create' do
   test_helpers
 
-  scenario 'allows to create a new page' do
+  scenario 'creating a new block' do
     capybara_sign_in user_1
     visit "/flms/pages/#{page_1.url}/blocks"
     click_link 'New Block'
