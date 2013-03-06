@@ -18,13 +18,19 @@
         %ul.nav.nav-pills.pull-right
           - clazz = params[:controller] == 'flms/dashboard' ? 'active' : ''
           %li{class: clazz}
-            %a{href: "/flms"} Home
+            %a{href: "/flms"}
+              %d.icon-home
+              Home
           - clazz = ['flms/pages', 'flms/blocks'].include?(params[:controller]) ? 'active' : ''
           %li{class: clazz}
-            %a{href: "/flms/pages"} Pages
+            %a{href: "/flms/pages"}
+              %i.icon-book
+              Pages
           - clazz = params[:controller] == 'flms/users' ? 'active' : ''
           %li{class: clazz}
-            %a{href: "/flms/users"} Users
+            %a{href: "/flms/users"}
+              %i.icon-user
+              Users
         %h3.muted #{Flms.application_name} administration
       -#%hr
 
