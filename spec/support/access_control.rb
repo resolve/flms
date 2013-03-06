@@ -59,7 +59,7 @@ end
 shared_examples 'http access granted' do
   it do
     response = defined?(access_granted_check) ? access_granted_check : default_access_granted_check
-    response.should be_true
+    expect(response).to be_true
   end
 end
 
@@ -67,21 +67,21 @@ end
 shared_examples 'http access denied' do
   it do
     response = defined?(access_granted_check) ? access_granted_check : default_access_granted_check
-    response.should be_false
+    expect(response).to be_false
   end
 end
 
 # Verifies that the database changes were performed.
 shared_examples 'database changed' do
   it do
-    database_performed_check.should be_true if defined? database_performed_check
+    expect(database_performed_check).to be_true if defined? database_performed_check
   end
 end
 
 # Verifies that the database changes were not performed.
 shared_examples 'database not changed' do
   it do
-    database_performed_check.should be_false if defined? database_performed_check
+    expect(database_performed_check).to be_false if defined? database_performed_check
   end
 end
 

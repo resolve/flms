@@ -9,7 +9,7 @@ feature 'Pages > Create' do
     fill_in 'Title', with: 'my new title'
     fill_in 'Url', with: 'my new url'
     click_button 'Create Page'
-    Flms::Page.should have(1).instances
+    expect(Flms::Page).to have(1).instances
     page = Flms::Page.first
     expect(page.title).to eql 'my new title'
     expect(page.url).to eql 'my new url'
