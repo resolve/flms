@@ -1,10 +1,9 @@
 !!! 5
 %html{lang: 'en'}
   %head
-    %title XYZ administration
+    %title #{Flms.application_name} administration
     %meta{name:"viewport", content:"width=device-width, initial-scale=1.0"}
     = stylesheet_link_tag    'flms/flms', media: 'all'
-    = javascript_include_tag 'flms/flms'
     = csrf_meta_tags
 
   %body{class: "#{params[:controller].sub('/', ' ')} #{params[:action]}"}
@@ -19,15 +18,23 @@
         %ul.nav.nav-pills.pull-right
           - clazz = params[:controller] == 'flms/dashboard' ? 'active' : ''
           %li{class: clazz}
-            %a{href: "/flms"} Home
-          - clazz = params[:controller] == 'flms/pages' ? 'active' : ''
+            %a{href: "/flms"}
+              %d.icon-home
+              Home
+          - clazz = ['flms/pages', 'flms/blocks'].include?(params[:controller]) ? 'active' : ''
           %li{class: clazz}
-            %a{href: "/flms/pages"} Pages
+            %a{href: "/flms/pages"}
+              %i.icon-book
+              Pages
           - clazz = params[:controller] == 'flms/users' ? 'active' : ''
           %li{class: clazz}
-            %a{href: "/flms/users"} Users
-        %h3.muted XYZ website administration
+            %a{href: "/flms/users"}
+              %i.icon-user
+              Users
+        %h3.muted #{Flms.application_name} administration
       -#%hr
 
       = yield
 
+      = javascript_include_tag 'flms/flms'
+      = yield :js
