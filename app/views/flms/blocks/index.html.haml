@@ -7,7 +7,7 @@
 %br
 %h4 Blocks on page '#{@page.url}'
 
-%table.table.table-striped
+%table.table.table-striped.table-hover
   %thead
     %tr
       %th Name
@@ -20,6 +20,10 @@
         %td
           = link_to 'edit', edit_page_block_path(@page, block), class: 'btn'
           = link_to 'delete', page_block_path(@page, block), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn'
+        %td.action
+          .switch.switch-mini
+            %input{type: 'checkbox'}
+
 %br
 
 = link_to 'New Block', new_page_block_path(@page), class: 'btn btn-success'
