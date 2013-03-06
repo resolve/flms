@@ -10,16 +10,22 @@
 %table.table.table-striped.table-hover
   %thead
     %tr
+      %th Active
       %th Name
-      %th
+      %th Actions
 
-  %tbody.blocks
-    - @blocks.each do |block|
-      %tr.ui-state-default
+  %tbody.block_list
+    - @page.ordered_blocks_pages.each do |blocks_page|
+      - block = blocks_page.block
+      %tr.ui-state-default{'data-block-id' => block.id}
 
+        -# "Active" switch.
         %td.action
           .switch.switch-mini
-            %input{type: 'checkbox'}
+            - if blocks_page.active
+              %input{id: "active_#{block.id}", type: 'checkbox', checked: 'checked'}
+            - else
+              %input{id: "active_#{block.id}", type: 'checkbox'}
 
         %td.name
           = link_to block.name, page_block_path(@page, block)
@@ -38,4 +44,6 @@
   %i.icon-plus.icon-white
   New Block
 
-
+%button#save.btn.btn-primary
+  %i.icon-hdd.icon-white
+  Save

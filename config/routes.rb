@@ -1,6 +1,7 @@
 Flms::Engine.routes.draw do
 
   resources :pages do
+    put 'blocks', to: 'blocks#update_all'
     resources :blocks
   end
 

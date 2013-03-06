@@ -49,6 +49,38 @@ describe Flms::BlocksController do
     end
   end
 
+  describe 'update_all' do
+    describe 'access control' do
+      let(:request) { put :update_all, page_id: page_1.url, block_data: [], use_route: :flms }
+      it_should_behave_like 'an action accessible only to logged-in users'
+    end
+
+    describe 'functionality' do
+
+      it 'saves the given block status to the database' do
+        page_1.blocks_pages.create block: block_1, active: false
+        page_1.blocks_pages.create block: block_2, active: false
+
+        sign_in user_1
+        put :update_all, page_id: page_1.url, block_data: [{id: block_1.id, active: false}, {id: block_2.id, active: true}], use_route: :flms
+
+        expect(page_1.position_for_block(block_1.id).active).to be_false
+        expect(page_1.position_for_block(block_2.id).active).to be_true
+      end
+
+      it 'saves the given block order to the database' do
+        page_1.blocks_pages.create block: block_1, ordering: 0
+        page_1.blocks_pages.create block: block_2, ordering: 1
+
+        sign_in user_1
+        put :update_all, page_id: page_1.url, block_data: [ {id: block_2.id, active: false}, {id: block_1.id, active: false} ], use_route: :flms
+
+        expect(page_1.position_for_block(block_1.id).ordering).to eql 1
+        expect(page_1.position_for_block(block_2.id).ordering).to eql 0
+      end
+    end
+  end
+
   describe 'delete' do
     describe 'access control' do
       let(:request) { delete :destroy, id: block_1.id, page_id: page_1.url, use_route: :flms }

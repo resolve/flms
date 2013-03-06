@@ -7,7 +7,6 @@ module Flms
 
     def index
       @page = Flms::Page.find_by_url params[:page_id]
-      @blocks = @page.blocks
     end
 
     def show
@@ -43,6 +42,17 @@ module Flms
       else
         render action: "edit"
       end
+    end
+
+    def update_all
+      @page = Page.find_by_url params[:page_id]
+      params[:block_data].each_with_index do |block_data, pos|
+        position = @page.position_for_block block_data[:id].to_i
+        position.active = block_data[:active]
+        position.ordering = pos
+        position.save!
+      end
+      render text: ''
     end
 
     def destroy
