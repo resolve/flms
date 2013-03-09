@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'Users > Delete' do
-  test_helpers
+  include NamedFactories
 
   scenario 'allows to delete a new page', js: true do
     capybara_sign_in user_1

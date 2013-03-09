@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'Users > Index' do
-  test_helpers
+  include NamedFactories
 
   scenario 'lists all existing users' do
     user_1 ; user_2

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'Pages > Delete' do
-  test_helpers
+  include NamedFactories
 
   scenario 'allows to delete a new page', js: true do
     create :page

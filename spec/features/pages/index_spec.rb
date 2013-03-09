@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'Pages > Index' do
-  test_helpers
+  include NamedFactories
 
   scenario 'shows all pages' do
     page_1 = create :page

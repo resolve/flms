@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'Pages > Create' do
-  test_helpers
+  include NamedFactories
 
   scenario 'allows to create a new page' do
     capybara_sign_in user_1
