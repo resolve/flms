@@ -16,4 +16,3 @@ feature 'Blocks > Create' do
     expect(block.name).to eql 'my new block'
   end
 end
-

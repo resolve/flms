@@ -4,7 +4,7 @@ feature 'Blocks > Delete' do
   include NamedFactories
 
   scenario 'deleting a new block', js: true do
-    page_1.blocks << block_1
+    block_1a
 
     capybara_sign_in user_1
     visit "/flms/pages/#{page_1.url}/blocks"

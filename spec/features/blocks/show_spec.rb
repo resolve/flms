@@ -4,10 +4,10 @@ feature 'Blocks > Show' do
   include NamedFactories
 
   scenario 'editing an existing block' do
-    page_1.blocks << block_1
+    block_1a
 
     capybara_sign_in user_1
-    visit "/flms/pages/#{page_1.url}/blocks/#{block_1.id}"
+    visit "/flms/pages/#{page_1.url}/blocks/#{block_1a.id}"
     expect(page).to have_content ''
   end
 end

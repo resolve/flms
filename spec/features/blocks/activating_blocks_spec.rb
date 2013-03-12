@@ -4,7 +4,7 @@ feature 'Blocks > Activating blocks' do
   include NamedFactories
 
   scenario 'activating a block', js: true do
-    page_1.blocks.concat block_1
+    block_1a
 
     capybara_sign_in user_1
     visit "/flms/pages/#{page_1.url}/blocks"
@@ -12,7 +12,7 @@ feature 'Blocks > Activating blocks' do
     click_on 'save'
     sleep 0.1
 
-    expect(block_1.reload.blocks_pages.first).to be_active
+    expect(block_1a.reload.blocks_pages.first).to be_active
   end
 end
 

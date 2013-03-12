@@ -4,7 +4,7 @@ feature 'Blocks > Edit' do
   include NamedFactories
 
   scenario 'editing an existing block' do
-    page_1.blocks << block_1
+    block_1a
 
     capybara_sign_in user_1
     visit "/flms/pages/#{page_1.url}/blocks"
