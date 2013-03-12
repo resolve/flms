@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Flms::PagesController do
-  test_helpers
+  include NamedFactories
 
   describe 'index' do
     describe 'access control' do

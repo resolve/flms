@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'Blocks > Create' do
-  test_helpers
+  include NamedFactories
 
   scenario 'creating a new block' do
     capybara_sign_in user_1

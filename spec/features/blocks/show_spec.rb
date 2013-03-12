@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'Blocks > Show' do
-  test_helpers
+  include NamedFactories
 
   scenario 'editing an existing block' do
     page_1.blocks << block_1

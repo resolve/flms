@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'Blocks > Activating blocks' do
-  test_helpers
+  include NamedFactories
 
   scenario 'activating a block', js: true do
     page_1.blocks.concat block_1

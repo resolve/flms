@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Flms::Page do
-  test_helpers
+  include NamedFactories
 
   subject { create :page }
   let(:subject_with_block_1) { subject.blocks << block_1 ; subject }

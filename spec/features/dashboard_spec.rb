@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'Dashboard' do
-  test_helpers
+  include NamedFactories
 
   scenario 'visiting the dashboard' do
     capybara_sign_in user_1

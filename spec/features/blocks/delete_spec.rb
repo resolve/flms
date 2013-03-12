@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'Blocks > Delete' do
-  test_helpers
+  include NamedFactories
 
   scenario 'deleting a new block', js: true do
     page_1.blocks << block_1

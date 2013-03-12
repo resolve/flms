@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Flms::Block do
-  test_helpers
+  include NamedFactories
 
   describe 'associations' do
     it 'has pages' do

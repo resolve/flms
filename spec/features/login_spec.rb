@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'log in' do
-  test_helpers
+  include NamedFactories
 
   scenario 'with valid email and password' do
     visit '/flms/login'
