@@ -1,1 +1,35 @@
-Block
+
+
+
+%h4 Layers in block '#{@block.name}'
+
+%table.table.table-striped.table-hover
+  %thead
+    %tr
+      %th Name
+      %th Actions
+
+  %tbody.layer_list
+    - @block.layers.each do |layer|
+      %tr.ui-state-default{'data-layer-id' => layer.id}
+
+        %td.name
+          = layer.name
+
+        %td.action
+          = link_to edit_page_block_layer_path(@page, @block, layer), class: 'btn', title: 'edit' do
+            %i.icon-pencil
+
+        %td.action
+          = link_to page_block_layer_path(@page, @block, layer), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn', title: 'delete' do
+            %i.icon-trash
+
+%br
+
+= link_to new_page_block_layer_path(@page, @block), class: 'btn btn-success' do
+  %i.icon-plus.icon-white
+  New Layer
+
+%button#save.btn.btn-primary
+  %i.icon-hdd.icon-white
+  Save
