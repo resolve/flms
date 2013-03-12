@@ -1,0 +1,23 @@
+= form_for [@page, @block, @layer], html: {class: 'form-horizontal'} do |f|
+  %fieldset
+    %legend= caption
+
+  - if @layer.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@layer.errors.count, "error")} prohibited this layer from being saved:"
+      %ul
+        - @layer.errors.full_messages.each do |msg|
+          %li= msg
+
+  .control-group
+    = f.label :name, class: 'control-label'
+    .controls
+      = f.text_field :name, autofocus: true
+      %span.help-inline The internal name of this layer.
+
+  .control-group
+    .controls
+      .actions
+        = f.submit class: 'btn btn-primary'
+        &nbsp; &nbsp; &nbsp;
+        = link_to 'Back', pages_path

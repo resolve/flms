@@ -2,7 +2,9 @@ Flms::Engine.routes.draw do
 
   resources :pages do
     put 'blocks', to: 'blocks#update_all'
-    resources :blocks
+    resources :blocks do
+      resources :layers, except: [:index]
+    end
   end
 
   devise_for :user,
