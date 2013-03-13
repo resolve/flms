@@ -25,7 +25,7 @@ module Flms
       @layer = Layer.new params[:layer]
       @layer.block = @block
       if @layer.save
-        redirect_to page_block_path(@page, @block), notice: 'Layer created.'
+        redirect_to page_block_path(@page, @block), notice: 'Layer created'
       else
         render action: "new"
       end
@@ -33,7 +33,7 @@ module Flms
 
     def update
       if @layer.update_attributes(params[:layer])
-        redirect_to [@page, :layers], notice: 'Layer was successfully updated.'
+        redirect_to [@page, @block], notice: 'Layer updated'
       else
         render action: "edit"
       end
