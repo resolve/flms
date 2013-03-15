@@ -18,10 +18,10 @@
           -# = image_tag layer.image_url if layer.image?
 
         %td.action
-          = link_to edit_page_block_image_layer_path(@page, @block, layer), class: 'btn', title: 'edit' do
+          = link_to edit_page_block_image_layer_path(@page, @block, layer), class: 'btn edit', title: 'edit' do
             %i.icon-pencil
 
-          = link_to page_block_layer_path(@page, @block, layer), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn', title: 'delete' do
+          = link_to page_block_layer_path(@page, @block, layer), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn delete', title: 'delete' do
             %i.icon-trash
 
 %br

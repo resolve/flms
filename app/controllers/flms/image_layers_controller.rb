@@ -33,7 +33,7 @@ module Flms
     end
 
     def update
-      if @layer.update_attributes(params[:layer])
+      if @layer.update_attributes(params[:image_layer])
         redirect_to [@page, @block], notice: 'Layer updated'
       else
         render action: "edit"
