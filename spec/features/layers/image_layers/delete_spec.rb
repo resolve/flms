@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-feature 'Layers > Delete', js: true do
+feature 'ImageLayers > Delete', js: true do
   include NamedFactories
 
-  scenario 'deleting a layer' do
+  scenario 'deleting an image layer' do
     image_layer_1a1
 
     capybara_sign_in user_1

@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-feature 'Layers > Create' do
+feature 'ImageLayers > Create' do
   include NamedFactories
 
-  scenario 'creating a new layer' do
+  scenario 'creating a new image layer' do
     capybara_sign_in user_1
     visit "/flms/pages/#{page_1.url}/blocks/#{block_1a.id}"
     click_link 'Add Image Layer'
