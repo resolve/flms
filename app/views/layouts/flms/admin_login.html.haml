@@ -4,7 +4,6 @@
     %title #{Flms.application_name} administration
     %meta{name:"viewport", content:"width=device-width, initial-scale=1.0"}
     = stylesheet_link_tag    'flms/admin', media: 'all'
-    = javascript_include_tag 'flms/admin'
     = csrf_meta_tags
 
   %body{class: "#{params[:controller].sub('/', ' ')} #{params[:action]}"}
@@ -16,3 +15,4 @@
     .login.container
       = yield
 
+    = javascript_include_tag 'flms/admin'
