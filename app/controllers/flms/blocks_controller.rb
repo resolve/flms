@@ -5,7 +5,7 @@ module Flms
     layout 'flms/admin'
     before_filter :authenticate_user!
     before_filter :load_page
-    before_filter :load_block, only: [:show, :edit, :update, :delete]
+    before_filter :load_block, only: [:show, :edit, :update, :destroy]
 
     def index
     end

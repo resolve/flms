@@ -3,7 +3,8 @@ Flms::Engine.routes.draw do
   resources :pages do
     put 'blocks', to: 'blocks#update_all'
     resources :blocks do
-      resources :layers, except: [:index]
+      resources :layers, only: [:destroy]
+      resources :image_layers, except: [:index]
     end
   end
 

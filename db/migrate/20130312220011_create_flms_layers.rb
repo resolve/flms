@@ -4,6 +4,7 @@ class CreateFlmsLayers < ActiveRecord::Migration
       t.string :name
       t.integer :block_id
       t.integer :ordering
+      t.string :type
 
       t.timestamps
     end
