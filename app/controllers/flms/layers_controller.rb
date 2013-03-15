@@ -10,7 +10,7 @@ module Flms
 
     def destroy
       @layer.destroy
-      redirect_to page_blocks_path(@page, @block), notice: 'Layer deleted'
+      redirect_to page_block_path(@page, @block), notice: 'Layer deleted'
     end
 
 
