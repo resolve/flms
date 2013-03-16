@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    flms (0.0.2)
+    flms (0.0.3)
       cancan
       carrierwave
       coffee-rails
