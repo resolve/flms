@@ -15,20 +15,20 @@
 
         %td.name
           = layer.name
+          -# = image_tag layer.image_url if layer.image?
 
         %td.action
-          = link_to edit_page_block_layer_path(@page, @block, layer), class: 'btn', title: 'edit' do
+          = link_to edit_page_block_image_layer_path(@page, @block, layer), class: 'btn edit', title: 'edit' do
             %i.icon-pencil
 
-        %td.action
-          = link_to page_block_layer_path(@page, @block, layer), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn', title: 'delete' do
+          = link_to page_block_layer_path(@page, @block, layer), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn delete', title: 'delete' do
             %i.icon-trash
 
 %br
 
-= link_to new_page_block_layer_path(@page, @block), class: 'btn btn-success' do
+= link_to new_page_block_image_layer_path(@page, @block), class: 'btn btn-success' do
   %i.icon-plus.icon-white
-  New Layer
+  Add Image Layer
 
 %button#save.btn.btn-primary
   %i.icon-hdd.icon-white

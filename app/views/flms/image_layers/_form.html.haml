@@ -16,6 +16,11 @@
       %span.help-inline The internal name of this layer.
 
   .control-group
+    = f.label :image, class: 'control-label'
+    .controls
+      = f.file_field :image
+
+  .control-group
     .controls
       .actions
         = f.submit class: 'btn btn-primary'
