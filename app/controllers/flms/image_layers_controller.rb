@@ -15,7 +15,7 @@ module Flms
     end
 
     def new
-      @layer = ImageLayer.new
+      @layer = ImageLayer.new.build_default_keyframes
     end
 
     def edit
