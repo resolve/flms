@@ -55,6 +55,10 @@
           .input-append
             = f_start.number_field :blur_percent, min: 0, max: 100, step: 10
             %span.add-on &#37;
+      .control-group
+        = f_start.label :position, class: 'control-label'
+        .controls
+          = f_start.select :position_name, Flms::Keyframe::POSITION_NAMES
 
   %fieldset
     %legend
@@ -95,6 +99,10 @@
           .input-append
             = f_end.number_field :blur_percent, min: 0, max: 100, step: 10
             %span.add-on &#37;
+      .control-group
+        = f_end.label :position, class: 'control-label'
+        .controls
+          = f_end.select :position_name, Flms::Keyframe::POSITION_NAMES
 
   .control-group
     .controls
