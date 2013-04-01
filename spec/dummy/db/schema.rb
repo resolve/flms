@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130313002421) do
+ActiveRecord::Schema.define(:version => 20130327183815) do
 
   create_table "flms_blocks", :force => true do |t|
     t.string   "name"
@@ -30,6 +30,22 @@ ActiveRecord::Schema.define(:version => 20130313002421) do
 
   add_index "flms_blocks_pages", ["block_id"], :name => "index_flms_blocks_pages_on_block_id"
   add_index "flms_blocks_pages", ["page_id"], :name => "index_flms_blocks_pages_on_page_id"
+
+  create_table "flms_keyframes", :force => true do |t|
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "layer_id"
+    t.string   "type"
+    t.integer  "scroll_start"
+    t.integer  "scroll_duration"
+    t.float    "width"
+    t.float    "height"
+    t.float    "position_x"
+    t.float    "position_y"
+    t.float    "opacity"
+    t.float    "scale"
+    t.float    "blur"
+  end
 
   create_table "flms_layers", :force => true do |t|
     t.string   "name"
