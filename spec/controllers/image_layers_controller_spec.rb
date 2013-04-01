@@ -41,12 +41,14 @@ describe Flms::ImageLayersController do
                                                             scroll_duration: 2,
                                                             opacity_percent: 50,
                                                             scale_percent: 25,
-                                                            blur_percent: 50 },
+                                                            blur_percent: 50,
+                                                            position_name: 'top' },
                          target_state_keyframe_attributes: { scroll_duration: 3 },
                          end_state_keyframe_attributes: { scroll_duration: 4,
                                                           opacity_percent: 60,
                                                           scale_percent: 30,
-                                                          blur_percent: 60 }
+                                                          blur_percent: 60,
+                                                          position_name: 'center' }
         post :create, page_id: page_1.url, block_id: block_1a.id, image_layer: new_layer, use_route: :flms
         result_layer = Flms::Layer.first
         expect(result_layer.start_state_keyframe.scroll_start).to eql 1
@@ -54,11 +56,13 @@ describe Flms::ImageLayersController do
         expect(result_layer.start_state_keyframe.opacity_percent).to eql 50
         expect(result_layer.start_state_keyframe.scale_percent).to eql 25
         expect(result_layer.start_state_keyframe.blur_percent).to eql 50
+        expect(result_layer.start_state_keyframe.position_name).to eql 'top'
         expect(result_layer.target_state_keyframe.scroll_duration).to eql 3
         expect(result_layer.end_state_keyframe.scroll_duration).to eql 4
         expect(result_layer.end_state_keyframe.opacity_percent).to eql 60
         expect(result_layer.end_state_keyframe.scale_percent).to eql 30
         expect(result_layer.end_state_keyframe.blur_percent).to eql 60
+        expect(result_layer.end_state_keyframe.position_name).to eql 'center'
       end
     end
 
