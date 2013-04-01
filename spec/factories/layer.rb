@@ -6,7 +6,6 @@ FactoryGirl.define do
       start_state_keyframe
       target_state_keyframe
       end_state_keyframe
-
     end
   end
 end

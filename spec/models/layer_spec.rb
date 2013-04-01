@@ -4,19 +4,19 @@ describe Flms::Layer do
   describe 'keyframes' do
     describe 'build_default_keyframes' do
       it 'creates valid associations' do
-        the_layer = Flms::Layer.new.build_default_keyframes
-        expect(the_layer.start_state_keyframe.layer).to eql the_layer
-        expect(the_layer.target_state_keyframe.layer).to eql the_layer
-        expect(the_layer.end_state_keyframe.layer).to eql the_layer
+        layer = Flms::Layer.new.build_default_keyframes
+        expect(layer.start_state_keyframe.layer).to eql layer
+        expect(layer.target_state_keyframe.layer).to eql layer
+        expect(layer.end_state_keyframe.layer).to eql layer
       end
 
       it 'preserves the associations through save/reload' do
-        the_layer = Flms::Layer.new.build_default_keyframes
-        the_layer.save!
-        the_layer.reload
-        expect(the_layer.start_state_keyframe.layer).to eql the_layer
-        expect(the_layer.target_state_keyframe.layer).to eql the_layer
-        expect(the_layer.end_state_keyframe.layer).to eql the_layer
+        layer = Flms::Layer.new.build_default_keyframes
+        layer.save!
+        layer.reload
+        expect(layer.start_state_keyframe.layer).to eql layer
+        expect(layer.target_state_keyframe.layer).to eql layer
+        expect(layer.end_state_keyframe.layer).to eql layer
       end
     end
 
@@ -27,8 +27,8 @@ describe Flms::Layer do
         end
 
         it 'passes validation when we correctly associate keyframes' do
-          l = Flms::Layer.new.build_default_keyframes
-          expect { l.save! }.not_to raise_error
+          layer = Flms::Layer.new.build_default_keyframes
+          expect { layer.save! }.not_to raise_error
         end
       end
     end

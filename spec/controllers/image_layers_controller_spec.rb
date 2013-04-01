@@ -13,9 +13,9 @@ describe Flms::ImageLayersController do
       it 'provides an image layer with associated keyframes' do
         sign_in user
         get :new, page_id: page_1.url, block_id: block_1a.id, use_route: :flms
-        expect(assigns(:layer).start_state_keyframe).not_to eql nil
-        expect(assigns(:layer).target_state_keyframe).not_to eql nil
-        expect(assigns(:layer).end_state_keyframe).not_to eql nil
+        expect(assigns(:layer).start_state_keyframe).not_to be_nil
+        expect(assigns(:layer).target_state_keyframe).not_to be_nil
+        expect(assigns(:layer).end_state_keyframe).not_to be_nil
       end
     end
   end
@@ -38,15 +38,15 @@ describe Flms::ImageLayersController do
         sign_in user
         new_layer = attributes_for(:image_layer)
         new_layer.merge! start_state_keyframe_attributes: { scroll_start: 1,
-                                                      scroll_duration: 2,
-                                                      opacity_percent: 50,
-                                                      scale_percent: 25,
-                                                      blur_percent: 50 },
+                                                            scroll_duration: 2,
+                                                            opacity_percent: 50,
+                                                            scale_percent: 25,
+                                                            blur_percent: 50 },
                          target_state_keyframe_attributes: { scroll_duration: 3 },
                          end_state_keyframe_attributes: { scroll_duration: 4,
-                                                    opacity_percent: 60,
-                                                    scale_percent: 30,
-                                                    blur_percent: 60 }
+                                                          opacity_percent: 60,
+                                                          scale_percent: 30,
+                                                          blur_percent: 60 }
         post :create, page_id: page_1.url, block_id: block_1a.id, image_layer: new_layer, use_route: :flms
         result_layer = Flms::Layer.first
         expect(result_layer.start_state_keyframe.scroll_start).to eql 1
