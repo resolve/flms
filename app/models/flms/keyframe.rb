@@ -40,18 +40,5 @@ module Flms
       self.blur = val.to_i / 100.0
     end
 
-    # CSS positions; common name, then corresponding x and y positions
-=begin
-    DIRECTIONAL_STRINGS = %w[top-left top top-right right bottom-right bottom bottom-left left]
-    DIRECTIONAL_POS = [[0, 0], [0.5, 0], [1, 0], [1, 0.5], [1, 1], [0.5, 1], [0, 1], [0, 0.5]]
-
-    # return a string describing the x and y position for the keyframe
-    # i.e., if x,y pos is (.5, .5), return 'right'
-    def position_string
-      raise 'cannot interpret x,y position' unless DIRECTIONAL_POS.include?([position_x, position_y])
-      DIRECTIONAL_STRINGS[DIRECTIONAL_POS.index([position_x, position_y])]
-    end
-=end
-
   end
 end

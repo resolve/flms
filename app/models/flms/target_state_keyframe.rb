@@ -3,7 +3,7 @@ module Flms
     after_initialize :set_default_values
 
     def set_default_values
-      self.scroll_start ||= nil
+      # scroll_start is auto-calculated in layer prior to saving the records
       self.scroll_duration ||= 100
       self.width ||= 1.0
       self.height ||= 1.0
