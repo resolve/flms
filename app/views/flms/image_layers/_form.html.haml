@@ -70,6 +70,10 @@
           .input-append
             = f_target.number_field :scroll_duration, min: 0, step: 10
             %span.add-on pixels
+      .control-group
+        = f_target.label :position, class: 'control-label'
+        .controls
+          = f_target.select :position_name, Flms::Keyframe::POSITION_NAMES
 
   %fieldset
     %legend
