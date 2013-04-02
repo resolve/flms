@@ -1,7 +1,16 @@
+GIT
+  remote: git://github.com/pjambet/active_model_serializers-matchers.git
+  revision: 00d7f8085db3029d16eca6f00b5cf0fd9e032caf
+  specs:
+    active_model_serializers-matchers (0.5.2)
+      active_model_serializers (~> 0.7.0)
+      rspec (~> 2.0)
+
 PATH
   remote: .
   specs:
     flms (0.0.3)
+      active_model_serializers (~> 0.7.0)
       cancan
       carrierwave
       coffee-rails
@@ -28,6 +37,8 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
+    active_model_serializers (0.7.0)
+      activemodel (>= 3.0)
     activemodel (3.2.12)
       activesupport (= 3.2.12)
       builder (~> 3.0.0)
@@ -227,6 +238,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers-matchers!
   capybara
   database_cleaner
   factory_girl

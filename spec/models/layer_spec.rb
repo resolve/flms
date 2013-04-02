@@ -32,6 +32,5 @@ describe Flms::Layer do
         end
       end
     end
-
   end
 end
