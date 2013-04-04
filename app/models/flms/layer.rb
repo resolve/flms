@@ -20,5 +20,13 @@ module Flms
       self.end_state_keyframe ||= build_end_state_keyframe(layer: self)
       self
     end
+
+    def scroll_start
+      self.start_state_keyframe.scroll_start
+    end
+
+    def scroll_end
+      self.start_state_keyframe.scroll_start + self.target_state_keyframe.scroll_duration + self.end_state_keyframe.scroll_duration
+    end
   end
 end
