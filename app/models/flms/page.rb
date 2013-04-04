@@ -10,7 +10,7 @@ module Flms
 
     # Returns the blocks_pages of this page, in the right order to display them.
     def ordered_blocks_pages
-      blocks_pages.by_ordering
+      blocks_pages.ordered
     end
 
     # Returns the BlocksPage object for the given block on this page.

@@ -5,6 +5,6 @@ module Flms
     belongs_to :block, class_name: 'Flms::Block'
     belongs_to :page, class_name: 'Flms::Page'
 
-    scope :by_ordering, order('ordering').includes(:block)
+    scope :ordered, order('ordering').includes(:block)
   end
 end

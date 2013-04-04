@@ -4,11 +4,11 @@ module Flms
     has_many :keyframes, serializer: Flms::KeyframeSerializer
 
     def type
-      'undefined'
+      'layer'
     end
 
     def keyframes
-      [ object.start_state_keyframe, object.target_state_keyframe, object.end_state_keyframe ]
+      object.keyframes
     end
   end
 end

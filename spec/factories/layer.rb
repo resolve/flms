@@ -1,3 +1,4 @@
+# so we can use fixture_file_upload:
 include ActionDispatch::TestProcess
 
 FactoryGirl.define do
