@@ -8,5 +8,6 @@ before_install:
   - "sh -e /etc/init.d/xvfb start"
 
 before_script:
+  - bundle install
   - rake db:create
   - rake db:migrate
