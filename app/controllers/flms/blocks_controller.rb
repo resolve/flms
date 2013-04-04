@@ -23,9 +23,6 @@ module Flms
     def create
       @block = Block.new(params[:block])
 
-      # Super bug fix.
-      @block.pages << Page.new
-
       if @block.save
         @block.pages << @page
         redirect_to page_blocks_path(@page), notice: 'Block created.'
