@@ -2,7 +2,8 @@ require_dependency "flms/application_controller"
 
 module Flms
   class PagesController < ApplicationController
-    before_filter :authenticate_user!
+    before_filter :authenticate_user!, except: [ :show ]
+    before_filter :load_page, except: [ :index, :new, :create ]
     layout 'flms/admin'
 
     def index
@@ -17,7 +18,6 @@ module Flms
     end
 
     def edit
-      @page = Page.find_by_url params[:id]
     end
 
     def create
@@ -30,7 +30,6 @@ module Flms
     end
 
     def update
-      @page = Page.find_by_url params[:id]
       if @page.update_attributes params[:page]
         redirect_to pages_path, notice: 'Page was successfully updated.'
       else
@@ -39,9 +38,14 @@ module Flms
     end
 
     def destroy
-      @page = Page.find_by_url params[:id]
       @page.destroy
       redirect_to pages_url
+    end
+
+    protected
+
+    def load_page
+      @page = Page.find_by_url(params[:id]) || raise(ActionController::RoutingError.new('Page Not Found'))
     end
   end
 end

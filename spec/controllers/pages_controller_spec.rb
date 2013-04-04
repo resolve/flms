@@ -29,7 +29,11 @@ describe Flms::PagesController do
   describe 'show' do
     describe 'access control' do
       let(:request) { get :show, id: page_1.url, use_route: :flms }
-      it_should_behave_like 'an action accessible only to logged-in users'
+      it_should_behave_like 'an action accessible to the world'
+    end
+
+    it 'raises a routing error if the page URL does not exist' do
+      expect { get :show, id: 'a_url_that_does_not_exist', use_route: :flms }.to raise_error(ActionController::RoutingError)
     end
   end
 
