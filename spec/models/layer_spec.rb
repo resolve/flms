@@ -1,6 +1,30 @@
 require 'spec_helper'
 
 describe Flms::Layer do
+  include NamedFactories
+
+  describe 'scopes' do
+    describe 'ordered_by_scroll_start' do
+      def builder pos
+        create :layer, block: block_1a,
+               start_state_keyframe_attributes: { scroll_start: pos },
+               target_state_keyframe_attributes: {},
+               end_state_keyframe_attributes: {}
+      end
+
+      let!(:layer_0) { builder(3) }
+      let!(:layer_1) { builder(2) }
+      let!(:layer_2) { builder(1) }
+
+      it 'returns layers ordered by the scroll start of their start keyframe' do
+        layers = block_1a.layers.ordered_by_scroll_start
+        expect(layers[0]).to eql layer_2
+        expect(layers[1]).to eql layer_1
+        expect(layers[2]).to eql layer_0
+      end
+    end
+  end
+
   describe 'keyframes' do
     describe 'build_default_keyframes' do
       let(:layer) { Flms::Layer.new.build_default_keyframes }

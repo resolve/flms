@@ -10,7 +10,7 @@
       %th Actions
 
   %tbody.layer_list
-    - @block.layers.each do |layer|
+    - @block.layers.ordered_by_scroll_start.each do |layer|
       %tr.ui-state-default{'data-layer-id' => layer.id}
 
         %td.name

@@ -11,6 +11,8 @@ module Flms
     accepts_nested_attributes_for :start_state_keyframe, :target_state_keyframe, :end_state_keyframe
     validates_presence_of :start_state_keyframe, :target_state_keyframe, :end_state_keyframe
 
+    scope :ordered_by_scroll_start, joins: [ :start_state_keyframe ], order: 'flms_keyframes.scroll_start'
+
     # TODO: calculate scroll_start attributes of target and end keyframes
     # before_save :calculate_scroll_starts
 

@@ -14,8 +14,8 @@ module NamedFactories
     let(:block_1b) { block = create :block
                      block.blocks_pages.create page: page_1, ordering: 2
                      block }
-    let(:layer_1a1) { create :layer, block: block_1a, ordering: 1 }
-    let(:image_layer_1a1) { create :image_layer, block: block_1a, ordering: 1 }
+    let(:layer_1a1) { create :layer, block: block_1a }
+    let(:image_layer_1a1) { create :image_layer, block: block_1a }
 
     let(:default_access_granted_check) { response.success? }
   end
