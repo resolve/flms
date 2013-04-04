@@ -2,23 +2,111 @@
   %fieldset
     %legend= caption
 
-  - if @layer.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@layer.errors.count, "error")} prohibited this layer from being saved:"
-      %ul
-        - @layer.errors.full_messages.each do |msg|
-          %li= msg
+    - if @layer.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@layer.errors.count, "error")} prohibited this layer from being saved:"
+        %ul
+          - @layer.errors.full_messages.each do |msg|
+            %li= msg
 
-  .control-group
-    = f.label :name, class: 'control-label'
-    .controls
-      = f.text_field :name, autofocus: true
-      %span.help-inline The internal name of this layer.
+  %fieldset
+    .control-group
+      = f.label :name, class: 'control-label'
+      .controls
+        = f.text_field :name, autofocus: true
+        %span.help-inline The internal name of this layer.
 
-  .control-group
-    = f.label :image, class: 'control-label'
-    .controls
-      = f.file_field :image
+    .control-group
+      = f.label :image, class: 'control-label'
+      .controls
+        = f.file_field :image
+
+  %fieldset
+    %legend
+      Initial State
+    = f.fields_for :start_state_keyframe, html: {class: 'form-horizontal'} do |f_start|
+      .control-group
+        = f_start.label :scroll_start, class: 'control-label'
+        .controls
+          .input-append
+            = f_start.number_field :scroll_start, min: 0, step: 10
+            %span.add-on pixels
+      .control-group
+        = f_start.label :scroll_duration, class: 'control-label'
+        .controls
+          .input-append
+            = f_start.number_field :scroll_duration, min: 0, step: 10
+            %span.add-on pixels
+      .control-group
+        = f_start.label :opacity, class: 'control-label'
+        .controls
+          .input-append
+            = f_start.number_field :opacity_percent, min: 0, max: 100, step: 10
+            %span.add-on &#37;
+      .control-group
+        = f_start.label :scale, class: 'control-label'
+        .controls
+          .input-append
+            = f_start.number_field :scale_percent, min: 0, max: 200, step: 10
+            %span.add-on &#37;
+      .control-group
+        = f_start.label :blur, class: 'control-label'
+        .controls
+          .input-append
+            = f_start.number_field :blur_percent, min: 0, max: 100, step: 10
+            %span.add-on &#37;
+      .control-group
+        = f_start.label :position, class: 'control-label'
+        .controls
+          = f_start.select :position_name, Flms::Keyframe::POSITION_NAMES
+
+  %fieldset
+    %legend
+      Target State
+    = f.fields_for :target_state_keyframe, html: {class: 'form-horizontal'} do |f_target|
+      .control-group
+        = f_target.label :scroll_duration, class: 'control-label'
+        .controls
+          .input-append
+            = f_target.number_field :scroll_duration, min: 0, step: 10
+            %span.add-on pixels
+      .control-group
+        = f_target.label :position, class: 'control-label'
+        .controls
+          = f_target.select :position_name, Flms::Keyframe::POSITION_NAMES
+
+  %fieldset
+    %legend
+      End State
+    = f.fields_for :end_state_keyframe, html: {class: 'form-horizontal'} do |f_end|
+      .control-group
+        = f_end.label :scroll_duration, class: 'control-label'
+        .controls
+          .input-append
+            = f_end.number_field :scroll_duration, min: 0, step: 10
+            %span.add-on pixels
+      .control-group
+        = f_end.label :opacity, class: 'control-label'
+        .controls
+          .input-append
+            = f_end.number_field :opacity_percent, min: 0, max: 100, step: 10
+            %span.add-on &#37;
+      .control-group
+        = f_end.label :scale, class: 'control-label'
+        .controls
+          .input-append
+            = f_end.number_field :scale_percent, min: 0, max: 200, step: 10
+            %span.add-on &#37;
+      .control-group
+        = f_end.label :blur, class: 'control-label'
+        .controls
+          .input-append
+            = f_end.number_field :blur_percent, min: 0, max: 100, step: 10
+            %span.add-on &#37;
+      .control-group
+        = f_end.label :position, class: 'control-label'
+        .controls
+          = f_end.select :position_name, Flms::Keyframe::POSITION_NAMES
 
   .control-group
     .controls
