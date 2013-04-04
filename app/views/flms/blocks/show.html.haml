@@ -1,21 +1,29 @@
-
-
-
 %h4 Layers in block '#{@block.name}'
 
 %table.table.table-striped.table-hover
   %thead
     %tr
       %th Name
+      %th Thumbnail
+      %th Starts
+      %th Ends
       %th Actions
 
   %tbody.layer_list
-    - @block.layers.each do |layer|
+    - @block.layers.ordered_by_scroll_start.each do |layer|
       %tr.ui-state-default{'data-layer-id' => layer.id}
 
         %td.name
           = layer.name
-          -# = image_tag layer.image_url if layer.image?
+
+        %td.thumb
+          = image_tag layer.image.thumb.url if layer.image?
+
+        %td.starts
+          = layer.scroll_start
+
+        %td.ends
+          = layer.scroll_end
 
         %td.action
           = link_to edit_page_block_image_layer_path(@page, @block, layer), class: 'btn edit', title: 'edit' do

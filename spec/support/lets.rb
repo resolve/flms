@@ -17,10 +17,10 @@ module NamedFactories
     let(:block_1c) { block = create :block
                      block.blocks_pages.create page: page_1, ordering: 3, active: true
                      block }
-    let(:layer_1a1) { create :layer, block: block_1a, ordering: 1 }
-    let(:layer_1a2) { create :layer, block: block_1a, ordering: 2 }
-    let(:image_layer_1a1) { create :image_layer, block: block_1a, ordering: 1 }
-    let(:image_layer_1a2) { create :image_layer, block: block_1a, ordering: 2 }
+    let(:layer_1a1) { create :layer, block: block_1a }
+    let(:layer_1a2) { create :layer, block: block_1a }
+    let(:image_layer_1a1) { create :image_layer, block: block_1a }
+    let(:image_layer_1a2) { create :image_layer, block: block_1a }
 
     let(:default_access_granted_check) { response.success? }
   end
