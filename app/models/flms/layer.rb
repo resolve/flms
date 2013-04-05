@@ -23,6 +23,10 @@ module Flms
       self
     end
 
+    def keyframes
+      [ start_state_keyframe, target_state_keyframe, end_state_keyframe ]
+    end
+
     def scroll_start
       self.start_state_keyframe.scroll_start
     end

@@ -4,17 +4,39 @@ describe Flms::Page do
   include NamedFactories
 
   subject { create :page }
-  let(:subject_with_block) { subject.blocks << block ; subject }
+  let(:subject_with_block) { subject.blocks << block; subject }
 
   describe 'associations' do
-    it 'has blocks' do
-      expect(subject_with_block).to have(1).blocks
-      expect(subject_with_block.blocks.first).to eql block
+    describe 'blocks' do
+      it 'has blocks' do
+        expect(subject_with_block).to have(1).blocks
+        expect(subject_with_block.blocks.first).to eql block
+      end
+    end
+
+    describe 'active_blocks' do
+      let(:result) { page_1.active_blocks }
+
+      before do
+        block_1c
+        block_1b
+        block_1a
+      end
+
+      it 'orders blocks by ordering' do
+        expect(result[0]).to eql block_1a
+        expect(result[1]).to eql block_1c
+      end
+
+      it 'lists only active blocks' do
+        result = page_1.active_blocks
+        expect(result.count).to eql 2
+        expect(result).not_to include block_1b
+      end
     end
   end
 
   describe 'ordered_blocks_pages' do
-
     it 'returns the blocks_pages for the page, ordered by "ordering"' do
       block_1b
       block_1a

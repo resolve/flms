@@ -11,6 +11,7 @@ module Flms
     end
 
     def show
+      render json: Page.find_by_url(params[:id])
     end
 
     def new
