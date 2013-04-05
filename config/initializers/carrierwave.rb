@@ -25,7 +25,9 @@ CarrierWave.configure do |config|
   if Rails.env.test? or Rails.env.cucumber?
     config.storage = :file
     config.enable_processing = false
+    config.root = "#{Rails.root}/public"
   else
+    config.storage = :fog
     config.fog_credentials = { :provider               => 'AWS',
                                :aws_access_key_id      => S3_CREDENTIALS[:access_key_id],
                                :aws_secret_access_key  => S3_CREDENTIALS[:secret_access_key],
