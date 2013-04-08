@@ -3,6 +3,20 @@ require 'spec_helper'
 describe Flms::Layer do
   include NamedFactories
 
+  describe 'scroll position autocalculation' do
+    let(:layer) { build :layer }
+
+    it 'correctly calculates scroll positions on save' do
+      expect(layer.start_state_keyframe.scroll_start).not_to be nil
+      expect(layer.target_state_keyframe.scroll_start).to be nil
+      expect(layer.end_state_keyframe.scroll_start).to be nil
+      layer.save!
+      expect(layer.start_state_keyframe.scroll_start).to eql 0
+      expect(layer.target_state_keyframe.scroll_start).to eql 100
+      expect(layer.end_state_keyframe.scroll_start).to eql 200
+    end
+  end
+
   describe 'scopes' do
     describe 'ordered_by_scroll_start' do
       def builder pos

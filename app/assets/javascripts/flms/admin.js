@@ -11,8 +11,14 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.easing.1.3
 //= require jquery_ujs
 //= require jquery-ui
+//= require skrollr.min
 //= require modularity/modularity
+//= require jquery.quicksand.js
 //= require_tree .
 //= require bootstrapSwitch
+//= require_self
+
+// window.XYZ = {};

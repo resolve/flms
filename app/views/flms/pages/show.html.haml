@@ -1,3 +1,17 @@
-%p
-  %b This page can be found at:
-  = @page.url
+!!! html
+%html
+  %head
+    %title FLMS Demo
+    = stylesheet_link_tag 'pages/page'
+    %meta{:"http-equiv" => "Content-Type", "content" => "charset=UTF-8"}
+  %body.experience
+
+    #pagescroller
+      #page
+        != Flms::PagePresenter.new(@page).to_html
+
+= javascript_include_tag 'application.js'
+:javascript
+  $(document).ready(function(){
+    skrollr.init()
+  });
