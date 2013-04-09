@@ -9,7 +9,7 @@ module Flms
                             :position_x, :position_y,
                             :opacity, :scale, :blur ]
 
-    # All attributes need a formatter functionL
+    # All attributes need a formatter function:
     KEYFRAME_ATTRIBUTE_FORMATTERS = { width: :format_as_percent,
                                       height: :format_as_percent,
                                       position_x: :format_as_percent,
