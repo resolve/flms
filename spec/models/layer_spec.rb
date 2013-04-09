@@ -7,9 +7,9 @@ describe Flms::Layer do
     let(:layer) { build :layer }
 
     it 'correctly calculates scroll positions on save' do
-      expect(layer.start_state_keyframe.scroll_start).not_to be nil
-      expect(layer.target_state_keyframe.scroll_start).to be nil
-      expect(layer.end_state_keyframe.scroll_start).to be nil
+      expect(layer.start_state_keyframe.scroll_start).to eql 0
+      expect(layer.target_state_keyframe.scroll_start).to be_nil
+      expect(layer.end_state_keyframe.scroll_start).to be_nil
       layer.save!
       expect(layer.start_state_keyframe.scroll_start).to eql 0
       expect(layer.target_state_keyframe.scroll_start).to eql 100
