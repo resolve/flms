@@ -1,3 +1,1 @@
-- if layer.type == "Flms::ImageLayer"
-  - view_object = Flms::ImageLayerViewObject.new(layer)
-  = render partial: 'image_layer', locals: { view_object: view_object }
+= render partial: view_partial_name(layer), locals: { layer: layer }

@@ -3,15 +3,6 @@ require 'spec_helper'
 describe Flms::LayerViewObject do
   let(:presenter) { Flms::LayerViewObject.new(create :layer) }
 
-  describe 'render_keyframe_data_attributes' do
-    let(:data) { presenter.keyframe_data }
-    let(:test_data_hash) { { :'key_1' => 'value 1', :'key_2' => 'value 2', :'key_3' => 'value 3' } }
-
-    it 'concatenates data into a string we can use in an html tag' do
-      expect(presenter.render_keyframe_data_attributes(test_data_hash)).to eql "key_1='value 1' key_2='value 2' key_3='value 3'"
-    end
-  end
-
   describe 'keyframe_data_hash' do
     let(:data) { presenter.keyframe_data_hash }
 
