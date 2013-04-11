@@ -21,6 +21,8 @@ module NamedFactories
     let(:layer_1a2) { create :layer, block: block_1a }
     let(:image_layer_1a1) { create :image_layer, block: block_1a }
     let(:image_layer_1a2) { create :image_layer, block: block_1a }
+    let(:image_layer_1b1) { create :image_layer, block: block_1b }
+    let(:image_layer_1c1) { create :image_layer, block: block_1c }
 
     let(:default_access_granted_check) { response.success? }
   end

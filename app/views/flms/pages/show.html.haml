@@ -1,3 +1,15 @@
-%p
-  %b This page can be found at:
-  = @page.url
+%html
+  %head
+    %title FLMS Demo
+    %meta{:"http-equiv" => "Content-Type", "content" => "charset=UTF-8"}
+  %body
+    #pagescroller
+      #page
+        - @page.active_blocks.each do |block|
+          = render partial: 'block', locals: { block: block }
+
+= javascript_include_tag 'application.js'
+:javascript
+  $(document).ready(function(){
+    skrollr.init()
+  });

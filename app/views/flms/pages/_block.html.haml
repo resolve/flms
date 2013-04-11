@@ -1,0 +1,2 @@
+- block.layers.ordered_by_scroll_start.each do |layer|
+  = render partial: layer.view_object.view_partial_name, locals: { layer: layer }
