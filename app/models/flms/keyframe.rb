@@ -5,7 +5,7 @@ module Flms
                     :width, :height,
                     :position_x, :position_y,
                     :opacity, :scale, :blur,
-                    :opacity_percent, :scale_percent, :blur_percent, :position_name
+                    :opacity_percent, :scale_percent, :blur_percent, :position_name, :top_percent, :left_percent
 
     belongs_to :layer
 
@@ -61,6 +61,22 @@ module Flms
 
     def blur_percent= val
       self.blur = val.to_i / 100.0
+    end
+
+    def left_percent
+      (self.position_x * 100).to_i
+    end
+
+    def left_percent= val
+      self.position_x = val.to_i / 100.0
+    end
+
+    def top_percent
+      (self.position_y * 100).to_i
+    end
+
+    def top_percent= val
+      self.position_y = val.to_i / 100.0
     end
 
     def position_name
