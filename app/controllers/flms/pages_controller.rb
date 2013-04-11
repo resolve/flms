@@ -4,7 +4,7 @@ module Flms
   class PagesController < ApplicationController
     before_filter :authenticate_user!, except: [ :show ]
     before_filter :load_page, except: [ :index, :new, :create ]
-    layout 'flms/admin'
+    layout :resolve_layout
 
     def index
       @pages = Page.all
@@ -48,5 +48,10 @@ module Flms
     def load_page
       @page = Page.find_by_url(params[:id]) || raise(ActionController::RoutingError.new('Page Not Found'))
     end
+
+    def resolve_layout
+      action_name == 'show' ? 'flms/public' : 'flms/admin'
+    end
+
   end
 end
