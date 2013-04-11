@@ -39,6 +39,12 @@ describe Flms::Layer do
     end
   end
 
+  describe 'view_object' do
+    it 'provides a view object' do
+      expect(Flms::Layer.new.view_object.is_a?(Flms::LayerViewObject)).to be_true
+    end
+  end
+
   describe 'build_default_keyframes' do
     let(:layer) { Flms::Layer.new.build_default_keyframes }
 

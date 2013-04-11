@@ -8,6 +8,10 @@ module Flms
       @layer = layer
     end
 
+    def view_partial_name
+      @layer.class.name.demodulize.underscore
+    end
+
     # Generate a hash of data to be provided to skrollr that describes the keyframe animation for this layer
     def keyframe_data_hash
       data = { }

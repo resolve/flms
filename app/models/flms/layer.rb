@@ -15,6 +15,10 @@ module Flms
 
     before_save :calculate_scroll_starts
 
+    def view_object
+      @view_object ||= Flms::LayerViewObject.new(self)
+    end
+
     def build_default_keyframes
       self.start_state_keyframe ||= build_start_state_keyframe(layer: self)
       self.target_state_keyframe ||= build_target_state_keyframe(layer: self)
