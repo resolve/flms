@@ -31,6 +31,26 @@ describe Flms::Keyframe do
         expect(Flms::Keyframe.new(blur: 0.5).blur_percent).to eql 50
       end
     end
+    
+    describe 'left_percent' do
+      it 'sets value correctly' do
+        expect(Flms::Keyframe.new(left_percent: 50).position_x).to eql 0.5
+      end
+
+      it 'gets value correctly' do
+        expect(Flms::Keyframe.new(position_x: 0.5).left_percent).to eql 50
+      end
+    end
+
+    describe 'top_percent' do
+      it 'sets value correctly' do
+        expect(Flms::Keyframe.new(top_percent: 50).position_y).to eql 0.5
+      end
+
+      it 'gets value correctly' do
+        expect(Flms::Keyframe.new(position_y: 0.5).top_percent).to eql 50
+      end
+    end
 
     describe 'position_name' do
       it 'sets position coordinates from name correctly' do
