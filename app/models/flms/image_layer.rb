@@ -4,6 +4,10 @@ module Flms
 
     mount_uploader :image, ImageUploader
 
+    def view_object
+      @view_object ||= Flms::ImageLayerViewObject.new(self)
+    end
+
     def uploaded_filename
       File.basename(image.path) if image?
     end

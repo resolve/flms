@@ -1,19 +1,23 @@
 require 'spec_helper'
 
 describe Flms::LayerViewObject do
-  let(:presenter) { Flms::LayerViewObject.new(create :layer) }
 
-  describe 'render_keyframe_data_attributes' do
-    let(:data) { presenter.keyframe_data }
-    let(:test_data_hash) { { :'key_1' => 'value 1', :'key_2' => 'value 2', :'key_3' => 'value 3' } }
+  describe 'view_partial_name' do
+    let(:layer_view_object) { Flms::LayerViewObject.new(create :layer) }
+    let(:layer_view_object_with_image_layer) { Flms::LayerViewObject.new(create :image_layer) }
 
-    it 'concatenates data into a string we can use in an html tag' do
-      expect(presenter.render_keyframe_data_attributes(test_data_hash)).to eql "key_1='value 1' key_2='value 2' key_3='value 3'"
+    it 'should return \'layer\' for a Layer' do
+      expect(layer_view_object.view_partial_name).to eql 'layer'
+    end
+    
+    it 'should return \'image_layer\' for an ImageLayer' do
+      expect(layer_view_object_with_image_layer.view_partial_name).to eql 'image_layer'
     end
   end
-
+  
   describe 'keyframe_data_hash' do
-    let(:data) { presenter.keyframe_data_hash }
+    let(:view_object) { Flms::LayerViewObject.new(create :layer) }
+    let(:data) { view_object.keyframe_data_hash }
 
     it 'anchors to correct target' do
       expect(data['data-anchor-target']).to eql '#pagescroller'

@@ -6,7 +6,7 @@ module Flms
     end
 
     def attributes
-      render_keyframe_data_attributes(keyframe_data_hash)
+      keyframe_data_hash
     end
 
   end

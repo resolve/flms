@@ -10,10 +10,4 @@ describe Flms::ImageLayerViewObject do
     end
   end
 
-  describe 'attributes' do
-    it 'generates valid attributes' do
-      expect(presenter.attributes).to match /data-\d*='.*'/
-    end
-  end
-
 end
