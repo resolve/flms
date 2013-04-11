@@ -1,2 +1,2 @@
 - block.layers.ordered_by_scroll_start.each do |layer|
-  = render partial: 'layer', locals: { layer: layer }
+  = render partial: layer.class.name.demodulize.underscore, locals: { layer: layer }
