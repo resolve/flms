@@ -1,7 +1,7 @@
 /*
- * CSS for the flms pages.
+ * CSS for public facing flms pages.
  *
- *= require_tree ./admin/.
+ *= require_tree ./public/.
  *= require jquery-ui
  *= require bootstrap
  *= require bootstrapSwitch
