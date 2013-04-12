@@ -35,6 +35,16 @@ describe Flms::PagesController do
     it 'raises a routing error if the page URL does not exist' do
       expect { get :show, id: 'a_url_that_does_not_exist', use_route: :flms }.to raise_error(ActionController::RoutingError)
     end
+
+    it 'renders JSON when requested' do
+      get :show, id: page_1.url, format: :json, use_route: :flms
+      expect { JSON.parse(response.body) }.not_to raise_error
+    end
+
+    it 'renders without template when requested' do
+      get :show, id: page_1.url, format: :plain_html, use_route: :flms
+      expect { response }.not_to render_template 'flms/public'
+    end
   end
 
   describe 'edit' do

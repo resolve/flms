@@ -13,5 +13,3 @@ feature 'Pages > Show' do
   end
 
 end
-
-
