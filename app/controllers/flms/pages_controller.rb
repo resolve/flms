@@ -11,7 +11,11 @@ module Flms
     end
 
     def show
-      #render json: Page.find_by_url(params[:id])
+      respond_to do |format|
+        format.plain_html { render partial: 'page', formats: [:html]  }
+        format.html
+        format.json { render json: @page }
+      end
     end
 
     def new
