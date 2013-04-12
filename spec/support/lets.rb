@@ -11,7 +11,7 @@ module NamedFactories
     let(:block_1a) { block = create :block
                      block.blocks_pages.create page: page_1, ordering: 1, active: true
                      block }
-    let(:block_1b) { block = create :block
+    let(:block_1b_inactive) { block = create :block
                      block.blocks_pages.create page: page_1, ordering: 2
                      block }
     let(:block_1c) { block = create :block
@@ -21,7 +21,7 @@ module NamedFactories
     let(:layer_1a2) { create :layer, block: block_1a }
     let(:image_layer_1a1) { create :image_layer, block: block_1a }
     let(:image_layer_1a2) { create :image_layer, block: block_1a }
-    let(:image_layer_1b1) { create :image_layer, block: block_1b }
+    let(:image_layer_1b1_inactive) { create :image_layer, block: block_1b_inactive }
     let(:image_layer_1c1) { create :image_layer, block: block_1c }
 
     let(:default_access_granted_check) { response.success? }

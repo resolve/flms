@@ -9,5 +9,11 @@ module Flms
     validates :name, presence: true
 
     scope :ordered, order('ordering')
+
+    # Return the total scroll duration for this block, taking in to account the fact that
+    # layers can and will overlap
+    def scroll_duration
+      layers.map(&:scroll_end).max
+    end
   end
 end

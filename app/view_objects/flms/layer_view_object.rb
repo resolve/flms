@@ -13,14 +13,14 @@ module Flms
     end
 
     # Generate a hash of data to be provided to skrollr that describes the keyframe animation for this layer
-    def keyframe_data_hash
+    def keyframe_data_hash(scroll_offset = 0)
       data = { }
       data['data-anchor-target'] = '#pagescroller'
 
-      initial_pos = @layer.start_state_keyframe.scroll_start
-      target_start_pos = @layer.target_state_keyframe.scroll_start
-      target_end_pos = @layer.end_state_keyframe.scroll_start
-      final_pos = @layer.end_state_keyframe.scroll_start + @layer.end_state_keyframe.scroll_duration
+      initial_pos = @layer.start_state_keyframe.scroll_start + scroll_offset
+      target_start_pos = @layer.target_state_keyframe.scroll_start + scroll_offset
+      target_end_pos = @layer.end_state_keyframe.scroll_start + scroll_offset
+      final_pos = @layer.end_state_keyframe.scroll_start + @layer.end_state_keyframe.scroll_duration + scroll_offset
 
       start_presenter = Flms::KeyframeViewObject.new(@layer.start_state_keyframe)
       target_presenter = Flms::KeyframeViewObject.new(@layer.target_state_keyframe)

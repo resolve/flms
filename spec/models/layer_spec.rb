@@ -103,10 +103,7 @@ describe Flms::Layer do
 
     describe 'scroll_end' do
       it 'returns scroll start of initial state plus durations of target and end states' do
-        expected_value = layer.start_state_keyframe.scroll_start +
-                         layer.target_state_keyframe.scroll_duration +
-                         layer.end_state_keyframe.scroll_duration
-        expect(layer.scroll_end).to eql expected_value
+        expect(layer.scroll_end).to eql 301
       end
     end
   end

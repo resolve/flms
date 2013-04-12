@@ -35,7 +35,10 @@ module Flms
     end
 
     def scroll_end
-      start_state_keyframe.scroll_start + target_state_keyframe.scroll_duration + end_state_keyframe.scroll_duration
+      start_state_keyframe.scroll_start +
+          start_state_keyframe.scroll_duration +
+          target_state_keyframe.scroll_duration +
+          end_state_keyframe.scroll_duration
     end
 
     def calculate_scroll_starts
