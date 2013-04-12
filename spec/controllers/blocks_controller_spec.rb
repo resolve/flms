@@ -59,24 +59,24 @@ describe Flms::BlocksController do
 
       it 'saves the given block status to the database' do
         page_1.blocks_pages.create block: block_1a, active: false
-        page_1.blocks_pages.create block: block_1b, active: false
+        page_1.blocks_pages.create block: block_1b_inactive, active: false
 
         sign_in user_1
-        put :update_all, page_id: page_1.url, block_data: [{id: block_1a.id, active: false}, {id: block_1b.id, active: true}], use_route: :flms
+        put :update_all, page_id: page_1.url, block_data: [{id: block_1a.id, active: false}, {id: block_1b_inactive.id, active: true}], use_route: :flms
 
         expect(page_1.position_for_block(block_1a.id).active).to be_false
-        expect(page_1.position_for_block(block_1b.id).active).to be_true
+        expect(page_1.position_for_block(block_1b_inactive.id).active).to be_true
       end
 
       it 'saves the given block order to the database' do
         page_1.blocks_pages.create block: block_1a, ordering: 0
-        page_1.blocks_pages.create block: block_1b, ordering: 1
+        page_1.blocks_pages.create block: block_1b_inactive, ordering: 1
 
         sign_in user_1
-        put :update_all, page_id: page_1.url, block_data: [ {id: block_1b.id, active: false}, {id: block_1a.id, active: false} ], use_route: :flms
+        put :update_all, page_id: page_1.url, block_data: [ {id: block_1b_inactive.id, active: false}, {id: block_1a.id, active: false} ], use_route: :flms
 
         expect(page_1.position_for_block(block_1a.id).ordering).to eql 1
-        expect(page_1.position_for_block(block_1b.id).ordering).to eql 0
+        expect(page_1.position_for_block(block_1b_inactive.id).ordering).to eql 0
       end
     end
   end

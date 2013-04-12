@@ -19,7 +19,7 @@ describe Flms::Page do
 
       before do
         block_1c
-        block_1b
+        block_1b_inactive
         block_1a
       end
 
@@ -31,14 +31,24 @@ describe Flms::Page do
       it 'lists only active blocks' do
         result = page_1.active_blocks
         expect(result.count).to eql 2
-        expect(result).not_to include block_1b
+        expect(result).not_to include block_1b_inactive
+      end
+    end
+
+    describe 'active blocks pages' do
+      it 'lists only blocks_pages that link to active blocks' do
+        block_1c
+        block_1b_inactive
+        block_1a
+        result = page_1.blocks_pages.ordered.is_active
+        expect(result.count).to eql 2
       end
     end
   end
 
   describe 'ordered_blocks_pages' do
     it 'returns the blocks_pages for the page, ordered by "ordering"' do
-      block_1b
+      block_1b_inactive
       block_1a
 
       result = page_1.ordered_blocks_pages
@@ -46,7 +56,7 @@ describe Flms::Page do
       expect(result[0].ordering).to eql 1
       expect(result[1].ordering).to eql 2
       expect(result[0].block).to eq block_1a
-      expect(result[1].block).to eq block_1b
+      expect(result[1].block).to eq block_1b_inactive
     end
   end
 
@@ -55,6 +65,24 @@ describe Flms::Page do
       result = subject_with_block.position_for_block(block.id)
       expect(result.page).to eq subject
       expect(result.block).to eq block
+    end
+  end
+
+  describe 'blocks_to_display_with_offsets' do
+    it 'returns active, ordered blocks with correct scroll offsets' do
+      image_layer_1a1
+      image_layer_1b1_inactive
+      image_layer_1c1
+      result = page_1.blocks_to_display_with_offsets
+
+      expect(result.length).to eql 2
+
+      expected_scroll_offset = 0
+      result.each do |item|
+        expect(item[:block].class).to eql Flms::Block
+        expect(item[:scroll_offset]).to eql expected_scroll_offset
+        expected_scroll_offset += item[:block].scroll_duration
+      end
     end
   end
 end

@@ -5,8 +5,8 @@ module Flms
       @layer.image.url
     end
 
-    def attributes
-      keyframe_data_hash
+    def attributes(scroll_offset = 0)
+      keyframe_data_hash(scroll_offset)
     end
 
   end

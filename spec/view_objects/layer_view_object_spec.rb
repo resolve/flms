@@ -17,17 +17,17 @@ describe Flms::LayerViewObject do
   
   describe 'keyframe_data_hash' do
     let(:view_object) { Flms::LayerViewObject.new(create :layer) }
-    let(:data) { view_object.keyframe_data_hash }
+    let(:data) { view_object.keyframe_data_hash(1) }
 
     it 'anchors to correct target' do
       expect(data['data-anchor-target']).to eql '#pagescroller'
     end
 
-    it 'generates scroll positions correctly' do
-      expect(data).to have_key 'data-0'
-      expect(data).to have_key 'data-100'
-      expect(data).to have_key 'data-200'
-      expect(data).to have_key 'data-300'
+    it 'generates scroll positions correctly and includes scroll offset' do
+      expect(data).to have_key 'data-1'
+      expect(data).to have_key 'data-101'
+      expect(data).to have_key 'data-201'
+      expect(data).to have_key 'data-301'
     end
   end
 end

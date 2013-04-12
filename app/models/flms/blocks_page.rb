@@ -6,5 +6,6 @@ module Flms
     belongs_to :page, class_name: 'Flms::Page'
 
     scope :ordered, order('ordering').includes(:block)
+    scope :is_active, where(active: true )
   end
 end
