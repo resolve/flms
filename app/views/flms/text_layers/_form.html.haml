@@ -17,15 +17,23 @@
         %span.help-inline The internal name of this layer.
 
     .control-group
-      = f.label :image, class: 'control-label'
+      = f.label :text, class: 'control-label'
       .controls
-        = f.file_field :image
-        = f.hidden_field :image_cache
-        - if @layer.image?
-          .image-preview
-            = image_tag @layer.image.small.url
-            %br
-            = @layer.uploaded_filename
+        = f.text_field :text
+
+    .control-group
+      = f.label :font_size, class: 'control-label'
+      .controls
+        .input-append
+          = f.text_field :font_size
+          %span.add-on em
+
+    .control-group
+      = f.label :color, class: 'control-label'
+      .controls
+        .input-prepend
+          %span.add-on #
+          = f.text_field :color
 
   = render partial: 'flms/layers/keyframe_fields', locals: { form_block: f }
 

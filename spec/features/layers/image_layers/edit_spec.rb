@@ -10,7 +10,7 @@ feature 'ImageLayers > Edit', js: true do
     visit "/flms/pages/#{page_1.url}/blocks/#{block_1a.id}"
 
     # click on the 'edit' button.
-    find('.btn.edit').click
+    click_link "edit-layer-#{image_layer_1a1.id}"
 
     fill_in 'Name', with: 'new layer name'
     fill_in 'image_layer_start_state_keyframe_attributes_scroll_start', with: 1

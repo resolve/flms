@@ -4,7 +4,8 @@ Flms::Engine.routes.draw do
     put 'blocks', to: 'blocks#update_all'
     resources :blocks do
       resources :layers, only: [:destroy]
-      resources :image_layers, except: [:index]
+      resources :image_layers, except: [:index, :show, :destroy]
+      resources :text_layers, except: [:index, :show, :destroy]
     end
   end
 

@@ -23,6 +23,7 @@ module NamedFactories
     let(:image_layer_1a2) { create :image_layer, block: block_1a }
     let(:image_layer_1b1_inactive) { create :image_layer, block: block_1b_inactive }
     let(:image_layer_1c1) { create :image_layer, block: block_1c }
+    let(:text_layer_1a1) { create :text_layer, block: block_1a }
 
     let(:default_access_granted_check) { response.success? }
   end
