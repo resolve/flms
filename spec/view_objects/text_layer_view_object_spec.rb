@@ -8,9 +8,9 @@ describe Flms::TextLayerViewObject do
     let(:data) { view_object.attributes }
 
     it 'should include styling' do
-      expect(data).to have_key 'style'
-      expect(data['style']).to match 'font-size: 1.0em;'
-      expect(data['style']).to match 'color: #abc;'
+      expect(data).to have_key :style
+      expect(data[:style]).to match 'font-size: 1.0em;'
+      expect(data[:style]).to match 'color: #abc;'
     end
   end
 end

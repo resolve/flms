@@ -12,7 +12,7 @@ feature 'ImageLayers > Edit', js: true do
     # click on the 'edit' button.
     click_link "edit-layer-#{image_layer_1a1.id}"
 
-    fill_in 'Name', with: 'new layer name'
+    fill_in 'Name', with: 'new-layer-name'
     fill_in 'image_layer_start_state_keyframe_attributes_scroll_start', with: 1
     fill_in 'image_layer_start_state_keyframe_attributes_scroll_duration', with: '2'
     fill_in 'image_layer_start_state_keyframe_attributes_opacity_percent', with: '50'
@@ -37,5 +37,6 @@ feature 'ImageLayers > Edit', js: true do
 
     # Check database updates.
     expect(Flms::Layer).to have(1).instances
+    expect(Flms::Layer.first.name).to eql 'new-layer-name'
   end
 end

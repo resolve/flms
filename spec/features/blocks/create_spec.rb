@@ -7,12 +7,12 @@ feature 'Blocks > Create' do
     capybara_sign_in user_1
     visit "/flms/pages/#{page_1.url}/blocks"
     click_link 'New Block'
-    fill_in 'Name', with: 'my new block'
+    fill_in 'Name', with: 'my-new-block'
     click_button 'Create Block'
 
     expect(Flms::Block).to have(1).instances
     expect(page_1.reload).to have(1).blocks
     block = page_1.blocks.first
-    expect(block.name).to eql 'my new block'
+    expect(block.name).to eql 'my-new-block'
   end
 end

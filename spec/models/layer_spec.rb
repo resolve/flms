@@ -46,7 +46,7 @@ describe Flms::Layer do
   end
 
   describe 'build_default_keyframes' do
-    let(:layer) { Flms::Layer.new.build_default_keyframes }
+    let(:layer) { Flms::Layer.new(name: 'abc').build_default_keyframes }
 
     it 'creates valid associations' do
       expect(layer.start_state_keyframe.layer).to eql layer
@@ -66,17 +66,48 @@ describe Flms::Layer do
   describe 'validations' do
     let(:layer) { Flms::Layer.new.build_default_keyframes }
 
+    describe 'for name' do
+      describe 'css validity' do
+        def fail_test name
+          layer.update_attributes name: name
+          expect(layer).to have(1).error_on(:name)
+        end
+
+        def pass_test name
+          layer.update_attributes name: name
+          expect(layer).to have(0).errors_on(:name)
+        end
+
+        it 'does not accept names with whitespace' do
+          fail_test 'this is an invalid css class'
+        end
+
+        it 'does not accept names with numbers in front' do
+          fail_test '123-no-way-jose'
+        end
+
+        it 'does not accept names with a period in front' do
+          fail_test '.otherwise-ok'
+        end
+
+        it 'accepts a valid css name' do
+          pass_test 'this-is_a_valid_css-class-12345'
+        end
+      end
+
+      describe 'uniqueness' do
+        it 'validates uniqueness on block' do
+          layer_1a1
+          layer_1a2
+          layer_1a2.update_attributes name: layer_1a1.name
+          expect(layer_1a2).to have(1).error_on(:name)
+        end
+      end
+    end
+
     describe 'for keyframes' do
       it 'requires all keyframes to be properly associated' do
         expect { Flms::Layer.create! }.to raise_error ActiveRecord::RecordInvalid
-      end
-
-      it 'preserves the associations through save/reload' do
-        layer.save!
-        layer.reload
-        expect(layer.start_state_keyframe.layer).to eql layer
-        expect(layer.target_state_keyframe.layer).to eql layer
-        expect(layer.end_state_keyframe.layer).to eql layer
       end
     end
   end

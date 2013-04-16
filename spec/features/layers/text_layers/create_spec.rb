@@ -7,7 +7,7 @@ feature 'TextLayers > Create' do
     capybara_sign_in user_1
     visit "/flms/pages/#{page_1.url}/blocks/#{block_1a.id}"
     click_link 'Add Text Layer'
-    fill_in 'Name', with: 'my new layer'
+    fill_in 'Name', with: 'my-new-layer'
     fill_in 'Text', with: 'layer text content'
     fill_in 'Font size', with: '0.5'
     fill_in 'Color', with: 'fff'
@@ -21,7 +21,7 @@ feature 'TextLayers > Create' do
     expect(block_1a.reload).to have(1).layers
     layer = block_1a.layers.first
     expect(layer.class).to eql Flms::TextLayer
-    expect(layer.name).to eql 'my new layer'
+    expect(layer.name).to eql 'my-new-layer'
     expect(layer.text).to eql 'layer text content'
     expect(layer.font_size).to eql 0.5
     expect(layer.color).to eql 'fff'

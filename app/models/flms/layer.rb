@@ -9,7 +9,10 @@ module Flms
     has_one :target_state_keyframe, dependent: :destroy
     has_one :end_state_keyframe, dependent: :destroy
     accepts_nested_attributes_for :start_state_keyframe, :target_state_keyframe, :end_state_keyframe
+
     validates_presence_of :start_state_keyframe, :target_state_keyframe, :end_state_keyframe
+    validate :name, :is_valid_css_id
+    validates_uniqueness_of :name, scope: :block_id
 
     scope :ordered_by_scroll_start, joins: [ :start_state_keyframe ], order: 'flms_keyframes.scroll_start'
 
@@ -44,6 +47,12 @@ module Flms
     def calculate_scroll_starts
       target_state_keyframe.scroll_start = start_state_keyframe.scroll_start + start_state_keyframe.scroll_duration
       end_state_keyframe.scroll_start = target_state_keyframe.scroll_start + target_state_keyframe.scroll_duration
+    end
+
+    private
+
+    def is_valid_css_id
+      self.errors[:name] << 'must be a valid CSS ID' unless name =~ /^[_a-zA-Z]+[_a-zA-Z0-9-]*$/
     end
   end
 end

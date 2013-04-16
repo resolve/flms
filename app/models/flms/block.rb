@@ -7,6 +7,7 @@ module Flms
     has_many :layers
 
     validates :name, presence: true
+    validate :name, :is_valid_css_id
 
     scope :ordered, order('ordering')
 
@@ -14,6 +15,12 @@ module Flms
     # layers can and will overlap
     def scroll_duration
       layers.map(&:scroll_end).max
+    end
+
+    private
+
+    def is_valid_css_id
+      self.errors[:name] << 'must be a valid CSS ID' unless name =~ /^[_a-zA-Z]+[_a-zA-Z0-9-]*$/
     end
   end
 end
