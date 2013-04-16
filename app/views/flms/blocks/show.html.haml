@@ -26,10 +26,7 @@
           = layer.scroll_end
 
         %td.action
-          - # Kevin - what's a better way to do this?
-          - link_path = edit_page_block_image_layer_path(@page, @block, layer) if layer.is_a? Flms::ImageLayer
-          - link_path = edit_page_block_text_layer_path(@page, @block, layer) if layer.is_a? Flms::TextLayer
-          = link_to link_path, class: 'btn edit', id: "edit-layer-#{ layer.id }", title: 'edit' do
+          = link_to Flms::LayerViewObject.link_path_for(@page, @block, layer), class: 'btn edit', id: "edit-layer-#{ layer.id }", title: 'edit' do
             %i.icon-pencil
 
           = link_to page_block_layer_path(@page, @block, layer), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn delete', id: "delete-layer-#{ layer.id }", title: 'delete' do

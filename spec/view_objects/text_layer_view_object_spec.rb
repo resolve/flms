@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Flms::TextLayerViewObject do
-  let(:text_layer) { create :text_layer }
+  let(:text_layer) { create :text_layer, font_size: 1.0, color: 'abc' }
   let(:view_object) { Flms::TextLayerViewObject.new(text_layer) }
 
   describe 'attributes' do
