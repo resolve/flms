@@ -6,13 +6,12 @@ module Flms
     before_filter :authenticate_user!
     before_filter :load_page
     before_filter :load_block
-    before_filter :load_layer, only: [:show, :edit, :update, :destroy]
+    before_filter :load_layer, only: [:show, :update, :destroy]
 
     def destroy
       @layer.destroy
       redirect_to page_block_path(@page, @block), notice: 'Layer deleted'
     end
-
 
     private
 

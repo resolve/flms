@@ -1,3 +1,5 @@
+include Rails.application.routes.url_helpers
+
 module Flms
 
   # Create DOM for this layer, including all the necessary 'data-*' attributes to
@@ -10,6 +12,12 @@ module Flms
 
     def view_partial_name
       @layer.class.name.demodulize.underscore
+    end
+
+    def self.link_path_for(page, block, layer)
+      link_path = Flms::Engine.routes.url_helpers.edit_page_block_image_layer_path(page, block, layer) if layer.is_a? Flms::ImageLayer
+      link_path = Flms::Engine.routes.url_helpers.edit_page_block_text_layer_path(page, block, layer) if layer.is_a? Flms::TextLayer
+      link_path
     end
 
     # Generate a hash of data to be provided to skrollr that describes the keyframe animation for this layer

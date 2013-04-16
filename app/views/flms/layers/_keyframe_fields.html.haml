@@ -1,0 +1,112 @@
+-# provides keyframe attribute fields common to all layer types
+-# local: form_block
+%fieldset
+  %legend
+    Initial State
+  = form_block.fields_for :start_state_keyframe, html: {class: 'form-horizontal'} do |f_start|
+    .control-group
+      = f_start.label :scroll_start, class: 'control-label'
+      .controls
+        .input-append
+          = f_start.number_field :scroll_start, min: 0, step: 10
+          %span.add-on pixels
+    .control-group
+      = f_start.label :scroll_duration, class: 'control-label'
+      .controls
+        .input-append
+          = f_start.number_field :scroll_duration, min: 0, step: 10
+          %span.add-on pixels
+    .control-group
+      = f_start.label :opacity, class: 'control-label'
+      .controls
+        .input-append
+          = f_start.number_field :opacity_percent, min: 0, max: 100, step: 10
+          %span.add-on &#37;
+    .control-group
+      = f_start.label :scale, class: 'control-label'
+      .controls
+        .input-append
+          = f_start.number_field :scale_percent, min: 0, max: 200, step: 10
+          %span.add-on &#37;
+    .control-group
+      = f_start.label :blur, class: 'control-label'
+      .controls
+        .input-append
+          = f_start.number_field :blur_percent, min: 0, max: 100, step: 10
+          %span.add-on &#37;
+    .control-group
+      = f_start.label 'Top', class: 'control-label'
+      .controls
+        .input-append
+          = f_start.number_field :top_percent, step: 10
+          %span.add-on &#37;
+    .control-group
+      = f_start.label 'Left', class: 'control-label'
+      .controls
+        .input-append
+          = f_start.number_field :left_percent, step: 10
+          %span.add-on &#37;
+
+%fieldset
+  %legend
+    Target State
+  = form_block.fields_for :target_state_keyframe, html: {class: 'form-horizontal'} do |f_target|
+    .control-group
+      = f_target.label :scroll_duration, class: 'control-label'
+      .controls
+        .input-append
+          = f_target.number_field :scroll_duration, min: 0, step: 10
+          %span.add-on pixels
+    .control-group
+      = f_target.label 'Top', class: 'control-label'
+      .controls
+        .input-append
+          = f_target.number_field :top_percent, step: 10
+          %span.add-on &#37;
+    .control-group
+      = f_target.label 'Left', class: 'control-label'
+      .controls
+        .input-append
+          = f_target.number_field :left_percent, step: 10
+          %span.add-on &#37;
+
+%fieldset
+  %legend
+    End State
+  = form_block.fields_for :end_state_keyframe, html: {class: 'form-horizontal'} do |f_end|
+    .control-group
+      = f_end.label :scroll_duration, class: 'control-label'
+      .controls
+        .input-append
+          = f_end.number_field :scroll_duration, min: 0, step: 10
+          %span.add-on pixels
+    .control-group
+      = f_end.label :opacity, class: 'control-label'
+      .controls
+        .input-append
+          = f_end.number_field :opacity_percent, min: 0, max: 100, step: 10
+          %span.add-on &#37;
+    .control-group
+      = f_end.label :scale, class: 'control-label'
+      .controls
+        .input-append
+          = f_end.number_field :scale_percent, min: 0, max: 200, step: 10
+          %span.add-on &#37;
+    .control-group
+      = f_end.label :blur, class: 'control-label'
+      .controls
+        .input-append
+          = f_end.number_field :blur_percent, min: 0, max: 100, step: 10
+          %span.add-on &#37;
+    .control-group
+      = f_end.label 'Top', class: 'control-label'
+      .controls
+        .input-append
+          = f_end.number_field :top_percent, step: 10
+          %span.add-on &#37;
+    .control-group
+      = f_end.label 'Left', class: 'control-label'
+      .controls
+        .input-append
+          = f_end.number_field :left_percent, step: 10
+          %span.add-on &#37;

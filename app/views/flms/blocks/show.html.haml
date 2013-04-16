@@ -26,10 +26,10 @@
           = layer.scroll_end
 
         %td.action
-          = link_to edit_page_block_image_layer_path(@page, @block, layer), class: 'btn edit', title: 'edit' do
+          = link_to Flms::LayerViewObject.link_path_for(@page, @block, layer), class: 'btn edit', id: "edit-layer-#{ layer.id }", title: 'edit' do
             %i.icon-pencil
 
-          = link_to page_block_layer_path(@page, @block, layer), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn delete', title: 'delete' do
+          = link_to page_block_layer_path(@page, @block, layer), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn delete', id: "delete-layer-#{ layer.id }", title: 'delete' do
             %i.icon-trash
 
 %br
@@ -37,6 +37,10 @@
 = link_to new_page_block_image_layer_path(@page, @block), class: 'btn btn-success' do
   %i.icon-plus.icon-white
   Add Image Layer
+
+= link_to new_page_block_text_layer_path(@page, @block), class: 'btn btn-success' do
+  %i.icon-plus.icon-white
+  Add Text Layer
 
 %button#save.btn.btn-primary
   %i.icon-hdd.icon-white
