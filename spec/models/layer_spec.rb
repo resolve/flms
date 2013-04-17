@@ -67,34 +67,6 @@ describe Flms::Layer do
     let(:layer) { Flms::Layer.new.build_default_keyframes }
 
     describe 'for name' do
-      describe 'css validity' do
-        def fail_test name
-          layer.update_attributes name: name
-          expect(layer).to have(1).error_on(:name)
-        end
-
-        def pass_test name
-          layer.update_attributes name: name
-          expect(layer).to have(0).errors_on(:name)
-        end
-
-        it 'does not accept names with whitespace' do
-          fail_test 'this is an invalid css class'
-        end
-
-        it 'does not accept names with numbers in front' do
-          fail_test '123-no-way-jose'
-        end
-
-        it 'does not accept names with a period in front' do
-          fail_test '.otherwise-ok'
-        end
-
-        it 'accepts a valid css name' do
-          pass_test 'this-is_a_valid_css-class-12345'
-        end
-      end
-
       describe 'uniqueness' do
         it 'validates uniqueness on block' do
           layer_1a1
