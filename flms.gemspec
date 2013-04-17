@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.files = Dir['{app,config,db,lib,vendor}/**/*'] + ['MIT-LICENSE', 'Rakefile', 'README.md']
   s.test_files = Dir['spec/**/*']
 
-  s.add_dependency 'rails', '~> 3.2.12'
+  s.add_dependency 'rails', '~> 3.2.13'
   s.add_dependency 'active_model_serializers', '~> 0.7.0'
   s.add_dependency 'cancan'
   s.add_dependency 'carrierwave'
@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'devise'
   s.add_dependency 'fog', '~> 1.3.1'
   s.add_dependency 'haml-rails'
-  s.add_dependency 'mini_magick'
+  s.add_dependency 'mini_magick', '>= 3.5.0'
   s.add_dependency 'modularity-rails'
   s.add_dependency 'sass-rails'
 
