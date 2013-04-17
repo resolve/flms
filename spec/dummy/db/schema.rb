@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130415185500) do
+ActiveRecord::Schema.define(:version => 20130418191643) do
 
   create_table "flms_blocks", :force => true do |t|
     t.string   "name"
@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(:version => 20130415185500) do
   add_index "flms_blocks_pages", ["page_id"], :name => "index_flms_blocks_pages_on_page_id"
 
   create_table "flms_keyframes", :force => true do |t|
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.integer  "layer_id"
     t.string   "type"
     t.integer  "scroll_start"
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(:version => 20130415185500) do
     t.float    "opacity"
     t.float    "scale"
     t.float    "blur"
+    t.float    "margin_left",     :default => 0.0
+    t.float    "margin_top",      :default => 0.0
   end
 
   create_table "flms_layers", :force => true do |t|
@@ -57,6 +59,8 @@ ActiveRecord::Schema.define(:version => 20130415185500) do
     t.string   "text"
     t.float    "font_size"
     t.string   "color"
+    t.float    "width"
+    t.float    "height"
   end
 
   add_index "flms_layers", ["block_id"], :name => "index_flms_layers_on_block_id"

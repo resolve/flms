@@ -1,0 +1,24 @@
+-# provides attribute fields common to all layers
+-# local: form_block
+%fieldset
+  %legend
+    Name and Size
+  .control-group
+    = form_block.label :name, class: 'control-label'
+    .controls
+      = form_block.text_field :name, autofocus: true
+      %span.help-inline (must be valid CSS ID)
+
+  .control-group
+    = form_block.label :width, class: 'control-label'
+    .controls
+      .input-append
+        = form_block.text_field :width
+        %span.add-on pixels
+
+  .control-group
+    = form_block.label :height, class: 'control-label'
+    .controls
+      .input-append
+        = form_block.text_field :height
+        %span.add-on pixels

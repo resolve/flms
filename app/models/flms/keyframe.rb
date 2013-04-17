@@ -3,6 +3,7 @@ module Flms
     attr_accessible :layer,
                     :scroll_start, :scroll_duration,
                     :width, :height,
+                    :margin_left, :margin_top,
                     :position_x, :position_y,
                     :opacity, :scale, :blur,
                     :opacity_percent, :scale_percent, :blur_percent, :position_name, :top_percent, :left_percent
@@ -13,6 +14,8 @@ module Flms
     validates_numericality_of :scroll_duration, greater_than_or_equal_to: 0, allow_nil: true
     validates_numericality_of :width, greater_than_or_equal_to: 0, allow_nil: true
     validates_numericality_of :height, greater_than_or_equal_to: 0, allow_nil: true
+    validates_numericality_of :margin_left
+    validates_numericality_of :margin_top
     validates_numericality_of :opacity, greater_than_or_equal_to: 0, less_than_or_equal_to: 1, allow_nil: true
     validates_numericality_of :scale, greater_than_or_equal_to: 0, allow_nil: true
 

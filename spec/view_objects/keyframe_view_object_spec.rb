@@ -11,14 +11,33 @@ describe Flms::KeyframeViewObject do
   describe 'styles' do
     it 'generates correct style attributes' do
       styles = presenter.styles
-      expect(styles).to eql 'left: 50.0%; top: 60.0%; opacity: 0.7; transform: scale(0.8); filter: blur(0.9);'
+      expect(styles).to match 'left: 50.0%;'
+      expect(styles).to match 'top: 60.0%;'
+      expect(styles).to match 'opacity: 0.7;'
+      expect(styles).to match 'filter: blur\(0.9\);'
+    end
+  end
+
+  describe 'pinning' do
+    it 'generates correct attributes' do
+      styles = presenter.pinning(3, 4)
+      expect(styles).to match "width: #{ test_keyframe.scale * 3 }px;"
+      expect(styles).to match "height: #{ test_keyframe.scale * 4 }px;"
+      expect(styles).to match "margin-left: #{ (test_keyframe.position_x * -3) }px"
+      expect(styles).to match "margin-top: #{ (test_keyframe.position_y * -4) }px"
     end
   end
 
   describe 'style for attribute' do
     describe 'formatted as percent' do
       it 'generates correct format for keyframe attributes' do
-        expect(presenter.style_for_attribute(:width)).to eql 'width: 30.0%;'
+        expect(presenter.style_for_attribute(:position_x)).to eql 'left: 50.0%;'
+      end
+    end
+
+    describe 'formatted as px' do
+      it 'generates correct format for keyframe attributes' do
+        expect(presenter.style_for_attribute(:width)).to eql 'width: 0.3px;'
       end
     end
 
@@ -37,7 +56,7 @@ describe Flms::KeyframeViewObject do
     end
 
     it 'generates correct style when attribute value is overridden' do
-      expect(presenter.style_for_attribute(:width, -0.123)).to eql 'width: -12.3%;'
+      expect(presenter.style_for_attribute(:width, -0.123)).to eql 'width: -0.123px;'
     end
   end
 

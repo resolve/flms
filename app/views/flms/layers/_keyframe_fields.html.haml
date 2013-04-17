@@ -35,17 +35,22 @@
           = f_start.number_field :blur_percent, min: 0, max: 100, step: 10
           %span.add-on &#37;
     .control-group
-      = f_start.label 'Top', class: 'control-label'
+      = f_start.label :position, class: 'control-label'
       .controls
         .input-append
-          = f_start.number_field :top_percent, step: 10
-          %span.add-on &#37;
+          = f_start.select :position_name, Flms::Keyframe::POSITION_NAMES
     .control-group
-      = f_start.label 'Left', class: 'control-label'
+      = f_start.label :margin_left, class: 'control-label'
       .controls
         .input-append
-          = f_start.number_field :left_percent, step: 10
-          %span.add-on &#37;
+          = f_start.text_field :margin_left
+          %span.add-on pixels
+    .control-group
+      = f_start.label :margin_top, class: 'control-label'
+      .controls
+        .input-append
+          = f_start.text_field :margin_top
+          %span.add-on pixels
 
 %fieldset
   %legend
@@ -58,17 +63,22 @@
           = f_target.number_field :scroll_duration, min: 0, step: 10
           %span.add-on pixels
     .control-group
-      = f_target.label 'Top', class: 'control-label'
+      = f_target.label :position, class: 'control-label'
       .controls
         .input-append
-          = f_target.number_field :top_percent, step: 10
-          %span.add-on &#37;
+          = f_target.select :position_name, Flms::Keyframe::POSITION_NAMES
     .control-group
-      = f_target.label 'Left', class: 'control-label'
+      = f_target.label :margin_left, class: 'control-label'
       .controls
         .input-append
-          = f_target.number_field :left_percent, step: 10
-          %span.add-on &#37;
+          = f_target.text_field :margin_left
+          %span.add-on pixels
+    .control-group
+      = f_target.label :margin_top, class: 'control-label'
+      .controls
+        .input-append
+          = f_target.text_field :margin_top
+          %span.add-on pixels
 
 %fieldset
   %legend
@@ -99,14 +109,19 @@
           = f_end.number_field :blur_percent, min: 0, max: 100, step: 10
           %span.add-on &#37;
     .control-group
-      = f_end.label 'Top', class: 'control-label'
+      = f_end.label :position, class: 'control-label'
       .controls
         .input-append
-          = f_end.number_field :top_percent, step: 10
-          %span.add-on &#37;
+          = f_end.select :position_name, Flms::Keyframe::POSITION_NAMES
     .control-group
-      = f_end.label 'Left', class: 'control-label'
+      = f_end.label :margin_left, class: 'control-label'
       .controls
         .input-append
-          = f_end.number_field :left_percent, step: 10
-          %span.add-on &#37;
+          = f_end.text_field :margin_left
+          %span.add-on pixels
+    .control-group
+      = f_end.label :margin_top, class: 'control-label'
+      .controls
+        .input-append
+          = f_end.text_field :margin_top
+          %span.add-on pixels

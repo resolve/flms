@@ -13,22 +13,28 @@ feature 'ImageLayers > Edit', js: true do
     click_link "edit-layer-#{image_layer_1a1.id}"
 
     fill_in 'Name', with: 'new-layer-name'
+
     fill_in 'image_layer_start_state_keyframe_attributes_scroll_start', with: 1
     fill_in 'image_layer_start_state_keyframe_attributes_scroll_duration', with: '2'
     fill_in 'image_layer_start_state_keyframe_attributes_opacity_percent', with: '50'
     fill_in 'image_layer_start_state_keyframe_attributes_scale_percent', with: '25'
     fill_in 'image_layer_start_state_keyframe_attributes_blur_percent', with: '50'
-    fill_in 'image_layer_start_state_keyframe_attributes_top_percent', with: '0'
-    fill_in 'image_layer_start_state_keyframe_attributes_left_percent', with: '50'
+    select 'center', from: 'image_layer_start_state_keyframe_attributes_position_name'
+    fill_in 'image_layer_start_state_keyframe_attributes_margin_left', with: '10'
+    fill_in 'image_layer_start_state_keyframe_attributes_margin_top', with: '20'
+
     fill_in 'image_layer_target_state_keyframe_attributes_scroll_duration', with: '3'
-    fill_in 'image_layer_target_state_keyframe_attributes_top_percent', with: '0'
-    fill_in 'image_layer_target_state_keyframe_attributes_left_percent', with: '0'
+    select 'center', from: 'image_layer_target_state_keyframe_attributes_position_name'
+    fill_in 'image_layer_target_state_keyframe_attributes_margin_left', with: '10'
+    fill_in 'image_layer_target_state_keyframe_attributes_margin_top', with: '20'
+
     fill_in 'image_layer_end_state_keyframe_attributes_scroll_duration', with: '4'
     fill_in 'image_layer_end_state_keyframe_attributes_opacity_percent', with: '60'
     fill_in 'image_layer_end_state_keyframe_attributes_scale_percent', with: '30'
     fill_in 'image_layer_end_state_keyframe_attributes_blur_percent', with: '60'
-    fill_in 'image_layer_end_state_keyframe_attributes_top_percent', with: '50'
-    fill_in 'image_layer_end_state_keyframe_attributes_left_percent', with: '50'
+    select 'center', from: 'image_layer_end_state_keyframe_attributes_position_name'
+    fill_in 'image_layer_end_state_keyframe_attributes_margin_left', with: '10'
+    fill_in 'image_layer_end_state_keyframe_attributes_margin_top', with: '20'
 
     click_button 'Update Image layer'
 
