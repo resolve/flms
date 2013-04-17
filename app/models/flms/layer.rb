@@ -9,7 +9,10 @@ module Flms
     has_one :target_state_keyframe, dependent: :destroy
     has_one :end_state_keyframe, dependent: :destroy
     accepts_nested_attributes_for :start_state_keyframe, :target_state_keyframe, :end_state_keyframe
+
     validates_presence_of :start_state_keyframe, :target_state_keyframe, :end_state_keyframe
+    validates :name, :'flms/css_name' => true
+    validates_uniqueness_of :name, scope: :block_id
 
     scope :ordered_by_scroll_start, joins: [ :start_state_keyframe ], order: 'flms_keyframes.scroll_start'
 

@@ -13,10 +13,10 @@ describe Flms::Block do
 
   describe 'scroll_duration' do
     let(:block) { create :block }
-    let!(:layer_1) { l = block.layers.build.build_default_keyframes
+    let!(:layer_1) { l = block.layers.build(name: 'abc').build_default_keyframes
                      l.start_state_keyframe.scroll_start = 1
                      l.save! }
-    let!(:layer_2) { l = block.layers.build.build_default_keyframes
+    let!(:layer_2) { l = block.layers.build(name: 'def').build_default_keyframes
                      l.start_state_keyframe.scroll_start = 2
                      l.save! }
 

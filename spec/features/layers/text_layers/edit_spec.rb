@@ -12,7 +12,7 @@ feature 'TextLayers > Edit', js: true do
     # click on the 'edit' button.
     click_link "edit-layer-#{text_layer_1a1.id}"
 
-    fill_in 'Name', with: 'new layer name'
+    fill_in 'Name', with: 'new-layer-name'
     fill_in 'Text', with: 'layer text content'
     fill_in 'Font size', with: '0.5'
     fill_in 'Color', with: 'fff'
@@ -24,5 +24,6 @@ feature 'TextLayers > Edit', js: true do
 
     # Check database updates.
     expect(Flms::Layer).to have(1).instances
+    expect(Flms::Layer.first.name).to eql 'new-layer-name'
   end
 end

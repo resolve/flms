@@ -42,9 +42,9 @@ describe Flms::BlocksController do
 
   describe 'update' do
     describe 'access control' do
-      let(:request) { put :update, id: block_1a.id, page_id: page_1.url, block: attributes_for(:block, name: 'new name'), use_route: :flms }
+      let(:request) { put :update, id: block_1a.id, page_id: page_1.url, block: attributes_for(:block, name: 'new-name'), use_route: :flms }
       let(:access_granted_check) { response.status == 302 && response.location == "http://test.host/flms/pages/#{page_1.url}/blocks" }
-      let(:database_performed_check) { Flms::Block.count == 1 && block_1a.reload.name == 'new name' }
+      let(:database_performed_check) { Flms::Block.count == 1 && block_1a.reload.name == 'new-name' }
       it_should_behave_like 'an action accessible only to logged-in users'
     end
   end

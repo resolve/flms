@@ -7,6 +7,7 @@ module Flms
     has_many :layers
 
     validates :name, presence: true
+    validates :name, :'flms/css_name' => true
 
     scope :ordered, order('ordering')
 
@@ -15,5 +16,6 @@ module Flms
     def scroll_duration
       layers.map(&:scroll_end).max
     end
+
   end
 end

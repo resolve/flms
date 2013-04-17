@@ -6,7 +6,8 @@ module Flms
     end
 
     def attributes(scroll_offset = 0)
-      keyframe_data_hash(scroll_offset)
+      attributes = { id: @layer.name }
+      attributes.merge keyframe_data_hash(scroll_offset)
     end
 
   end

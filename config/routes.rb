@@ -25,4 +25,5 @@ Flms::Engine.routes.draw do
   resources :users, only: [:index, :new, :create, :destroy]
 
   root :to => 'dashboard#index'
+
 end
