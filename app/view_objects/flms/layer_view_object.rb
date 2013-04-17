@@ -1,5 +1,3 @@
-include Rails.application.routes.url_helpers
-
 module Flms
 
   # Create DOM for this layer, including all the necessary 'data-*' attributes to
