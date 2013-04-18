@@ -2,6 +2,7 @@ module Flms
   class Layer < ActiveRecord::Base
     attr_accessible :name, :type,
                     :width, :height,
+                    :dom_remove,
                     :start_state_keyframe_attributes, :target_state_keyframe_attributes, :end_state_keyframe_attributes
 
     belongs_to :block

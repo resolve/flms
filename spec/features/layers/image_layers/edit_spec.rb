@@ -13,6 +13,7 @@ feature 'ImageLayers > Edit', js: true do
     click_link "edit-layer-#{image_layer_1a1.id}"
 
     fill_in 'Name', with: 'new-layer-name'
+    check 'Hide at end'
 
     fill_in 'image_layer_start_state_keyframe_attributes_scroll_start', with: 1
     fill_in 'image_layer_start_state_keyframe_attributes_scroll_duration', with: '2'

@@ -39,7 +39,8 @@ module Flms
       data["data-#{initial_pos}"] = 'display:block; ' + start_view_object.styles(style_data)
       data["data-#{target_start_pos}"] = target_view_object.styles(style_data)
       data["data-#{target_end_pos}"] = target_view_object.styles(style_data)
-      data["data-#{final_pos}"] = 'display:none; ' + end_view_object.styles(style_data)
+      data["data-#{final_pos}"] = end_view_object.styles(style_data)
+      data["data-#{final_pos + 1}"] = 'display:none;' if @layer.dom_remove
 
       data
     end
