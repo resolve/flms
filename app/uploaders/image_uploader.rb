@@ -13,12 +13,18 @@ class ImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
 
+  attr_reader :geometry
+
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
   def default_url
     asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
+  end
+
+  version :normal do
+    process :get_geometry
   end
 
   version :small do
@@ -31,6 +37,13 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   def extension_white_list
     %w(jpg jpeg gif png)
+  end
+
+  def get_geometry
+    if @file
+      img = ::MiniMagick::Image::read(@file)
+      @geometry = [ img[:width], img[:height] ]
+    end
   end
 
 end

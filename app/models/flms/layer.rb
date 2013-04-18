@@ -1,6 +1,7 @@
 module Flms
   class Layer < ActiveRecord::Base
     attr_accessible :name, :type,
+                    :width, :height,
                     :start_state_keyframe_attributes, :target_state_keyframe_attributes, :end_state_keyframe_attributes
 
     belongs_to :block
@@ -13,6 +14,8 @@ module Flms
     validates_presence_of :start_state_keyframe, :target_state_keyframe, :end_state_keyframe
     validates :name, :'flms/css_name' => true
     validates_uniqueness_of :name, scope: :block_id
+    validates_numericality_of :width, greater_than_or_equal_to: 0, allow_nil: true
+    validates_numericality_of :height, greater_than_or_equal_to: 0, allow_nil: true
 
     scope :ordered_by_scroll_start, joins: [ :start_state_keyframe ], order: 'flms_keyframes.scroll_start'
 

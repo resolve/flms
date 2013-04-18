@@ -4,14 +4,9 @@ module Flms
   # attributes used by Skrollr.
   class KeyframeViewObject
 
-    # Keyframe model attributes listed here will be included in the DOM:
-    KEYFRAME_ATTRIBUTES = [ #:width, :height,
-                            :position_x, :position_y,
-                            :opacity, :scale, :blur ]
-
     # All attributes need a formatter function:
-    KEYFRAME_ATTRIBUTE_FORMATTERS = { width: :format_as_percent,
-                                      height: :format_as_percent,
+    KEYFRAME_ATTRIBUTE_FORMATTERS = { width: :format_as_px,
+                                      height: :format_as_px,
                                       position_x: :format_as_percent,
                                       position_y: :format_as_percent,
                                       opacity: :format_as_decimal,
@@ -28,8 +23,30 @@ module Flms
     end
 
     # Generate a string of CSS styling for each attribute provided by the keyframe
-    def styles
-      KEYFRAME_ATTRIBUTES.map { |attribute| style_for_attribute(attribute) }.join ' '
+    # Available options are:
+    #   :width
+    #   :height
+    # Will add margins using provided values, and pin the layer within the viewport
+    # using width and height.
+    def styles(options = {})
+      options[:width] ||= 0
+      options[:height] ||= 0
+
+      attribs = [ :position_x, :position_y,
+                  :opacity,
+                  :blur ].map { |attribute| style_for_attribute(attribute) }.join ' '
+      attribs += pinning(options[:width],
+                         options[:height])
+      attribs
+    end
+
+    # Generate position styling so that the layer remains fully in the viewport.
+    # (Pinned to top-left if positioned top-left, pinned center if centered, etc.)
+    def pinning(width, height)
+      "#{ style_for_attribute(:width, @keyframe.scale * width) }" \
+      "#{ style_for_attribute(:height, @keyframe.scale * height) }" \
+      "margin-left: #{ (@keyframe.position_x * -width) + @keyframe.margin_left }px; " \
+      "margin-top: #{ (@keyframe.position_y * -height) + @keyframe.margin_top }px;"
     end
 
     # Generate CSS style string for specified attribute.
@@ -51,6 +68,10 @@ module Flms
     
     def format_as_percent(name, value)
       "#{name}: #{value * 100}%"
+    end
+
+    def format_as_px(name, value)
+      "#{name}: #{value}px"
     end
 
     def format_as_transform(name, value)

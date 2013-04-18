@@ -9,13 +9,11 @@
           - @layer.errors.full_messages.each do |msg|
             %li= msg
 
-  %fieldset
-    .control-group
-      = f.label :name, class: 'control-label'
-      .controls
-        = f.text_field :name, autofocus: true
-        %span.help-inline (must be valid CSS ID)
+  = render partial: 'flms/layers/common_fields', locals: { form_block: f }
 
+  %fieldset
+    %legend
+      Image
     .control-group
       = f.label :image, class: 'control-label'
       .controls
