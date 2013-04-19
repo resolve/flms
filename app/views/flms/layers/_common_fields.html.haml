@@ -22,3 +22,9 @@
       .input-append
         = form_block.text_field :height
         %span.add-on pixels
+
+  .control-group
+    = form_block.label :dom_remove, 'Hide at end', class: 'control-label'
+    .controls
+      = form_block.check_box :dom_remove
+      %span.help-inline If selected, removes layer from view at end of scroll.
