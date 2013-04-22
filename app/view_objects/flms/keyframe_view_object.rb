@@ -43,10 +43,10 @@ module Flms
     # Generate position styling so that the layer remains fully in the viewport.
     # (Pinned to top-left if positioned top-left, pinned center if centered, etc.)
     def pinning(width, height)
-      "#{ style_for_attribute(:width, @keyframe.scale * width) }" \
+      "#{ style_for_attribute(:width,  @keyframe.scale * width) }" \
       "#{ style_for_attribute(:height, @keyframe.scale * height) }" \
-      "margin-left: #{ (@keyframe.position_x * -width) + @keyframe.margin_left }px; " \
-      "margin-top: #{ (@keyframe.position_y * -height) + @keyframe.margin_top }px;"
+      "margin-left: #{ (@keyframe.position_x * @keyframe.scale * -width) + @keyframe.margin_left }px; " \
+      "margin-top: #{ (@keyframe.position_y * @keyframe.scale * -height) + @keyframe.margin_top }px;"
     end
 
     # Generate CSS style string for specified attribute.
