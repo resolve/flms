@@ -9,6 +9,7 @@ feature 'Pages > Show' do
     image_layer_1b1_inactive
     image_layer_1c1
     text_layer_1a1
+    paragraph_layer_1a1
     visit "/flms/pages/#{page_1.url}"
     expect(page.body).to have_content page_1.title
 
@@ -16,6 +17,7 @@ feature 'Pages > Show' do
     expect(page).to have_selector ".image-layer\##{image_layer_1a1.name}"
     expect(page).to have_selector ".image-layer\##{image_layer_1c1.name}"
     expect(page).to have_selector ".text-layer\##{text_layer_1a1.name}"
+    expect(page).to have_selector ".paragraph-layer\##{paragraph_layer_1a1.name}"
   end
 
 end
