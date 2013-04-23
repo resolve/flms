@@ -5,8 +5,8 @@ module Flms
   class KeyframeViewObject
 
     # All attributes need a formatter function:
-    KEYFRAME_ATTRIBUTE_FORMATTERS = { width: :format_as_px,
-                                      height: :format_as_px,
+    KEYFRAME_ATTRIBUTE_FORMATTERS = { width: :format_as_percent,
+                                      height: :format_as_percent,
                                       position_x: :format_as_percent,
                                       position_y: :format_as_percent,
                                       opacity: :format_as_decimal,
@@ -46,10 +46,12 @@ module Flms
     # Generate position styling so that the layer remains fully in the viewport.
     # (Pinned to top-left if positioned top-left, pinned center if centered, etc.)
     def pinning(width, height, free_height = false)
-      width_style = "#{ style_for_attribute(:width, @keyframe.scale * width) }; "
-      height_style = free_height ? '' : "#{ style_for_attribute(:height, @keyframe.scale * height) }; "
-      margin_left_style = "margin-left: #{ (@keyframe.position_x * @keyframe.scale * -width) + @keyframe.margin_left }px; "
-      margin_top_style = "margin-top: #{ (@keyframe.position_y * @keyframe.scale * -height) + @keyframe.margin_top }px;"
+      # (Round calculated values here so we can prevent floating-point errors from
+      # giving us unpredictable results in specs)
+      width_style = "#{ style_for_attribute(:width, (@keyframe.scale * width).round(2)) }; "
+      height_style = free_height ? '' : "#{ style_for_attribute(:height, (@keyframe.scale * height).round(2)) }; "
+      margin_left_style = "margin-left: #{ ((@keyframe.position_x * @keyframe.scale * -width * 100) + @keyframe.margin_left_percent) }%; "
+      margin_top_style = "margin-top: #{ ((@keyframe.position_y * @keyframe.scale * -height * 100) + @keyframe.margin_top_percent) }%;"
       "#{width_style}#{height_style}#{margin_left_style}#{margin_top_style}"
     end
 

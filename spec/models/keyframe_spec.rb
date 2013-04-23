@@ -2,6 +2,46 @@ require 'spec_helper'
 
 describe Flms::Keyframe do
   describe 'translation accessors' do
+    describe 'width_percent' do
+      it 'sets width correctly' do
+        expect(Flms::Keyframe.new(width_percent: 50).width).to eql 0.5
+      end
+
+      it 'gets width correctly' do
+        expect(Flms::Keyframe.new(width: 0.5).width_percent).to eql 50
+      end
+    end
+
+    describe 'height_percent' do
+      it 'sets height correctly' do
+        expect(Flms::Keyframe.new(height_percent: 50).height).to eql 0.5
+      end
+
+      it 'gets height correctly' do
+        expect(Flms::Keyframe.new(height: 0.5).height_percent).to eql 50
+      end
+    end
+
+    describe 'margin_left_percent' do
+      it 'sets margin_left correctly' do
+        expect(Flms::Keyframe.new(margin_left_percent: 50).margin_left).to eql 0.5
+      end
+
+      it 'gets margin_left correctly' do
+        expect(Flms::Keyframe.new(margin_left: 0.5).margin_left_percent).to eql 50
+      end
+    end
+
+    describe 'margin_top_percent' do
+      it 'sets margin_top correctly' do
+        expect(Flms::Keyframe.new(margin_top_percent: 50).margin_top).to eql 0.5
+      end
+
+      it 'gets margin_top correctly' do
+        expect(Flms::Keyframe.new(margin_top: 0.5).margin_top_percent).to eql 50
+      end
+    end
+
     describe 'opacity_percent' do
       it 'sets opacity correctly' do
         expect(Flms::Keyframe.new(opacity_percent: 50).opacity).to eql 0.5

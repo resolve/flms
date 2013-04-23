@@ -11,7 +11,7 @@ describe Flms::ParagraphLayer do
 
   describe 'defaults' do
     it 'generates a default width' do
-      expect(subject.width).to eql 300.0
+      expect(subject.width).to eql 0.2
     end
   end
 

@@ -21,21 +21,21 @@ feature 'ImageLayers > Edit', js: true do
     fill_in 'image_layer_start_state_keyframe_attributes_scale_percent', with: '25'
     fill_in 'image_layer_start_state_keyframe_attributes_blur_percent', with: '50'
     select 'center', from: 'image_layer_start_state_keyframe_attributes_position_name'
-    fill_in 'image_layer_start_state_keyframe_attributes_margin_left', with: '10'
-    fill_in 'image_layer_start_state_keyframe_attributes_margin_top', with: '20'
+    fill_in 'image_layer_start_state_keyframe_attributes_margin_left_percent', with: '10'
+    fill_in 'image_layer_start_state_keyframe_attributes_margin_top_percent', with: '20'
 
     fill_in 'image_layer_target_state_keyframe_attributes_scroll_duration', with: '3'
     select 'center', from: 'image_layer_target_state_keyframe_attributes_position_name'
-    fill_in 'image_layer_target_state_keyframe_attributes_margin_left', with: '10'
-    fill_in 'image_layer_target_state_keyframe_attributes_margin_top', with: '20'
+    fill_in 'image_layer_target_state_keyframe_attributes_margin_left_percent', with: '10'
+    fill_in 'image_layer_target_state_keyframe_attributes_margin_top_percent', with: '20'
 
     fill_in 'image_layer_end_state_keyframe_attributes_scroll_duration', with: '4'
     fill_in 'image_layer_end_state_keyframe_attributes_opacity_percent', with: '60'
     fill_in 'image_layer_end_state_keyframe_attributes_scale_percent', with: '30'
     fill_in 'image_layer_end_state_keyframe_attributes_blur_percent', with: '60'
     select 'center', from: 'image_layer_end_state_keyframe_attributes_position_name'
-    fill_in 'image_layer_end_state_keyframe_attributes_margin_left', with: '10'
-    fill_in 'image_layer_end_state_keyframe_attributes_margin_top', with: '20'
+    fill_in 'image_layer_end_state_keyframe_attributes_margin_left_percent', with: '10'
+    fill_in 'image_layer_end_state_keyframe_attributes_margin_top_percent', with: '20'
 
     click_button 'Update Image layer'
 

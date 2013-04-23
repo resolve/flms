@@ -6,6 +6,8 @@ module Flms
                     :margin_left, :margin_top,
                     :position_x, :position_y,
                     :opacity, :scale, :blur,
+                    :width_percent, :height_percent,
+                    :margin_left_percent, :margin_top_percent,
                     :opacity_percent, :scale_percent, :blur_percent, :position_name, :top_percent, :left_percent
 
     belongs_to :layer
@@ -40,6 +42,38 @@ module Flms
     def position_coordinates_to_name position_coordinates
       raise 'position coordinates invalid' unless position_coordinates_valid?(position_coordinates)
       POSITION_NAMES[POSITION_COORDINATES.index(position_coordinates)]
+    end
+
+    def width_percent
+      (self.width * 100).to_i
+    end
+
+    def width_percent= val
+      self.width = val.to_i / 100.0
+    end
+
+    def height_percent
+      (self.height * 100).to_i
+    end
+
+    def height_percent= val
+      self.height = val.to_i / 100.0
+    end
+
+    def margin_left_percent
+      (self.margin_left * 100).to_i
+    end
+
+    def margin_left_percent= val
+      self.margin_left = val.to_i / 100.0
+    end
+
+    def margin_top_percent
+      (self.margin_top * 100).to_i
+    end
+
+    def margin_top_percent= val
+      self.margin_top = val.to_i / 100.0
     end
 
     def opacity_percent

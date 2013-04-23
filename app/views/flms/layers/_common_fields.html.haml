@@ -13,15 +13,15 @@
     = form_block.label :width, class: 'control-label'
     .controls
       .input-append
-        = form_block.text_field :width
-        %span.add-on pixels
+        = form_block.text_field :width_percent
+        %span.add-on &#37;
 
   .control-group
     = form_block.label :height, class: 'control-label'
     .controls
       .input-append
-        = form_block.text_field :height
-        %span.add-on pixels
+        = form_block.text_field :height_percent
+        %span.add-on &#37;
 
   .control-group
     = form_block.label :dom_remove, 'Hide at end', class: 'control-label'

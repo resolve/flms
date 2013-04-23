@@ -110,4 +110,27 @@ describe Flms::Layer do
       end
     end
   end
+
+  describe 'translation accessors' do
+    describe 'width_percent' do
+      it 'sets width correctly' do
+        expect(Flms::Layer.new(width_percent: 50).width).to eql 0.5
+      end
+
+      it 'gets width correctly' do
+        expect(Flms::Layer.new(width: 0.5).width_percent).to eql 50
+      end
+    end
+
+    describe 'height_percent' do
+      it 'sets height correctly' do
+        expect(Flms::Layer.new(height_percent: 50).height).to eql 0.5
+      end
+
+      it 'gets height correctly' do
+        expect(Flms::Layer.new(height: 0.5).height_percent).to eql 50
+      end
+    end
+  end
+
 end
