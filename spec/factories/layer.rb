@@ -17,5 +17,10 @@ FactoryGirl.define do
       font_size 1.0
       color     'abc'
     end
+
+    factory :paragraph_layer, class: Flms::ParagraphLayer do
+      header    { Faker::Lorem.sentence(4) }
+      body      { Faker::Lorem.sentence(10) }
+    end
   end
 end

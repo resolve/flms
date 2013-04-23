@@ -24,29 +24,33 @@ module Flms
 
     # Generate a string of CSS styling for each attribute provided by the keyframe
     # Available options are:
-    #   :width
-    #   :height
+    #   :width        - default 0, affects width and margin-left of layer
+    #   :height       - default 0, affects height and margin-top of layer
+    #   :free_height  - if true, will suppress generation of height style
     # Will add margins using provided values, and pin the layer within the viewport
     # using width and height.
     def styles(options = {})
       options[:width] ||= 0
       options[:height] ||= 0
+      options[:free_height] ||= false
 
       attribs = [ :position_x, :position_y,
                   :opacity,
                   :blur ].map { |attribute| style_for_attribute(attribute) }.join ' '
       attribs += pinning(options[:width],
-                         options[:height])
+                         options[:height],
+                         options[:free_height])
       attribs
     end
 
     # Generate position styling so that the layer remains fully in the viewport.
     # (Pinned to top-left if positioned top-left, pinned center if centered, etc.)
-    def pinning(width, height)
-      "#{ style_for_attribute(:width,  @keyframe.scale * width) }" \
-      "#{ style_for_attribute(:height, @keyframe.scale * height) }" \
-      "margin-left: #{ (@keyframe.position_x * @keyframe.scale * -width) + @keyframe.margin_left }px; " \
-      "margin-top: #{ (@keyframe.position_y * @keyframe.scale * -height) + @keyframe.margin_top }px;"
+    def pinning(width, height, free_height = false)
+      width_style = "#{ style_for_attribute(:width, @keyframe.scale * width) }; "
+      height_style = free_height ? '' : "#{ style_for_attribute(:height, @keyframe.scale * height) }; "
+      margin_left_style = "margin-left: #{ (@keyframe.position_x * -width) + @keyframe.margin_left }px; "
+      margin_top_style = "margin-top: #{ (@keyframe.position_y * -height) + @keyframe.margin_top }px;"
+      "#{width_style}#{height_style}#{margin_left_style}#{margin_top_style}"
     end
 
     # Generate CSS style string for specified attribute.
