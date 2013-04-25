@@ -10,10 +10,10 @@ module Flms
       @view_object ||= Flms::TextLayerViewObject.new(self)
     end
 
-    private
+  protected
 
-    def must_be_css_hex_value
-      self.errors[:color] << 'must be a valid CSS hex color code' unless color =~ /^([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/i
+    def set_defaults
+      self.color ||= 'fff'
     end
 
   end

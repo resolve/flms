@@ -23,7 +23,7 @@ module Flms
 
     before_save :calculate_scroll_starts
 
-    after_initialize :set_default_values
+    after_initialize :set_defaults
 
     def view_object
       @view_object ||= Flms::LayerViewObject.new(self)
@@ -56,7 +56,7 @@ module Flms
       end_state_keyframe.scroll_start = target_state_keyframe.scroll_start + target_state_keyframe.scroll_duration
     end
 
-    def width_percent
+	  def width_percent
       # It's ok for a layer to have an undefined width, so account for that here:
       self.width ? (self.width * 100).to_i : nil
     end
@@ -76,9 +76,15 @@ module Flms
 
   protected
 
-    def set_default_values
-      self.width ||= 0
-      self.height ||= 0
+    def set_defaults
+      self.width ||= 0.20
+      self.height ||= 0.20
+    end
+
+  private
+
+    def must_be_css_hex_value
+      self.errors[:color] << 'must be a valid CSS hex color code' unless color =~ /^([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/i
     end
 
   end

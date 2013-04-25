@@ -2,7 +2,8 @@ module Flms
   class ParagraphLayerViewObject < Flms::LayerViewObject
 
     def attributes(scroll_offset = 0)
-      attributes = { id: @layer.name }
+      attributes = { id: @layer.name,
+                     style: "color: \##{ @layer.color };" }
       attributes.merge! keyframe_data_hash(scroll_offset)
       attributes
     end

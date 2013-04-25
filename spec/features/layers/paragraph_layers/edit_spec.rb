@@ -15,6 +15,7 @@ feature 'ParagraphLayers > Edit', js: true do
     fill_in 'Name', with: 'new-layer-name'
     fill_in 'Header', with: 'header text'
     fill_in 'Body', with: 'body text'
+    fill_in 'Color', with: 'abcabc'
 
     click_button 'Update Paragraph layer'
 

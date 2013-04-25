@@ -31,4 +31,14 @@ describe Flms::ParagraphLayer do
     end
   end
 
+  describe 'defaults' do
+    it 'sets default font color of fff' do
+      expect(subject.color).to eql 'fff'
+    end
+
+    it 'sets default width to 20%' do
+      expect(subject.width).to eql 0.20
+    end
+  end
+
 end

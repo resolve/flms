@@ -47,4 +47,10 @@ describe Flms::TextLayer do
     end
   end
 
+  describe 'defaults' do
+    it 'sets default font color of fff' do
+      expect(subject.color).to eql 'fff'
+    end
+  end
+
 end
