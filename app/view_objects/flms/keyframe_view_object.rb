@@ -48,8 +48,8 @@ module Flms
     def pinning(width, height, free_height = false)
       width_style = "#{ style_for_attribute(:width, @keyframe.scale * width) }; "
       height_style = free_height ? '' : "#{ style_for_attribute(:height, @keyframe.scale * height) }; "
-      margin_left_style = "margin-left: #{ (@keyframe.position_x * -width) + @keyframe.margin_left }px; "
-      margin_top_style = "margin-top: #{ (@keyframe.position_y * -height) + @keyframe.margin_top }px;"
+      margin_left_style = "margin-left: #{ (@keyframe.position_x * @keyframe.scale * -width) + @keyframe.margin_left }px; "
+      margin_top_style = "margin-top: #{ (@keyframe.position_y * @keyframe.scale * -height) + @keyframe.margin_top }px;"
       "#{width_style}#{height_style}#{margin_left_style}#{margin_top_style}"
     end
 
