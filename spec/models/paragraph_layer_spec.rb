@@ -5,13 +5,13 @@ describe Flms::ParagraphLayer do
 
   describe 'view_object' do
     it 'provides a view object' do
-      expect(Flms::ParagraphLayer.new.view_object.is_a?(Flms::ParagraphLayerViewObject)).to be_true
+      expect(subject.view_object).to be_a Flms::ParagraphLayerViewObject
     end
   end
 
   describe 'defaults' do
     it 'generates a default width' do
-      expect(Flms::ParagraphLayer.new.width).to eql 300.0
+      expect(subject.width).to eql 300.0
     end
   end
 
