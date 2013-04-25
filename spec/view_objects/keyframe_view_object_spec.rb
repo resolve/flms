@@ -23,8 +23,8 @@ describe Flms::KeyframeViewObject do
       styles = presenter.pinning(3, 4)
       expect(styles).to match "width: #{ test_keyframe.scale * 3 }px;"
       expect(styles).to match "height: #{ test_keyframe.scale * 4 }px;"
-      expect(styles).to match "margin-left: #{ (test_keyframe.position_x * -3) }px"
-      expect(styles).to match "margin-top: #{ (test_keyframe.position_y * -4) }px"
+      expect(styles).to match "margin-left: #{ (test_keyframe.position_x * test_keyframe.scale * -3) + test_keyframe.margin_left }px"
+      expect(styles).to match "margin-top: #{ (test_keyframe.position_y * test_keyframe.scale * -4) + test_keyframe.margin_top }px"
     end
   end
 
