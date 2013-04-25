@@ -24,6 +24,13 @@
       .controls
         = f.text_area :body
 
+    .control-group
+      = f.label :color, class: 'control-label'
+      .controls
+        .input-prepend
+          %span.add-on #
+          = f.text_field :color
+
   = render partial: 'flms/layers/keyframe_fields', locals: { form_block: f }
 
   .control-group
