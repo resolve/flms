@@ -5,16 +5,14 @@ module Flms
     validates :header, presence: true
     validates :body, presence: true
 
-    after_initialize :init_width
-
     def view_object
       @view_object ||= Flms::ParagraphLayerViewObject.new(self)
     end
 
     protected
 
-    def init_width
-      self.width ||= 300.0
+    def set_default_values
+      self.width ||= 0.20
     end
 
   end

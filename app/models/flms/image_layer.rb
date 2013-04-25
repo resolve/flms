@@ -18,8 +18,10 @@ module Flms
     def retain_geometry
       geometry = self.image.normal.geometry
       if geometry
-        self.width = geometry[0]
-        self.height = geometry[1]
+        # Use a reasonable guesstimate for window size to come up with a starting point
+        # for % width and height for the image based on it's resolution:
+        self.width = 900.0 / geometry[0]
+        self.height = 800.0 / geometry[1]
       end
     end
   end

@@ -2,6 +2,7 @@ module Flms
   class Layer < ActiveRecord::Base
     attr_accessible :name, :type,
                     :width, :height,
+                    :width_percent, :height_percent,
                     :dom_remove,
                     :start_state_keyframe_attributes, :target_state_keyframe_attributes, :end_state_keyframe_attributes
 
@@ -21,6 +22,8 @@ module Flms
     scope :ordered_by_scroll_start, joins: [ :start_state_keyframe ], order: 'flms_keyframes.scroll_start'
 
     before_save :calculate_scroll_starts
+
+    after_initialize :set_default_values
 
     def view_object
       @view_object ||= Flms::LayerViewObject.new(self)
@@ -52,5 +55,31 @@ module Flms
       target_state_keyframe.scroll_start = start_state_keyframe.scroll_start + start_state_keyframe.scroll_duration
       end_state_keyframe.scroll_start = target_state_keyframe.scroll_start + target_state_keyframe.scroll_duration
     end
+
+    def width_percent
+      # It's ok for a layer to have an undefined width, so account for that here:
+      self.width ? (self.width * 100).to_i : nil
+    end
+
+    def width_percent= val
+      self.width = val.to_i / 100.0
+    end
+
+    def height_percent
+      # It's ok for a layer to have an undefined height, so account for that here:
+      self.height ? (self.height * 100).to_i : nil
+    end
+
+    def height_percent= val
+      self.height = val.to_i / 100.0
+    end
+
+  protected
+
+    def set_default_values
+      self.width ||= 0
+      self.height ||= 0
+    end
+
   end
 end
