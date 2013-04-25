@@ -34,7 +34,7 @@ describe Flms::TextLayersController do
     end
 
     describe 'functionality' do
-      it 'creates an image layer' do
+      it 'creates a text layer' do
         sign_in user
         new_layer = attributes_for(:text_layer)
         new_layer.merge! start_state_keyframe_attributes: { scroll_start: 1,

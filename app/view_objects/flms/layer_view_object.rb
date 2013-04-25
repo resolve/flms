@@ -15,6 +15,7 @@ module Flms
     def self.link_path_for(page, block, layer)
       link_path = Flms::Engine.routes.url_helpers.edit_page_block_image_layer_path(page, block, layer) if layer.is_a? Flms::ImageLayer
       link_path = Flms::Engine.routes.url_helpers.edit_page_block_text_layer_path(page, block, layer) if layer.is_a? Flms::TextLayer
+      link_path = Flms::Engine.routes.url_helpers.edit_page_block_paragraph_layer_path(page, block, layer) if layer.is_a? Flms::ParagraphLayer
       link_path
     end
 
@@ -32,14 +33,11 @@ module Flms
       target_view_object = Flms::KeyframeViewObject.new(@layer.target_state_keyframe)
       end_view_object = Flms::KeyframeViewObject.new(@layer.end_state_keyframe)
 
-      style_data = { width: @layer.width,
-                     height: @layer.height }
-
       data['data-0'] = 'display:none;'
-      data["data-#{initial_pos}"] = 'display:block; ' + start_view_object.styles(style_data)
-      data["data-#{target_start_pos}"] = target_view_object.styles(style_data)
-      data["data-#{target_end_pos}"] = target_view_object.styles(style_data)
-      data["data-#{final_pos}"] = end_view_object.styles(style_data)
+      data["data-#{initial_pos}"] = 'display:block; ' + start_view_object.styles(style_data_for_keyframes)
+      data["data-#{target_start_pos}"] = target_view_object.styles(style_data_for_keyframes)
+      data["data-#{target_end_pos}"] = target_view_object.styles(style_data_for_keyframes)
+      data["data-#{final_pos}"] = end_view_object.styles(style_data_for_keyframes)
       data["data-#{final_pos + 1}"] = 'display:none;' if @layer.dom_remove
 
       data
@@ -61,5 +59,11 @@ module Flms
           raise 'unknown state!'
       end
     end
+
+    def style_data_for_keyframes
+      { width: @layer.width,
+        height: @layer.height }
+    end
+
   end
 end
