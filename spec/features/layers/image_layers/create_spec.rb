@@ -8,6 +8,7 @@ feature 'ImageLayers > Create' do
     visit "/flms/pages/#{page_1.url}/blocks/#{block_1a.id}"
     click_link 'Add Image Layer'
     fill_in 'Name', with: 'my-new-layer'
+    fill_in 'Z index', with: '20'
     click_button 'Create Image layer'
 
     # Expect to be back at the block page.
@@ -19,5 +20,6 @@ feature 'ImageLayers > Create' do
     layer = block_1a.layers.first
     expect(layer.class).to eql Flms::ImageLayer
     expect(layer.name).to eql 'my-new-layer'
+    expect(layer.z_index).to eql '20'
   end
 end

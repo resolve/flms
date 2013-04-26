@@ -7,6 +7,7 @@
       %th Thumbnail
       %th Starts
       %th Ends
+      %th Z-Index
       %th Actions
 
   %tbody.layer_list
@@ -24,6 +25,9 @@
 
         %td.ends
           = layer.scroll_end
+
+        %td.z-index
+          = layer.z_index
 
         %td.action
           = link_to Flms::LayerViewObject.link_path_for(@page, @block, layer), class: 'btn edit', id: "edit-layer-#{ layer.id }", title: 'edit' do

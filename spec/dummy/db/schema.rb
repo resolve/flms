@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130422193150) do
+ActiveRecord::Schema.define(:version => 20130426171058) do
 
   create_table "flms_blocks", :force => true do |t|
     t.string   "name"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(:version => 20130422193150) do
     t.boolean  "dom_remove", :default => true
     t.string   "header"
     t.string   "body"
+    t.string   "z_index",    :default => "0",  :null => false
   end
 
   add_index "flms_layers", ["block_id"], :name => "index_flms_layers_on_block_id"

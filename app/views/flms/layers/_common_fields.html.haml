@@ -24,6 +24,11 @@
         %span.add-on &#37;
 
   .control-group
+    = form_block.label :z_index, class: 'control-label'
+    .controls
+      = form_block.text_field :z_index
+
+  .control-group
     = form_block.label :dom_remove, 'Hide at end', class: 'control-label'
     .controls
       = form_block.check_box :dom_remove
