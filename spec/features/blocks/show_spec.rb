@@ -8,7 +8,11 @@ feature 'Blocks > Show' do
 
     capybara_sign_in user_1
     visit "/flms/pages/#{page_1.url}/blocks/#{block_1a.id}"
-    expect(page).to have_content ''
+    expect(page).to have_content 'Name'
+    expect(page).to have_content 'Thumbnail'
+    expect(page).to have_content 'Starts'
+    expect(page).to have_content 'Ends'
+    expect(page).to have_content 'Z-Index'
   end
 end
 

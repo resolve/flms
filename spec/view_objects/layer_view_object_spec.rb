@@ -33,6 +33,10 @@ describe Flms::LayerViewObject do
       expect(data['data-anchor-target']).to eql '#pagescroller'
     end
 
+    it 'styles z-index' do
+      expect(data[:style]).to match "z-index: 0;"
+    end
+
     it 'generates scroll positions correctly and includes scroll offset' do
       expect(data).to have_key 'data-1'
       expect(data).to have_key 'data-101'

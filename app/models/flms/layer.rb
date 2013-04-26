@@ -1,7 +1,7 @@
 module Flms
   class Layer < ActiveRecord::Base
     attr_accessible :name, :type,
-                    :width, :height,
+                    :width, :height, :z_index,
                     :width_percent, :height_percent,
                     :dom_remove,
                     :start_state_keyframe_attributes, :target_state_keyframe_attributes, :end_state_keyframe_attributes
@@ -18,6 +18,7 @@ module Flms
     validates_uniqueness_of :name, scope: :block_id
     validates_numericality_of :width, greater_than_or_equal_to: 0, allow_nil: true
     validates_numericality_of :height, greater_than_or_equal_to: 0, allow_nil: true
+    validates_numericality_of :z_index, allow_nil: false
 
     scope :ordered_by_scroll_start, joins: [ :start_state_keyframe ], order: 'flms_keyframes.scroll_start'
 
@@ -76,6 +77,7 @@ module Flms
 
   protected
 
+    # Set default values for this type of layer. Override this method in subclasses to customize.
     def set_defaults
       self.width ||= 0.20
       self.height ||= 0.20
