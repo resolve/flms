@@ -22,5 +22,9 @@ FactoryGirl.define do
       header    { Faker::Lorem.sentence(4) }
       body      { Faker::Lorem.sentence(10) }
     end
+
+    factory :video_layer, class: Flms::VideoLayer do
+      embed_code       { Faker::Internet.url }
+    end
   end
 end

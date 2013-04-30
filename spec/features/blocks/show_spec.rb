@@ -15,4 +15,3 @@ feature 'Blocks > Show' do
     expect(page).to have_content 'Z-Index'
   end
 end
-

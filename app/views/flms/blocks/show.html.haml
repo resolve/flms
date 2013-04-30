@@ -41,14 +41,21 @@
 = link_to new_page_block_image_layer_path(@page, @block), class: 'btn btn-success' do
   %i.icon-plus.icon-white
   Add Image Layer
+%br
 
 = link_to new_page_block_text_layer_path(@page, @block), class: 'btn btn-success' do
   %i.icon-plus.icon-white
   Add Text Layer
+%br
 
 = link_to new_page_block_paragraph_layer_path(@page, @block), class: 'btn btn-success' do
   %i.icon-plus.icon-white
   Add Paragraph Layer
+%br
+
+= link_to new_page_block_video_layer_path(@page, @block), class: 'btn btn-success' do
+  %i.icon-plus.icon-white
+  Add Video Layer
 
 %button#save.btn.btn-primary
   %i.icon-hdd.icon-white
