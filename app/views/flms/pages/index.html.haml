@@ -10,7 +10,7 @@
   %tbody
     - @pages.each do |page|
       %tr
-        %td= link_to page.title, page_blocks_path(page)
+        %td= page.title #link_to page.title, page_blocks_path(page)
         %td
           = link_to 'edit', edit_page_path(page), class: 'btn'
           = link_to 'preview', page_path(page), class: 'btn'

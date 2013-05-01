@@ -1,3 +1,4 @@
-.login.container
-  = render partial: 'form', locals: { caption: "Editing '#{@page.title}'" }
-
+= render partial: 'form', locals: { caption: "Editing '#{@page.title}'" }
+= render partial: 'block_list'
+%br
+= render partial: 'add_block'

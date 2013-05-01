@@ -21,11 +21,16 @@
             %a{href: "/flms"}
               %d.icon-home
               Home
-          - clazz = ['flms/pages', 'flms/blocks'].include?(params[:controller]) ? 'active' : ''
+          - clazz = params[:controller] == 'flms/pages' ? 'active' : ''
           %li{class: clazz}
             %a{href: "/flms/pages"}
               %i.icon-book
               Pages
+          - clazz = params[:controller] == 'flms/blocks' ? 'active' : ''
+          %li{class: clazz}
+            %a{href: "/flms/blocks"}
+              %i.icon-th-large
+              Blocks
           - clazz = params[:controller] == 'flms/users' ? 'active' : ''
           %li{class: clazz}
             %a{href: "/flms/users"}

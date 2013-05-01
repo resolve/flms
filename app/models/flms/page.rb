@@ -1,6 +1,6 @@
 module Flms
   class Page < ActiveRecord::Base
-    attr_accessible :title, :url
+    attr_accessible :title, :url, :block_ids
 
     has_many :blocks_pages, dependent: :destroy
     has_many :blocks, through: :blocks_pages

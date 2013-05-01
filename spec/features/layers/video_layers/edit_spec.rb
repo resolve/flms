@@ -7,7 +7,7 @@ feature 'VideoLayers > Edit', js: true do
     video_layer_1a1
 
     capybara_sign_in user_1
-    visit "/flms/pages/#{page_1.url}/blocks/#{block_1a.id}"
+    visit "/flms/blocks/#{block_1a.id}/edit"
 
     # click on the 'edit' button.
     click_link "edit-layer-#{video_layer_1a1.id}"
@@ -17,8 +17,8 @@ feature 'VideoLayers > Edit', js: true do
 
     click_button 'Update Video layer'
 
-    # Expect to be back at the block page.
-    expect(current_path).to eql "/flms/pages/#{page_1.url}/blocks/#{block_1a.id}"
+    # Expect to be back at the block edit page.
+    expect(current_path).to eql "/flms/blocks/#{block_1a.id}/edit"
 
     # Check database updates.
     expect(Flms::Layer).to have(1).instances

@@ -23,6 +23,7 @@ module Flms
     end
 
     def edit
+      @available_blocks = Block.all - @page.blocks
     end
 
     def create
@@ -47,10 +48,32 @@ module Flms
       redirect_to pages_url
     end
 
-    protected
+    def add_block
+      @block = Block.find_by_id(params[:block][:id]) || raise(ActionController::RoutingError.new('Block Not Found'))
+      @page.blocks << @block
+      redirect_to edit_page_path(@page), notice: 'Block added.'
+    end
+
+    def remove_block
+      @block = Block.find_by_id(params[:block_id]) || raise(ActionController::RoutingError.new('Block Not Found'))
+      @page.blocks.delete @block
+      redirect_to edit_page_path(@page), notice: 'Block removed.'
+    end
+
+    def update_blocks
+      params[:block_data].each_with_index do |block_data, pos|
+        position = @page.position_for_block block_data[:id].to_i
+        position.active = block_data[:active]
+        position.ordering = pos
+        position.save!
+      end
+      render text: ''
+    end
+
+  protected
 
     def load_page
-      @page = Page.find_by_url(params[:id]) || raise(ActionController::RoutingError.new('Page Not Found'))
+      @page = Page.find_by_url(params[:id]) || Page.find_by_url(params[:page_id]) || raise(ActionController::RoutingError.new('Page Not Found'))
     end
 
     def resolve_layout

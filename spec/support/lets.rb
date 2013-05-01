@@ -7,14 +7,14 @@ module NamedFactories
     let(:user_2) { create :user }
     let(:page_1) { create :page }
     let(:page_2) { create :page }
-    let(:block) { create :block }
-    let(:block_1a) { block = create :block
+    let(:block) { create :block, name: 'block-unassigned' }
+    let(:block_1a) { block = create :block, name: 'block-1a'
                      block.blocks_pages.create page: page_1, ordering: 1, active: true
                      block }
-    let(:block_1b_inactive) { block = create :block
+    let(:block_1b_inactive) { block = create :block, name: 'block-1b-inactive'
                      block.blocks_pages.create page: page_1, ordering: 2
                      block }
-    let(:block_1c) { block = create :block
+    let(:block_1c) { block = create :block, name: 'block-1c'
                      block.blocks_pages.create page: page_1, ordering: 3, active: true
                      block }
     let(:layer_1a1) { create :layer, block: block_1a }
