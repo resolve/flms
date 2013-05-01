@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130426171058) do
+ActiveRecord::Schema.define(:version => 20130430224538) do
 
   create_table "flms_blocks", :force => true do |t|
     t.string   "name"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20130426171058) do
     t.string   "header"
     t.string   "body"
     t.string   "z_index",    :default => "0",  :null => false
+    t.string   "embed_code"
   end
 
   add_index "flms_layers", ["block_id"], :name => "index_flms_layers_on_block_id"
