@@ -23,6 +23,10 @@ describe Flms::Block do
     it 'returns the total scroll duration for the block' do
       expect(block.scroll_duration).to eql 302
     end
+
+    it 'returns 0 when the block has no layers' do
+      expect(subject.scroll_duration).to eql 0
+    end
   end
 end
 

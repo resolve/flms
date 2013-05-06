@@ -1,0 +1,12 @@
+- content_for :title do
+  = "#{ Flms.application_name } | #{ @block.name }"
+
+#pagescroller
+  #page
+    = render partial: 'flms/elements/block', locals: { block: @block, scroll_offset: 0 }
+
+= javascript_include_tag 'application.js'
+:javascript
+  $(document).ready(function(){
+    skrollr.init()
+  });

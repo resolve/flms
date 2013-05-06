@@ -1,7 +1,7 @@
 - content_for :title do
   = "#{ Flms.application_name } | #{ @page.title }"
 
-= render partial: 'page', locals: { page: @page }
+= render partial: 'flms/elements/page', locals: { page: @page }
 
 = javascript_include_tag 'application.js'
 :javascript

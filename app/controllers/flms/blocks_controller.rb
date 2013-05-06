@@ -3,14 +3,22 @@ require_dependency "flms/application_controller"
 module Flms
   class BlocksController < ApplicationController
     layout 'flms/admin'
-    before_filter :authenticate_user!
+    before_filter :authenticate_user!, except: [ :show ]
     before_filter :load_block, only: [:show, :edit, :update, :destroy]
+    layout :resolve_layout
 
     def index
       @blocks = Block.all
     end
 
     def show
+      respond_to do |format|
+        format.plain_html { render partial: 'flms/elements/block',
+                                   formats: [:html],
+                                   locals: { block: @block, scroll_offset: 0 } }
+        format.html
+        format.json { render json: @page }
+      end
     end
 
     def new
@@ -43,10 +51,15 @@ module Flms
       redirect_to blocks_path, notice: 'Block deleted'
     end
 
-    private
+  private
 
     def load_block
       @block = Block.find params[:id]
     end
+
+    def resolve_layout
+      action_name == 'show' ? 'flms/public' : 'flms/admin'
+    end
+
   end
 end

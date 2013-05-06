@@ -12,9 +12,9 @@ module Flms
     scope :ordered, order('ordering')
 
     # Return the total scroll duration for this block, taking in to account the fact that
-    # layers can and will overlap
+    # layers can and will overlap.  Return 0 if block has no layers.
     def scroll_duration
-      layers.map(&:scroll_end).max
+      layers.map(&:scroll_end).max || 0
     end
 
   end

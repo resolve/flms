@@ -1,0 +1,4 @@
+#pagescroller
+  #page
+    - page.blocks_to_display_with_offsets.each do |item|
+      = render partial: 'flms/elements/block', locals: { block: item[:block], scroll_offset: item[:scroll_offset] }
