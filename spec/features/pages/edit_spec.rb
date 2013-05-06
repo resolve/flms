@@ -59,8 +59,12 @@ feature 'Pages > Edit' do
     block_1c
     capybara_sign_in user_1
     visit "/flms/pages/#{page_1.url}/edit"
-    page.evaluate_script "$.getScript('https://raw.github.com/mattheworiordan/jquery.simulate.drag-sortable.js/master/jquery.simulate.drag-sortable.js', function () { " \
-      "$('[data-block-id=\"#{block_1a.id}\"]').simulateDragSortable({ move: 1 }); });"
+
+    drag_shim_url = 'https://raw.github.com/mattheworiordan/jquery.simulate.drag-sortable.js/master/jquery.simulate.drag-sortable.js'
+    page.evaluate_script "$.getScript( \"#{ drag_shim_url }\", function () { "\
+                         "$('[data-block-id=\"#{block_1a.id}\"]').simulateDragSortable({ move: 1 }); " \
+                         "});"
+
     sleep 0.1
     click_on 'save'
     sleep 0.1

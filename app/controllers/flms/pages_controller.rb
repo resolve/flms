@@ -49,13 +49,13 @@ module Flms
     end
 
     def add_block
-      @block = Block.find_by_id(params[:block][:id]) || raise(ActionController::RoutingError.new('Block Not Found'))
+      @block = Block.find params[:block][:id]
       @page.blocks << @block
       redirect_to edit_page_path(@page), notice: 'Block added.'
     end
 
     def remove_block
-      @block = Block.find_by_id(params[:block_id]) || raise(ActionController::RoutingError.new('Block Not Found'))
+      @block = Block.find params[:block_id]
       @page.blocks.delete @block
       redirect_to edit_page_path(@page), notice: 'Block removed.'
     end
