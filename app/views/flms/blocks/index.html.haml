@@ -18,7 +18,6 @@
           = link_to edit_block_path(block), class: 'btn', id: "edit-block-#{block.id}", title: 'edit' do
             %i.icon-pencil
 
-        %td.action
           = link_to block_path(block), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn', id: "delete-block-#{block.id}", title: 'delete' do
             %i.icon-trash
 
