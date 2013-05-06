@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130430224538) do
+ActiveRecord::Schema.define(:version => 20130506204547) do
 
   create_table "flms_blocks", :force => true do |t|
     t.string   "name"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(:version => 20130430224538) do
     t.float    "height"
     t.boolean  "dom_remove", :default => true
     t.string   "header"
-    t.string   "body"
+    t.text     "body"
     t.string   "z_index",    :default => "0",  :null => false
     t.string   "embed_code"
   end
