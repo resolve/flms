@@ -37,6 +37,17 @@ describe Flms::Layer do
         expect(layers[2]).to eql layer_0
       end
     end
+
+    describe 'is_active' do
+      let!(:active_layer) { create :layer, block: block_1a, active: true }
+      let!(:inactive_layer) { create :layer, block: block_1a, active: false }
+
+      it 'only filters out inactive layers' do
+        layers = block_1a.layers.is_active
+        expect(layers).not_to include inactive_layer
+        expect(layers).to include active_layer
+      end
+    end
   end
 
   describe 'view_object' do
