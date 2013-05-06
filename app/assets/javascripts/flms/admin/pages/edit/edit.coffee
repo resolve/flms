@@ -1,5 +1,5 @@
-# Page controller for the 'index' page for blocks.
-class @BlocksIndexPage extends modularity.Module
+# Page controller for the 'edit' screen for pages.
+class @PageEditPage extends modularity.Module
 
   constructor: ->
     super 'body'

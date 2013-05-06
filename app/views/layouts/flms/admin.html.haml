@@ -16,17 +16,22 @@
 
       .masthead
         %ul.nav.nav-pills.pull-right
-          - clazz = params[:controller] == 'flms/dashboard' ? 'active' : ''
+          - clazz = nav_active_class('flms/dashboard')
           %li{class: clazz}
             %a{href: "/flms"}
               %d.icon-home
               Home
-          - clazz = ['flms/pages', 'flms/blocks'].include?(params[:controller]) ? 'active' : ''
+          - clazz = nav_active_class('flms/pages')
           %li{class: clazz}
             %a{href: "/flms/pages"}
               %i.icon-book
               Pages
-          - clazz = params[:controller] == 'flms/users' ? 'active' : ''
+          - clazz = nav_active_class('flms/blocks')
+          %li{class: clazz}
+            %a{href: "/flms/blocks"}
+              %i.icon-th-large
+              Blocks
+          - clazz = nav_active_class('flms/users')
           %li{class: clazz}
             %a{href: "/flms/users"}
               %i.icon-user

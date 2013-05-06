@@ -1,46 +1,29 @@
-- content_for :js do
-  :javascript
-    $(function() {
-      new BlocksIndexPage();
-    });
-
 %br
-%h4 Blocks on page '#{@page.url}'
+%h4 Blocks
 
 %table.table.table-striped.table-hover
   %thead
     %tr
-      %th Active
       %th Name
       %th Actions
 
   %tbody.block_list
-    - @page.ordered_blocks_pages.each do |blocks_page|
-      - block = blocks_page.block
+    - @blocks.each do |block|
       %tr.ui-state-default{'data-block-id' => block.id}
 
-        -# "Active" switch.
-        %td.action
-          .switch.switch-mini
-            - if blocks_page.active
-              %input{id: "active_#{block.id}", type: 'checkbox', checked: 'checked'}
-            - else
-              %input{id: "active_#{block.id}", type: 'checkbox'}
-
         %td.name
-          = link_to block.name, page_block_path(@page, block)
+          = block.name
 
         %td.action
-          = link_to edit_page_block_path(@page, block), class: 'btn', title: 'edit' do
+          = link_to edit_block_path(block), class: 'btn', id: "edit-block-#{block.id}", title: 'edit' do
             %i.icon-pencil
 
-        %td.action
-          = link_to page_block_path(@page, block), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn', title: 'delete' do
+          = link_to block_path(block), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn', id: "delete-block-#{block.id}", title: 'delete' do
             %i.icon-trash
 
 %br
 
-= link_to new_page_block_path(@page), class: 'btn btn-success' do
+= link_to new_block_path, class: 'btn btn-success' do
   %i.icon-plus.icon-white
   New Block
 

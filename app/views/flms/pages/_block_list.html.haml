@@ -1,0 +1,44 @@
+- content_for :js do
+  :javascript
+    $(function() {
+      new PageEditPage();
+    });
+
+%legend Blocks
+%table.table.table-striped.table-hover
+  %thead
+    %tr
+      %th Active
+      %th Name
+      %th Actions
+
+  %tbody.block_list
+    - @page.ordered_blocks_pages.each do |blocks_page|
+      - block = blocks_page.block
+      %tr.ui-state-default{'data-block-id' => block.id}
+
+        -# "Active" switch.
+        %td.action
+          .switch.switch-mini
+            - if blocks_page.active
+              %input{id: "active_#{block.id}", type: 'checkbox', checked: 'checked'}
+            - else
+              %input{id: "active_#{block.id}", type: 'checkbox'}
+
+        %td.name
+          = link_to block.name, edit_block_path(block)
+
+        %td.action
+          = link_to edit_block_path(block), class: 'btn', title: 'edit' do
+            %i.icon-pencil
+
+        %td.action
+          = link_to page_remove_block_path(@page, block_id: block.id), method: :delete, class: 'btn', id: "remove-block-#{block.id}", title: 'remove' do
+            %i.icon-remove
+
+%button#save.btn.btn-primary
+  %i.icon-hdd.icon-white
+  Save
+
+%br
+

@@ -17,4 +17,4 @@ class @BlockList extends modularity.Module
 
   # Called when the sorting is done.
   sorting_finished: =>
-    @fire 'sorting_finished'
+    @trigger 'sorting_finished'

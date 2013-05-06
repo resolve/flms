@@ -7,9 +7,9 @@ feature 'Blocks > Delete' do
     block_1a
 
     capybara_sign_in user_1
-    visit "/flms/pages/#{page_1.url}/blocks"
+    visit "/flms/blocks"
     page.evaluate_script 'window.confirm = function() { return true; }'
-    click_link 'delete'
+    click_link "delete-block-#{ block_1a.id }"
 
     expect(Flms::Block).to have(0).instances
   end

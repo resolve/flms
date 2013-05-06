@@ -1,0 +1,8 @@
+= form_for @page, url: page_add_block_path(@page), html: {class: 'form-horizontal'} do |f|
+  %fieldset
+    %legend
+    .control-group
+      = f.label :block, class: 'control-label'
+      .controls
+        = select :block, :id, @available_blocks.map { |b| [b.name, b.id] }
+        = f.submit 'Add', class: 'btn btn-primary'

@@ -1,3 +1,58 @@
-.login.container
-  = render partial: 'form', locals: {caption: 'Update block'}
+= render partial: 'form', locals: {caption: 'Update block'}
 
+%fieldset
+  %legend Layers in block '#{@block.name}'
+
+  %table.table.table-striped.table-hover
+    %thead
+      %tr
+        %th Name
+        %th Thumbnail
+        %th Starts
+        %th Ends
+        %th Z-Index
+        %th Actions
+
+    %tbody.layer_list
+      - @block.layers.ordered_by_scroll_start.each do |layer|
+        %tr.ui-state-default{'data-layer-id' => layer.id}
+
+          %td.name
+            = layer.name
+
+          %td.thumb
+            = image_tag layer.image.thumb.url if layer.image?
+
+          %td.starts
+            = layer.scroll_start
+
+          %td.ends
+            = layer.scroll_end
+
+          %td.z-index
+            = layer.z_index
+
+          %td.action
+            = link_to Flms::LayerViewObject.link_path_for(@block, layer), class: 'btn edit', id: "edit-layer-#{ layer.id }", title: 'edit' do
+              %i.icon-pencil
+
+            = link_to block_layer_path(@block, layer), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn delete', id: "delete-layer-#{ layer.id }", title: 'delete' do
+              %i.icon-trash
+
+  %br
+
+  = link_to new_block_image_layer_path(@block), class: 'btn btn-success' do
+    %i.icon-plus.icon-white
+    Add Image Layer
+
+  = link_to new_block_text_layer_path(@block), class: 'btn btn-success' do
+    %i.icon-plus.icon-white
+    Add Text Layer
+
+  = link_to new_block_paragraph_layer_path(@block), class: 'btn btn-success' do
+    %i.icon-plus.icon-white
+    Add Paragraph Layer
+
+  = link_to new_block_video_layer_path(@block), class: 'btn btn-success' do
+    %i.icon-plus.icon-white
+    Add Video Layer

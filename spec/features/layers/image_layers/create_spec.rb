@@ -5,14 +5,14 @@ feature 'ImageLayers > Create' do
 
   scenario 'creating a new image layer' do
     capybara_sign_in user_1
-    visit "/flms/pages/#{page_1.url}/blocks/#{block_1a.id}"
+    visit "/flms/blocks/#{block_1a.id}/edit"
     click_link 'Add Image Layer'
     fill_in 'Name', with: 'my-new-layer'
     fill_in 'Z index', with: '20'
     click_button 'Create Image layer'
 
-    # Expect to be back at the block page.
-    expect(current_path).to eql "/flms/pages/#{page_1.url}/blocks/#{block_1a.id}"
+    # Expect to be back at the block edit page.
+    expect(current_path).to eql "/flms/blocks/#{block_1a.id}/edit"
 
     # Expect that the layer is created.
     expect(Flms::Layer).to have(1).instances
