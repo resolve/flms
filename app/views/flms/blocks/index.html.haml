@@ -18,7 +18,10 @@
           = link_to edit_block_path(block), class: 'btn', id: "edit-block-#{block.id}", title: 'edit' do
             %i.icon-pencil
 
-          = link_to block_path(block), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn', id: "delete-block-#{block.id}", title: 'delete' do
+          = link_to block_path(block), class: 'btn', id: "show-block-#{block.id}", title: 'preview' do
+            %i.icon-eye-open
+
+          = link_to block_path(block), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', id: "delete-block-#{block.id}", title: 'delete' do
             %i.icon-trash
 
 %br

@@ -29,8 +29,14 @@ describe Flms::BlocksController do
   describe 'show' do
     describe 'access control' do
       let(:request) { get :show, id: block_1a.id, use_route: :flms }
-      it_should_behave_like 'an action accessible only to logged-in users'
+      it_should_behave_like 'an action accessible to the world'
     end
+
+    it 'renders without template when requested' do
+      get :show, id: block_1a.id, format: :plain_html, use_route: :flms
+      expect { response }.not_to render_template 'flms/public'
+    end
+
   end
 
   describe 'edit' do

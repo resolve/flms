@@ -7,21 +7,26 @@ describe Flms::LayerViewObject do
     let(:layer_view_object_with_image_layer) { Flms::LayerViewObject.new(create :image_layer) }
     let(:layer_view_object_with_text_layer) { Flms::LayerViewObject.new(create :text_layer) }
     let(:layer_view_object_with_paragraph_layer) { Flms::LayerViewObject.new(create :paragraph_layer) }
+    let(:layer_view_object_with_video_layer) { Flms::LayerViewObject.new(create :video_layer) }
 
     it "should return 'layer' for a Layer" do
-      expect(layer_view_object.view_partial_name).to eql 'layer'
+      expect(layer_view_object.view_partial_name).to eql 'flms/elements/layer'
     end
     
     it "should return 'image_layer' for an ImageLayer" do
-      expect(layer_view_object_with_image_layer.view_partial_name).to eql 'image_layer'
+      expect(layer_view_object_with_image_layer.view_partial_name).to eql 'flms/elements/image_layer'
     end
 
     it "should return 'text_layer' for a TextLayer" do
-      expect(layer_view_object_with_text_layer.view_partial_name).to eql 'text_layer'
+      expect(layer_view_object_with_text_layer.view_partial_name).to eql 'flms/elements/text_layer'
     end
 
     it "should return 'paragraph_layer' for a ParagraphLayer" do
-      expect(layer_view_object_with_paragraph_layer.view_partial_name).to eql 'paragraph_layer'
+      expect(layer_view_object_with_paragraph_layer.view_partial_name).to eql 'flms/elements/paragraph_layer'
+    end
+
+    it "should return 'video_layer' for a VideoLayer" do
+      expect(layer_view_object_with_video_layer.view_partial_name).to eql 'flms/elements/video_layer'
     end
   end
   

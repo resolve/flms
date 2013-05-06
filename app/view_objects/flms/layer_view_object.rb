@@ -9,7 +9,7 @@ module Flms
     end
 
     def view_partial_name
-      @layer.class.name.demodulize.underscore
+      "flms/elements/#{ @layer.class.name.demodulize.underscore }"
     end
 
     def self.link_path_for(block, layer)

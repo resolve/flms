@@ -12,7 +12,7 @@ module Flms
 
     def show
       respond_to do |format|
-        format.plain_html { render partial: 'page', formats: [:html]  }
+        format.plain_html { render partial: 'flms/elements/page', formats: [:html]  }
         format.html
         format.json { render json: @page }
       end
