@@ -13,9 +13,8 @@ module Flms
 
     def show
       respond_to do |format|
-        format.plain_html { render partial: 'flms/elements/block',
-                                   formats: [:html],
-                                   locals: { block: @block, scroll_offset: 0 } }
+        format.plain_html { with_format('html') { render partial: 'flms/elements/block',
+                                                         locals: { block: @block, scroll_offset: 0 } } }
         format.html
         format.json { render json: @page }
       end
