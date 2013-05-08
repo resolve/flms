@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(:version => 20130507222721) do
     t.string   "header"
     t.text     "body"
     t.string   "z_index",    :default => "0",  :null => false
-    t.text   "embed_code"
+    t.text     "embed_code"
     t.boolean  "active",     :default => true
   end
 
