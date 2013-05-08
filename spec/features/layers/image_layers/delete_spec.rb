@@ -20,4 +20,3 @@ feature 'ImageLayers > Delete', js: true do
     expect(Flms::Layer).to have(0).instances
   end
 end
-

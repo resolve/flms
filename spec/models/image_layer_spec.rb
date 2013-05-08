@@ -13,7 +13,7 @@ describe Flms::ImageLayer do
     let(:layer) { image_layer_1a1 }
 
     it 'has an attachment' do
-      expect(layer.image.path).to_not be_nil
+      expect(layer.image.path).to match 'placeholder.png'
     end
   end
 end
