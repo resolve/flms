@@ -1,6 +1,7 @@
 module Flms
   class ImageLayer < Layer
-    attr_accessible :image, :image_cache
+    attr_accessible :image, :image_cache,
+                    :image_width, :image_height
 
     mount_uploader :image, ImageUploader
     before_save :retain_geometry
@@ -18,10 +19,8 @@ module Flms
     def retain_geometry
       geometry = self.image.normal.geometry
       if geometry
-        # Use a reasonable guesstimate for window size to come up with a starting point
-        # for % width and height for the image based on it's resolution:
-        self.width = 900.0 / geometry[0]
-        self.height = 800.0 / geometry[1]
+        self.image_width = geometry[0]
+        self.image_height = geometry[1]
       end
     end
   end
