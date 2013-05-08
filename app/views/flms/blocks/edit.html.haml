@@ -18,7 +18,7 @@
         %tr.ui-state-default{'data-layer-id' => layer.id}
 
           %td.name
-            = layer.name
+            = "#{ layer.name } #{ layer.active ? '' : '(disabled)' }"
 
           %td.thumb
             = image_tag layer.image.thumb.url if layer.image?

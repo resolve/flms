@@ -3,6 +3,8 @@ require 'spec_helper'
 feature 'Blocks > Edit' do
   include NamedFactories
 
+  let(:inactive_layer) { create :layer, block: block_1a, active: false }
+
   scenario 'access edit page for a block' do
     block_1a
     capybara_sign_in user_1
@@ -27,6 +29,14 @@ feature 'Blocks > Edit' do
     capybara_sign_in user_1
     visit "/flms/blocks/#{block_1a.id}/edit"
     expect(page).to have_link "edit-layer-#{ layer_1a1.id }"
+  end
+
+  scenario 'inactive layers have UI indicator' do
+    block_1a
+    inactive_layer
+    capybara_sign_in user_1
+    visit "/flms/blocks/#{block_1a.id}/edit"
+    expect(page).to have_text "#{ inactive_layer.name } (disabled)"
   end
 end
 
