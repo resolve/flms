@@ -26,5 +26,13 @@ FactoryGirl.define do
     factory :video_layer, class: Flms::VideoLayer do
       embed_code       { Faker::Internet.url }
     end
+
+    factory :animation_layer, class: Flms::AnimationLayer do
+      image       { fixture_file_upload('spec/placeholder.png', 'image/png') }
+      frame_rate  10
+      frame_count 2
+      image_width 200
+      image_height 100
+    end
   end
 end

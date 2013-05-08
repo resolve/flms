@@ -6,6 +6,7 @@ Flms::Engine.routes.draw do
     resources :text_layers, except: [:index, :show, :destroy]
     resources :paragraph_layers, except: [:index, :show, :destroy]
     resources :video_layers, except: [:index, :show, :destroy]
+    resources :animation_layers, except: [:index, :show, :destroy]
   end
 
   resources :pages do

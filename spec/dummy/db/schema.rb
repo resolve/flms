@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130507222721) do
+ActiveRecord::Schema.define(:version => 20130508174355) do
 
   create_table "flms_blocks", :force => true do |t|
     t.string   "name"
@@ -53,20 +53,24 @@ ActiveRecord::Schema.define(:version => 20130507222721) do
     t.string   "name"
     t.integer  "block_id"
     t.string   "type"
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.string   "image"
     t.string   "text"
     t.float    "font_size"
     t.string   "color"
     t.float    "width"
     t.float    "height"
-    t.boolean  "dom_remove", :default => true
+    t.boolean  "dom_remove",   :default => true
     t.string   "header"
     t.text     "body"
-    t.string   "z_index",    :default => "0",  :null => false
+    t.string   "z_index",      :default => "0",  :null => false
     t.text     "embed_code"
-    t.boolean  "active",     :default => true
+    t.boolean  "active",       :default => true
+    t.integer  "frame_rate"
+    t.integer  "frame_count"
+    t.integer  "image_width"
+    t.integer  "image_height"
   end
 
   add_index "flms_layers", ["block_id"], :name => "index_flms_layers_on_block_id"

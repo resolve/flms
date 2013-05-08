@@ -1,0 +1,49 @@
+= form_for [@block, @layer], html: {class: 'form-horizontal'} do |f|
+  %fieldset
+    %legend= caption
+
+    - if @layer.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@layer.errors.count, "error")} prohibited this layer from being saved:"
+        %ul
+          - @layer.errors.full_messages.each do |msg|
+            %li= msg
+
+  = render partial: 'flms/layers/common_fields', locals: { form_block: f }
+
+  %fieldset
+    %legend
+      Animation Image
+    .control-group
+      = f.label :image, class: 'control-label'
+      .controls
+        = f.file_field :image
+        = f.hidden_field :image_cache
+        - if @layer.image?
+          .image-preview
+            = image_tag @layer.image.small.url
+            %br
+            = @layer.uploaded_filename
+
+    .control-group
+      = f.label :frame_rate, class: 'control-label'
+      .controls
+        .input-append
+          = f.text_field :frame_rate
+          %span.add-on pixels / frame
+
+    .control-group
+      = f.label :frame_count, class: 'control-label'
+      .controls
+        .input-append
+          = f.text_field :frame_count
+          %span.add-on frames
+
+  = render partial: 'flms/layers/keyframe_fields', locals: { form_block: f }
+
+  .control-group
+    .controls
+      .actions
+        = f.submit class: 'btn btn-primary'
+        &nbsp; &nbsp; &nbsp;
+        = link_to 'Cancel', edit_block_path(@block)
