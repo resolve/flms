@@ -16,6 +16,8 @@ feature 'ImageLayers > Edit', js: true do
     check 'Hide at end'
     check 'Active'
 
+    select 'contain', from: 'image_layer_image_display_mode'
+
     fill_in 'image_layer_start_state_keyframe_attributes_scroll_start', with: 1
     fill_in 'image_layer_start_state_keyframe_attributes_scroll_duration', with: '2'
     fill_in 'image_layer_start_state_keyframe_attributes_opacity_percent', with: '50'

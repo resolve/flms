@@ -1,7 +1,11 @@
 module Flms
   class ImageLayer < Layer
-    attr_accessible :image, :image_cache,
+    attr_accessible :image, :image_cache, :image_display_mode,
                     :image_width, :image_height
+
+    IMAGE_DISPLAY_MODES = %w(contain cover)
+
+    validates_inclusion_of :image_display_mode, in: IMAGE_DISPLAY_MODES
 
     mount_uploader :image, ImageUploader
     before_save :retain_geometry
