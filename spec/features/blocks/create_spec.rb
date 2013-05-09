@@ -8,9 +8,12 @@ feature 'Blocks > Create' do
     visit "/flms/blocks"
     click_link 'New Block'
     fill_in 'Name', with: 'my-new-block'
+    attach_file 'Thumbnail', 'spec/placeholder.png'
+
     click_button 'Create Block'
 
     expect(Flms::Block).to have(1).instances
     expect(Flms::Block.first.name).to eql 'my-new-block'
+    expect(Flms::Block.first.thumbnail).not_to be nil
   end
 end

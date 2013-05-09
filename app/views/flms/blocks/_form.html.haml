@@ -16,6 +16,16 @@
         %span.help-inline The internal name of this block.
 
     .control-group
+      = f.label :thumbnail, class: 'control-label'
+      .controls
+        = f.file_field :thumbnail
+        - if @block.thumbnail?
+          .image-preview
+            = image_tag @block.thumbnail.small.url
+            %br
+            = @block.thumbnail_uploaded_filename
+
+    .control-group
       .controls
         .actions
           = f.submit class: 'btn btn-primary'
