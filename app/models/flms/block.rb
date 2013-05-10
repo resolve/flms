@@ -1,10 +1,12 @@
 module Flms
   class Block < ActiveRecord::Base
-    attr_accessible :name
+    attr_accessible :name, :thumbnail
 
     has_many :blocks_pages, class_name: 'Flms::BlocksPage', dependent: :destroy
     has_many :pages, through: :blocks_pages, class_name: 'Flms::Page'
     has_many :layers
+
+    mount_uploader :thumbnail, ThumbnailImageUploader
 
     validates :name, presence: true
     validates :name, :'flms/css_name' => true
@@ -16,6 +18,10 @@ module Flms
     def scroll_duration
       layers.map(&:scroll_end).max || 0
     end
+
+  def thumbnail_uploaded_filename
+    File.basename(thumbnail.path) if thumbnail?
+  end
 
   end
 end

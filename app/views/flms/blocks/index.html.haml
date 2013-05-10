@@ -4,12 +4,17 @@
 %table.table.table-striped.table-hover
   %thead
     %tr
+      %th Thumbnail
       %th Name
       %th Actions
 
   %tbody.block_list
     - @blocks.each do |block|
       %tr.ui-state-default{'data-block-id' => block.id}
+
+        %th.thumb
+          - if block.thumbnail?
+            = image_tag block.thumbnail.thumb.url
 
         %td.name
           = block.name
