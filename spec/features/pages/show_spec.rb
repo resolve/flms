@@ -17,4 +17,13 @@ feature 'Pages > Show' do
     expect(page).to have_selector ".block\##{block_1c.name}"
   end
 
+  scenario 'shows the page and includes an unordered list with nav items' do
+    page_1
+    image_layer_1a1
+    image_layer_1c1
+    visit "/flms/pages/#{page_1.url}"
+    expect(page).to have_selector "a\##{ block_1a.name }"
+    expect(page).to have_selector "a\##{ block_1c.name }"
+  end
+
 end
