@@ -2,3 +2,10 @@
   #page
     - page.blocks_to_display_with_offsets.each do |item|
       = render partial: 'flms/elements/block', locals: { block: item[:block], scroll_offset: item[:scroll_offset] }
+
+  #blocknav
+    %ul
+      - page.blocks_to_display_with_offsets.each do |item|
+        %li
+          .thumb= image_tag item[:block].thumbnail.thumb.url if item[:block].thumbnail?
+          %a{ href: "\##{ item[:block].name }", id: "#{ item[:block].name }", data: { scrollpos: item[:scroll_offset] } }= "#{item[:block].name}"
