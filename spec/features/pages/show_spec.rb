@@ -25,7 +25,8 @@ feature 'Pages > Show' do
     expect(page).to have_selector "li\##{ block_1a.name }"
     expect(page).to have_selector ".name\##{ block_1a.name }"
     expect(page).to have_selector "a\##{ block_1a.name }"
-    expect(page).to have_selector "a\##{ block_1c.name }"
+    expect(page).to have_content block_1a.title
+    expect(page).to have_content block_1c.title
   end
 
 end

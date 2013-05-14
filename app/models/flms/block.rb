@@ -1,6 +1,6 @@
 module Flms
   class Block < ActiveRecord::Base
-    attr_accessible :name, :thumbnail
+    attr_accessible :name, :title, :thumbnail
 
     has_many :blocks_pages, class_name: 'Flms::BlocksPage', dependent: :destroy
     has_many :pages, through: :blocks_pages, class_name: 'Flms::Page'
