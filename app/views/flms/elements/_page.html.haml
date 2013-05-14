@@ -7,7 +7,6 @@
     %ul
       - page.blocks_to_display_with_offsets.each do |item|
         %li
-          - thumbstyle = item[:block].thumbnail? ? "background-image: url(#{ item[:block].thumbnail.thumb.url })" : ''
-          .thumb{ id: item[:block].name, style: thumbstyle }
+          .thumb{ id: item[:block].name, style: block_thumbnail_div_background_style(item[:block]) }
           .name{ id: item[:block].name }= item[:block].name
           %a{ href: "\##{ item[:block].name }", id: item[:block].name, data: { scrollpos: item[:scroll_offset] } }

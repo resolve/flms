@@ -25,7 +25,6 @@ feature 'Pages > Show' do
     expect(page).to have_selector ".thumb\##{ block_1a.name }"
     expect(page).to have_selector ".name\##{ block_1a.name }"
     expect(page).to have_selector "a\##{ block_1a.name }"
-
     expect(page).to have_selector "a\##{ block_1c.name }"
   end
 
