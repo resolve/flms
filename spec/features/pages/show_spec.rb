@@ -22,7 +22,10 @@ feature 'Pages > Show' do
     image_layer_1a1
     image_layer_1c1
     visit "/flms/pages/#{page_1.url}"
+    expect(page).to have_selector ".thumb\##{ block_1a.name }"
+    expect(page).to have_selector ".name\##{ block_1a.name }"
     expect(page).to have_selector "a\##{ block_1a.name }"
+
     expect(page).to have_selector "a\##{ block_1c.name }"
   end
 
