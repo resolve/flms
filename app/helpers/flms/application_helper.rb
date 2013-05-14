@@ -10,7 +10,7 @@ module Flms
     # Get a background-image style for the specified block.
     # If the block doesn't have a thumbnail, return an empty string.
     def block_thumbnail_div_background_style block
-      block.thumbnail? ? "background-image: url(#{ block.thumbnail.thumb.url })" : ''
+      block.thumbnail? ? "background-image: url(#{ block.thumbnail.small.url })" : ''
     end
 
   end
