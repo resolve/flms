@@ -13,7 +13,13 @@
       = f.label :name, class: 'control-label'
       .controls
         = f.text_field :name, autofocus: true
-        %span.help-inline The internal name of this block.
+        %span.help-inline The internal name of this block. (Must be a valid CSS name.)
+
+    .control-group
+      = f.label :title, class: 'control-label'
+      .controls
+        = f.text_field :title
+        %span.help-inline The 'pretty' title of the block used externally.
 
     .control-group
       = f.label :thumbnail, class: 'control-label'
