@@ -14,6 +14,7 @@ module Flms
     def show
       respond_to do |format|
         format.plain_html { with_format('html') { render partial: 'flms/elements/block',
+                                                         layout: 'flms/plain_styling',
                                                          locals: { block: @block, scroll_offset: 0 } } }
         format.html
         format.json { render json: @page }

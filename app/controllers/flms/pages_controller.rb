@@ -13,6 +13,7 @@ module Flms
     def show
       respond_to do |format|
         format.plain_html { with_format('html') { render partial: 'flms/elements/page', formats: [:html],
+                                                         layout: 'flms/plain_styling',
                                                          locals: { page: @page } } }
         format.html
         format.json { render json: @page }
