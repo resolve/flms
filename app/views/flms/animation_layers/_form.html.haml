@@ -43,7 +43,7 @@
       = f.label :image_display_mode, class: 'control-label'
       .controls
         .input-append
-          = f.select :image_display_mode, Flms::AnimationLayer::IMAGE_DISPLAY_MODES
+          = f.select :image_display_mode, Flms::Layer::IMAGE_DISPLAY_MODES
 
 
   = render partial: 'flms/layers/keyframe_fields', locals: { form_block: f }

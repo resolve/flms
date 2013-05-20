@@ -8,9 +8,7 @@ module Flms
     mount_uploader :image, ImageUploader
     before_save :retain_geometry
 
-    IMAGE_DISPLAY_MODES = %w(contain cover)
-
-    validates_inclusion_of :image_display_mode, in: IMAGE_DISPLAY_MODES
+    validates_inclusion_of :image_display_mode, in: Flms::Layer::IMAGE_DISPLAY_MODES
     validates_numericality_of :frame_count, greater_than_or_equal_to: 1
     validates_numericality_of :frame_rate, greater_than_or_equal_to: 1
 
