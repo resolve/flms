@@ -76,5 +76,5 @@ TBA
 Credits
 =======
 
-FLMS is brought to you by the fine folks at [Originate](www.originate.com), and is distributed under the MIT-LICENSE.
+FLMS is brought to you by the fine folks at [Originate](http://www.originate.com), and is distributed under the MIT-LICENSE.
 Thanks of course due to Alexander Prinzhorn and the team behind the Skrollr library, on top of which this project is built.
