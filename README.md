@@ -1,9 +1,9 @@
 = Flms [![Build Status](https://travis-ci.org/Originate-Inc/flms.png?branch=travis)](https://travis-ci.org/Originate-Inc/flms) [![Code Climate](https://codeclimate.com/github/Originate-Inc/flms.png)](https://codeclimate.com/github/Originate-Inc/flms) [![Coverage Status](https://coveralls.io/repos/Originate/flms/badge.png?branch=master)](https://coveralls.io/r/Originate/flms) [![Dependency Status](https://gemnasium.com/Originate/flms.png)](https://gemnasium.com/Originate/flms)
 
-FLMS: The Fluid Motion CMS
-==========================
+FLMS: the Floating Layer Management System
+==========================================
 
-FLMS is a Rails Engine that lets you create rich, animated, parallax-scrolling pages in your Rails website via a simple and easy-to-use CMS backend.  It is essentially a CMS for creating content to be animated by the excellent [skrollr.js library](https://github.com/Prinzhorn/skrollr), which is included in the plugin.
+FLMS is a CMS for web pages that use interactive layers to present animated content.  Essentially, it is an easy way to leverage the excellent [skrollr.js library](https://github.com/Prinzhorn/skrollr), included in this plugin. Creating the numerous data-xxxx styling tags to animate skrollr content gets tedious quickly, so FLMS automates the task.
 
 Via the CMS, users can create 'layers' containing various types of rich content:
 * Basic images (uploader included)
