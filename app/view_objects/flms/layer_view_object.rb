@@ -24,7 +24,7 @@ module Flms
     # Generate a hash of data to be provided to skrollr that describes the keyframe animation for this layer
     def keyframe_data_hash(scroll_offset = 0)
       data = { }
-      data['data-anchor-target'] = '#pagescroller'
+      data['data-anchor-target'] = '#skrollr-body'
       data[:style] = "z-index: #{ @layer.z_index };"
 
       initial_pos = calculate_scroll_position(:initial, scroll_offset)
