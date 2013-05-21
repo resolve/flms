@@ -27,6 +27,8 @@ module Flms
 
     after_initialize :set_defaults
 
+    IMAGE_DISPLAY_MODES = %w(contain cover)
+
     def view_object
       @view_object ||= Flms::LayerViewObject.new(self)
     end

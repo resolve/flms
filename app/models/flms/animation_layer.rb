@@ -2,11 +2,13 @@ module Flms
   class AnimationLayer < Layer
     attr_accessible :image, :image_cache,
                     :frame_count, :frame_rate,
-                    :image_width, :image_height
+                    :image_width, :image_height,
+                    :image_display_mode
 
     mount_uploader :image, ImageUploader
     before_save :retain_geometry
 
+    validates_inclusion_of :image_display_mode, in: Flms::Layer::IMAGE_DISPLAY_MODES
     validates_numericality_of :frame_count, greater_than_or_equal_to: 1
     validates_numericality_of :frame_rate, greater_than_or_equal_to: 1
 

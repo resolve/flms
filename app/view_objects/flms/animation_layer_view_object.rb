@@ -19,7 +19,7 @@ module Flms
         data["data-#{ frame_pixel_end(frame_index, scroll_offset) }"] = "background-position: 0 #{ y_offset }px;"
       end
       data[:style] = "width: #{ @layer.image_width }px; height: #{ frame_sprite_height }px;" \
-                     "background-image: url(#{ src });"
+                     "background-image: url(#{ src }); background-size: #{ @layer.image_display_mode };"
       data
     end
 
