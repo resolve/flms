@@ -40,7 +40,7 @@ describe Flms::LayerViewObject do
     let(:data) { view_object.keyframe_data_hash(1) }
 
     it 'anchors to correct target' do
-      expect(data['data-anchor-target']).to eql '#pagescroller'
+      expect(data['data-anchor-target']).to eql '#skrollr-body'
     end
 
     it 'styles z-index' do

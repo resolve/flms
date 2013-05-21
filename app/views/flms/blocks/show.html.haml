@@ -1,7 +1,7 @@
 - content_for :title do
   = "#{ Flms.application_name } | #{ @block.name }"
 
-#pagescroller
+#skrollr-body
   #page
     = render partial: 'flms/elements/block', locals: { block: @block, scroll_offset: 0 }
 
