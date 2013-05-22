@@ -39,7 +39,7 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include CapybaraHelpers
 
-  DatabaseCleaner.strategy = :deletion
+  DatabaseCleaner.strategy = :truncation
 
   config.before(:suite) do
     DatabaseCleaner.clean_with :deletion
