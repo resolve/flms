@@ -12,10 +12,13 @@ class CreateFlmsKeyframes < ActiveRecord::Migration
       t.float     :height
       t.float     :position_x
       t.float     :position_y
+      t.float     :margin_left, default: 0, nil: false
+      t.float     :margin_top, default: 0, nil: false
 
       t.float     :opacity
       t.float     :scale
       t.float     :blur
+
     end
   end
 end
