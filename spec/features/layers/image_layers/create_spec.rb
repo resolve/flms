@@ -22,4 +22,5 @@ feature 'ImageLayers > Create' do
     expect(layer.name).to eql 'my-new-layer'
     expect(layer.z_index).to eql '20'
   end
+
 end

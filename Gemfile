@@ -14,6 +14,3 @@ gem 'coveralls', require: false
 # your gemspec. These might include edge Rails or gems from your path or
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
-
-# Use a fork compatible with latest active_model_serializers for our test matchers:
-gem 'active_model_serializers-matchers', git: 'git://github.com/pjambet/active_model_serializers-matchers.git'
