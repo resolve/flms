@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130514202128) do
+ActiveRecord::Schema.define(:version => 20130327183815) do
 
   create_table "flms_blocks", :force => true do |t|
     t.string   "name"
+    t.string   "title"
+    t.string   "thumbnail"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "thumbnail"
-    t.string   "title"
   end
 
   create_table "flms_blocks_pages", :force => true do |t|
@@ -44,36 +44,36 @@ ActiveRecord::Schema.define(:version => 20130514202128) do
     t.float    "height"
     t.float    "position_x"
     t.float    "position_y"
+    t.float    "margin_left",     :default => 0.0, :null => false
+    t.float    "margin_top",      :default => 0.0, :null => false
     t.float    "opacity"
     t.float    "scale"
     t.float    "blur"
-    t.float    "margin_left",     :default => 0.0
-    t.float    "margin_top",      :default => 0.0
   end
 
   create_table "flms_layers", :force => true do |t|
     t.string   "name"
-    t.integer  "block_id"
     t.string   "type"
-    t.datetime "created_at",                              :null => false
-    t.datetime "updated_at",                              :null => false
+    t.integer  "block_id"
+    t.float    "width"
+    t.float    "height"
+    t.string   "z_index",            :default => "0",     :null => false
+    t.string   "image_display_mode", :default => "cover"
+    t.boolean  "dom_remove",         :default => true,    :null => false
+    t.boolean  "active",             :default => true
     t.string   "image"
     t.string   "text"
     t.float    "font_size"
     t.string   "color"
-    t.float    "width"
-    t.float    "height"
-    t.boolean  "dom_remove",         :default => true
     t.string   "header"
     t.text     "body"
-    t.string   "z_index",            :default => "0",     :null => false
     t.text     "embed_code"
-    t.boolean  "active",             :default => true
     t.integer  "frame_rate"
     t.integer  "frame_count"
     t.integer  "image_width"
     t.integer  "image_height"
-    t.string   "image_display_mode", :default => "cover"
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
   end
 
   add_index "flms_layers", ["block_id"], :name => "index_flms_layers_on_block_id"

@@ -1,4 +1,4 @@
-class CreateFlmsBlocksPages < ActiveRecord::Migration
+class FlmsCreateBlocksPages < ActiveRecord::Migration
   def change
     create_table :flms_blocks_pages do |t|
       t.integer :block_id
