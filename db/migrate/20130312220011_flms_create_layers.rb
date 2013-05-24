@@ -1,4 +1,4 @@
-class CreateFlmsLayers < ActiveRecord::Migration
+class FlmsCreateLayers < ActiveRecord::Migration
   def change
     create_table :flms_layers do |t|
       t.string    :name

@@ -1,4 +1,4 @@
-class CreateFlmsKeyframes < ActiveRecord::Migration
+class FlmsCreateKeyframes < ActiveRecord::Migration
   def change
     create_table :flms_keyframes do |t|
       t.timestamps
