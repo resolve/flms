@@ -8,7 +8,7 @@ class CreateFlmsLayers < ActiveRecord::Migration
       t.float     :height
       t.string    :z_index, default: '0', null: false
       t.string    :image_display_mode, default: 'cover'
-      t.boolean   :dom_remove, default: true, nil: false
+      t.boolean   :dom_remove, default: true, null: false
       t.boolean   :active, default: true
 
       # Image layer attributes
