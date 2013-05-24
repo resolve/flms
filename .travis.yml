@@ -10,6 +10,7 @@ before_install:
 
 before_script:
   - bundle install
+  - rake app:db:drop
   - rake app:db:create
   - rake app:db:migrate
   - rake app:db:test:prepare
