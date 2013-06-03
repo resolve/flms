@@ -21,6 +21,10 @@ namespace :flms do
 
     puts "User #{args.email} created."
   end
+  
+  task :convert_video_to_embed => :environment do 
+      Flms::EmbedLayer.update_all("type = 'embed'","type = 'video'")
+  end
 end
 
 

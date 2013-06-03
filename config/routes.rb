@@ -5,7 +5,7 @@ Flms::Engine.routes.draw do
     resources :image_layers, except: [:index, :show, :destroy]
     resources :text_layers, except: [:index, :show, :destroy]
     resources :paragraph_layers, except: [:index, :show, :destroy]
-    resources :video_layers, except: [:index, :show, :destroy]
+    resources :embed_layers, except: [:index, :show, :destroy]
     resources :animation_layers, except: [:index, :show, :destroy]
   end
 

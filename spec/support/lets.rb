@@ -25,7 +25,7 @@ module NamedFactories
     let(:image_layer_1c1) { create :image_layer, block: block_1c }
     let(:text_layer_1a1) { create :text_layer, block: block_1a }
     let(:paragraph_layer_1a1) { create :paragraph_layer, block: block_1a }
-    let(:video_layer_1a1) { create :video_layer, block: block_1a }
+    let(:embed_layer_1a1) { create :embed_layer, block: block_1a }
     let(:animation_layer_1a1) { create :animation_layer, block: block_1a }
 
     let(:default_access_granted_check) { response.success? }
