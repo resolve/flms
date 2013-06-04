@@ -23,7 +23,7 @@ namespace :flms do
   end
   
   task :convert_video_to_embed => :environment do 
-      Flms::EmbedLayer.update_all("type = 'embed'","type = 'video'")
+      Flms::Layer.update_all("type = 'Flms::EmbedLayer'", "type = 'Flms::VideoLayer'")
   end
 end
 
