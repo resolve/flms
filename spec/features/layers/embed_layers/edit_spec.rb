@@ -1,21 +1,21 @@
 require 'spec_helper'
 
-feature 'VideoLayers > Edit', js: true do
+feature 'EmbedLayers > Edit', js: true do
   include NamedFactories
 
-  scenario 'editing an existing video layer' do
-    video_layer_1a1
+  scenario 'editing an existing embed layer' do
+    embed_layer_1a1
 
     capybara_sign_in user_1
     visit "/flms/blocks/#{block_1a.id}/edit"
 
     # click on the 'edit' button.
-    click_link "edit-layer-#{video_layer_1a1.id}"
+    click_link "edit-layer-#{embed_layer_1a1.id}"
 
     fill_in 'Name', with: 'new-layer-name'
     fill_in 'Embed code', with: 'a-new-embed-code'
 
-    click_button 'Update Video layer'
+    click_button 'Update Embed layer'
 
     # Expect to be back at the block edit page.
     expect(current_path).to eql "/flms/blocks/#{block_1a.id}/edit"

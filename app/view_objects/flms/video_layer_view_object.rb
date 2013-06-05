@@ -1,5 +1,5 @@
 module Flms
-  class VideoLayerViewObject < Flms::LayerViewObject
+  class EmbedLayerViewObject < Flms::LayerViewObject
 
     def embed_code
       @layer.embed_code
