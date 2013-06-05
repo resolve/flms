@@ -41,7 +41,7 @@ module Flms
       data["data-#{target_start_pos}"] = target_view_object.styles(style_data_for_keyframes)
       data["data-#{target_end_pos}"] = target_view_object.styles(style_data_for_keyframes)
       data["data-#{final_pos}"] = end_view_object.styles(style_data_for_keyframes)
-      data["data-#{final_pos + 1}"] = 'display:none;' if @layer.dom_remove
+      data["data-#{final_pos + 1}"] = 'display:none; opacity: 0;' if @layer.dom_remove
 
       data
     end
