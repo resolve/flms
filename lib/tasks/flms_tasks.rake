@@ -1,3 +1,5 @@
+require 'io/console'
+
 namespace :flms do
 
   desc 'Creates a user account'
@@ -11,15 +13,19 @@ namespace :flms do
 
     # Read the password from the command line.
     print "Please enter the password for the new user: "
-    password = STDIN.gets.chomp
+    password = STDIN.noecho(&:gets).chomp
+    puts
 
     # Get user.
-    unless Flms::User.create email: args.email, password: password, password_confirmation: password
+    begin
+      Flms::User.create! email: args.email, password: password, password_confirmation: password
+    rescue => e
       puts "Error: user with email '#{args.email}' could not be created."
-      exit
+      puts e.message
+    else
+      puts "User #{args.email} created."
     end
 
-    puts "User #{args.email} created."
   end
 
   desc 'Update layers in DB from video to embed layer naming'
