@@ -16,7 +16,7 @@ module Flms
       link_path = Flms::Engine.routes.url_helpers.edit_block_image_layer_path(block, layer) if layer.is_a? Flms::ImageLayer
       link_path = Flms::Engine.routes.url_helpers.edit_block_text_layer_path(block, layer) if layer.is_a? Flms::TextLayer
       link_path = Flms::Engine.routes.url_helpers.edit_block_paragraph_layer_path(block, layer) if layer.is_a? Flms::ParagraphLayer
-      link_path = Flms::Engine.routes.url_helpers.edit_block_video_layer_path(block, layer) if layer.is_a? Flms::VideoLayer
+      link_path = Flms::Engine.routes.url_helpers.edit_block_embed_layer_path(block, layer) if layer.is_a? Flms::EmbedLayer
       link_path = Flms::Engine.routes.url_helpers.edit_block_animation_layer_path(block, layer) if layer.is_a? Flms::AnimationLayer
       link_path
     end
