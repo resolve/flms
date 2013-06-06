@@ -8,6 +8,7 @@ namespace :flms do
     # Check params.
     unless args.email
       puts "Error: parameter 'email' not provided."
+      puts "usage: rake flms:create_user[YourEmailAddressHere@example.com]"
       exit
     end
 
