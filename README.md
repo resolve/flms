@@ -18,13 +18,16 @@ Setup
 -----
 
 Install the engine in your Rails app:
+
     gem install flms
 
 Install FLMS-related migrations to the host app and run them:
+
     rake flms:install:migrations
     rake db:migrate
 
 Create a user:
+
     rake flms:create_user[YourEmailAddressHere@example.com]
 
 ...start your rails server, and you can log in at 0.0.0.0:3000/flms/login.

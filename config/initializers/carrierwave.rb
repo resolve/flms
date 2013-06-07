@@ -5,6 +5,35 @@ unless Rails.env.test? or Rails.env.cucumber? or Rails.env.development?
   raise "Need to set S3_BUCKET, S3_ACCESS_KEY, and S3_SECRET_KEY in environment." if ENV['S3_BUCKET'] == nil || ENV['S3_ACCESS_KEY'] == nil || ENV['S3_SECRET_KEY'] == nil
 end
 
+unless File.exists? "#{Rails.root}/config/s3.yml"
+  print %Q(
+           ERROR: NO config/s3.yml FOUND!
+           
+           FLMS relies on having Amazon S3 credentials to function correctly. Here is an example s3.yml file:
+           "
+           development:
+             bucket: YOUR_BUCKET_ID
+             access_key_id: YOUR_KEY_ID
+             secret_access_key: YOUR_SECRET_ACCESS_KEY
+
+           test:
+             bucket: YOUR_BUCKET_ID
+             access_key_id: YOUR_KEY_ID
+             secret_access_key: YOUR_SECRET_ACCESS_KEY
+
+           production:
+             bucket: YOUR_BUCKET_ID
+             access_key_id: YOUR_KEY_ID
+             secret_access_key: YOUR_SECRET_ACCESS_KEY
+             "
+
+             
+           For local development the filesystem is used instead of s3 but the file still must exist.
+
+)
+  exit 1
+end
+
 if Rails.env.development?
   s3_config = YAML.load_file "#{Rails.root}/config/s3.yml"
   S3_CREDENTIALS = { bucket: s3_config[Rails.env]['bucket'],
