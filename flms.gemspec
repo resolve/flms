@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.homepage    = 'https://github.com/Originate-Inc/flms'
   s.summary     = 'Floating Layer Management System'
   s.description = 'A CMS for web pages that use interactive layers to present animated content.'
+  s.license = 'MIT'
 
   s.files = Dir['{app,config,db,lib,vendor}/**/*'] + ['MIT-LICENSE', 'Rakefile', 'README.md']
   s.test_files = Dir['spec/**/*']
