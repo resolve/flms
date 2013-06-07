@@ -68,11 +68,6 @@ Pages provide a convenient endpoint for populating content into the host Rails a
 
     match '*id' => 'flms/pages#show'
 
-Technical
-=========
-
-TBA
-
 Credits
 =======
 
