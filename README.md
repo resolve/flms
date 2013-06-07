@@ -68,6 +68,31 @@ Pages provide a convenient endpoint for populating content into the host Rails a
 
     match '*id' => 'flms/pages#show'
 
+Customization
+==============
+
+You can customize the views and or assets of FLMS in your app with either of the following rake commands:
+
+    rake flms:generate:views
+
+or
+
+    rake flms:generate:assets
+
+These commands allow you to edit the styles and or views in your app.  Views will appear in 'app/views/flms', assets in 'app/assets/flms'.  When using assets remember to require the stylesheets in application.css with the following line:
+
+    *= require_directory ./flms
+
+To undo the generators use the respective commands as listed below:
+
+    rake flms:destroy:views
+
+or
+
+    rake flms:destroy:assets
+
+to remove the added views or assets from you application.
+
 Credits
 =======
 

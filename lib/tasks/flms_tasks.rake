@@ -1,5 +1,4 @@
 require 'io/console'
-
 namespace :flms do
 
   desc 'Creates a user account'
@@ -32,5 +31,36 @@ namespace :flms do
   desc 'Update layers in DB from video to embed layer naming'
   task :convert_video_to_embed => :environment do
       Flms::Layer.update_all("type = 'Flms::EmbedLayer'", "type = 'Flms::VideoLayer'")
+  end
+  
+  namespace :generate do
+    desc 'Generate FLMS views in app for additional modification'
+    task :views do
+      flms_view_dir = File.expand_path("../../../app/views/flms/*", __FILE__)
+      unless Dir.exists?("app/views/flms")
+        FileUtils.mkdir "app/views/flms"
+        FileUtils.cp_r Dir[flms_view_dir], "app/views/flms/"
+      end
+    end
+    
+    desc "Generate FLMS assets in app for additional modification"
+    task :assets do
+      flms_assets_dir = File.expand_path("../../../app/assets/stylesheets/*",__FILE__)
+      unless Dir.exists?("app/assets/stylesheets/flms")
+        FileUtils.cp_r Dir[flms_assets_dir], "app/assets/stylesheets"
+      end
+    end
+  end
+  
+  namespace :destroy do
+    desc "Remove FLMS views from app"
+    task :views do
+      FileUtils.rm_rf "app/views/flms"
+    end
+    
+    desc "Remove FLMS assets from app"
+    task :assets do
+      FileUtils.rm_rf "app/assets/stylesheets/flms"
+    end
   end
 end
