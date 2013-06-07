@@ -66,8 +66,8 @@ describe Flms::ImageLayersController do
         expect(result_layer.end_state_keyframe.position_name).to eql 'center'
       end
     end
-
   end
-
+  describe 'destroy' do
+  end
 end
 
