@@ -10,25 +10,25 @@ unless File.exists? "#{Rails.root}/config/s3.yml"
            ERROR: NO config/s3.yml FOUND!
            
            FLMS relies on having Amazon S3 credentials to function correctly. Here is an example s3.yml file:
-           
-           "development:
-             bucket:
-             access_key_id:
-             secret_access_key:
+           "
+           development:
+             bucket: YOUR_BUCKET_ID
+             access_key_id: YOUR_KEY_ID
+             secret_access_key: YOUR_SECRET_ACCESS_KEY
 
            test:
-             bucket:
-             access_key_id:
-             secret_access_key:
+             bucket: YOUR_BUCKET_ID
+             access_key_id: YOUR_KEY_ID
+             secret_access_key: YOUR_SECRET_ACCESS_KEY
 
            production:
-             bucket:
-             access_key_id:
-             secret_access_key:"
+             bucket: YOUR_BUCKET_ID
+             access_key_id: YOUR_KEY_ID
+             secret_access_key: YOUR_SECRET_ACCESS_KEY
+             "
+
              
            For local development the filesystem is used instead of s3 but the file still must exist.
-           
-           See Carrierwave for more information, https://github.com/carrierwaveuploader/carrierwave
 
 )
   exit 1
