@@ -13,6 +13,7 @@ feature 'EmbedLayers > Edit', js: true do
     click_link "edit-layer-#{embed_layer_1a1.id}"
 
     fill_in 'Name', with: 'new-layer-name'
+    select 'linear', from: 'embed_layer_easing_function'
     fill_in 'Embed code', with: 'a-new-embed-code'
 
     click_button 'Update Embed layer'

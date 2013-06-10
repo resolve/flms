@@ -3,7 +3,7 @@ module Flms
     attr_accessible :name, :type,
                     :width, :height, :z_index,
                     :width_percent, :height_percent,
-                    :dom_remove, :active,
+                    :dom_remove, :active, :easing_function,
                     :start_state_keyframe_attributes, :target_state_keyframe_attributes, :end_state_keyframe_attributes
 
     belongs_to :block
@@ -19,6 +19,9 @@ module Flms
     validates_numericality_of :width, greater_than_or_equal_to: 0, allow_nil: true
     validates_numericality_of :height, greater_than_or_equal_to: 0, allow_nil: true
     validates_numericality_of :z_index, allow_nil: false
+
+    EASING_FUNCTIONS = %w(linear begin end quadratic cubic swing sqrt outCubic bounce)
+    validates_inclusion_of :easing_function, in: EASING_FUNCTIONS
 
     scope :ordered_by_scroll_start, joins: [ :start_state_keyframe ], order: 'flms_keyframes.scroll_start'
     scope :is_active, conditions: { active: true }

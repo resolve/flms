@@ -50,8 +50,8 @@ module Flms
       # giving us unpredictable results in specs)
       width_style = "#{ style_for_attribute(:width, (@keyframe.scale * width).round(2)) }; "
       height_style = free_height ? '' : "#{ style_for_attribute(:height, (@keyframe.scale * height).round(2)) }; "
-      margin_left_style = "margin-left: #{ ((@keyframe.position_x * @keyframe.scale * -width * 100) + @keyframe.margin_left_percent) }%; "
-      margin_top_style = "margin-top: #{ ((@keyframe.position_y * @keyframe.scale * -height * 100) + @keyframe.margin_top_percent) }%;"
+      margin_left_style = "margin-left#{easing_function}: #{ ((@keyframe.position_x * @keyframe.scale * -width * 100) + @keyframe.margin_left_percent) }%; "
+      margin_top_style = "margin-top#{easing_function}: #{ ((@keyframe.position_y * @keyframe.scale * -height * 100) + @keyframe.margin_top_percent) }%;"
       "#{width_style}#{height_style}#{margin_left_style}#{margin_top_style}"
     end
 
@@ -69,23 +69,30 @@ module Flms
     #### and value parameter (number or string), and return a string.
 
     def format_as_decimal(name, value)
-      "#{name}: #{value}"
+      "#{name}#{easing_function}: #{value}"
     end
     
     def format_as_percent(name, value)
-      "#{name}: #{value * 100}%"
+      "#{name}#{easing_function}: #{value * 100}%"
     end
 
     def format_as_px(name, value)
-      "#{name}: #{value}px"
+      "#{name}#{easing_function}: #{value}px"
     end
 
     def format_as_transform(name, value)
-      "transform: #{name.to_s}(#{value})"
+      "transform#{easing_function}: #{name.to_s}(#{value})"
     end
 
     def format_as_filter(name, value)
-      "filter: #{name.to_s}(#{value})"
+      "filter#{easing_function}: #{name.to_s}(#{value})"
+    end
+
+
+    private
+
+    def easing_function
+      @keyframe.layer && @keyframe.layer.easing_function && "[#{ @keyframe.layer.easing_function }]"
     end
 
   end
