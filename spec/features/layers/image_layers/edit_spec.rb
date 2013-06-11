@@ -13,6 +13,7 @@ feature 'ImageLayers > Edit', js: true do
     click_link "edit-layer-#{image_layer_1a1.id}"
 
     fill_in 'Name', with: 'new-layer-name'
+    select 'linear', from: 'image_layer_easing_function'
     check 'Hide at end'
     check 'Active'
 

@@ -29,6 +29,11 @@
       = form_block.text_field :z_index
 
   .control-group
+    = form_block.label :easing_function, 'Transition', class: 'control-label'
+    .controls
+      = form_block.select :easing_function, Flms::Layer::EASING_FUNCTIONS
+
+  .control-group
     = form_block.label :dom_remove, 'Hide at end', class: 'control-label'
     .controls
       = form_block.check_box :dom_remove

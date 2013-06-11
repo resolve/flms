@@ -13,6 +13,8 @@ feature 'TextLayers > Edit', js: true do
     click_link "edit-layer-#{text_layer_1a1.id}"
 
     fill_in 'Name', with: 'new-layer-name'
+    select 'linear', from: 'text_layer_easing_function'
+
     fill_in 'Text', with: 'layer text content'
     fill_in 'Font size', with: '0.5'
     fill_in 'Color', with: 'fff'

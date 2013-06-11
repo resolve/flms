@@ -13,6 +13,8 @@ feature 'ParagraphLayers > Edit', js: true do
     click_link "edit-layer-#{paragraph_layer_1a1.id}"
 
     fill_in 'Name', with: 'new-layer-name'
+    select 'linear', from: 'paragraph_layer_easing_function'
+
     fill_in 'Header', with: 'header text'
     fill_in 'Body', with: 'body text'
     fill_in 'Color', with: 'abcabc'

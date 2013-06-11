@@ -13,6 +13,7 @@ feature 'AnimationLayers > Edit', js: true do
     click_link "edit-layer-#{animation_layer_1a1.id}"
 
     fill_in 'Name', with: 'new-layer-name'
+    select 'linear', from: 'animation_layer_easing_function'
     select 'contain', from: 'animation_layer_image_display_mode'
 
     click_button 'Update Animation layer'
