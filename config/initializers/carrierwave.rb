@@ -6,6 +6,26 @@ unless Rails.env.test? or Rails.env.cucumber? or Rails.env.development?
 end
 
 if Rails.env.development?
+  unless File.exists? "#{Rails.root}/config/s3.yml.example"
+    File.open("#{Rails.root}/config/s3.yml.example","w+") do |fh|
+      content = 
+      %Q(development:
+  bucket: YOUR_BUCKET_ID
+  access_key_id: YOUR_KEY_ID
+  secret_access_key: YOUR_SECRET_ACCESS_KEY
+
+test:
+  bucket: YOUR_BUCKET_ID
+  access_key_id: YOUR_KEY_ID
+  secret_access_key: YOUR_SECRET_ACCESS_KEY
+
+production:
+  bucket: YOUR_BUCKET_ID
+  access_key_id: YOUR_KEY_ID
+  secret_access_key: YOUR_SECRET_ACCESS_KEY)
+      fh << content
+    end
+  end
   unless File.exists? "#{Rails.root}/config/s3.yml"
     print %Q(
              ERROR: NO config/s3.yml FOUND!
@@ -29,9 +49,8 @@ if Rails.env.development?
                "
 
              
-             For local development the filesystem is used instead of s3 but the file still must exist.
-
-  )
+             For local development the filesystem is used instead of s3 but the file still must exist. There is an example S3 file at 'config/s3.yml.example'.)
+             puts "\n"
     exit 1
   end
   s3_config = YAML.load_file "#{Rails.root}/config/s3.yml"
