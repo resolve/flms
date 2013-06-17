@@ -17,9 +17,36 @@ The end result: create animated, parallax-scrolling sites via a CMS without need
 Setup
 -----
 
-Install the engine in your Rails app:
+Add the engine ito your Rails app Gemfile:
 
-    gem install flms
+    gem 'flms'
+    
+Then run:
+  
+    $ bundle install
+
+FLMS is now installed, now we need to tell your Rails app about its routes, add this block to config/routes.rb
+
+    mount Flms::Engine => "/flms"
+    
+FLMS uses [Carrierwave](https://github.com/carrierwaveuploader/carrierwave) to host assets.  Create config/s3.yml and fill in your s3 credentials (example below):
+
+    development:
+      bucket: YOUR_BUCKET_ID
+      access_key_id: YOUR_KEY_ID
+      secret_access_key: YOUR_SECRET_ACCESS_KEY
+    
+    test:
+      bucket: YOUR_BUCKET_ID
+      access_key_id: YOUR_KEY_ID
+      secret_access_key: YOUR_SECRET_ACCESS_KEY
+    
+    production:
+      bucket: YOUR_BUCKET_ID
+      access_key_id: YOUR_KEY_ID
+      secret_access_key: YOUR_SECRET_ACCESS_KEY
+
+(For local development Carrierwave will use the local filesystem by default.)
 
 Install FLMS-related migrations to the host app and run them:
 
@@ -95,6 +122,26 @@ or
     rake flms:destroy:assets
 
 to remove the added views or assets from you application.
+
+
+Development
+=============
+
+Developing for FLMS is a breeze due to it's TDD nature:
+
+First clone the repository:
+
+    $ git clone git@github.com:Originate/flms.git
+
+Then:
+
+    $ bundle install
+    
+Then run the tests:
+
+    $ rspec
+    
+Thats it!  Please make sure to have all tests passing before you issue a pull request! Thanks!
 
 Credits
 =======
