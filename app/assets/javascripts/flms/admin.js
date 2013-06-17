@@ -13,6 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require modularity/modularity
-//= require_tree ./admin/
 //= require bootstrapSwitch
+//= require_tree ./admin/
+
