@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.name        = 'flms'
   s.version     = Flms::VERSION
   s.authors     = ['Kevin Goslar','Robert Douglas','Daniel Hawthorn','Dan Burton','Maxwell Elliott']
-  s.email       = ['kevin.goslar@originate.com','rob.douglas@originate.com','daniel.hawthorn@originate.com','dan.burton@originate.com','maxwell.elliott@originate.com']
+  s.email       = ['kevin.goslar@originate.com','robert.douglas@originate.com','daniel.hawthorn@originate.com','dan.burton@originate.com','maxwell.elliott@originate.com']
   s.homepage    = 'https://github.com/Originate-Inc/flms'
   s.summary     = 'Floating Layer Management System'
   s.description = 'A CMS for web pages that use interactive layers to present animated content.'
