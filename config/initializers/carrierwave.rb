@@ -5,8 +5,8 @@ unless Rails.env.test? or Rails.env.cucumber? or Rails.env.development?
   raise "Need to set S3_BUCKET, S3_ACCESS_KEY, and S3_SECRET_KEY in environment." if ENV['S3_BUCKET'] == nil || ENV['S3_ACCESS_KEY'] == nil || ENV['S3_SECRET_KEY'] == nil
 end
 
-if Rails.env.development?
-  unless File.exists? "#{Rails.root}/config/s3.yml"
+if Rails.env.production?
+  unless File.exists? "#{Rails.root}/config/s3.yml" or 
     print %Q(
              ERROR: NO config/s3.yml FOUND!
            
@@ -28,12 +28,15 @@ if Rails.env.development?
                secret_access_key: YOUR_SECRET_ACCESS_KEY
                "
 
+             FLMS has created an example S3 file with these contents at 'config/s3.yml.example'.
              
              For local development the filesystem is used instead of s3 but the file still must exist.
-
-  )
-    exit 1
+             )
+             puts "\n"
   end
+end
+
+if Rails.env.development?
   s3_config = YAML.load_file "#{Rails.root}/config/s3.yml"
   S3_CREDENTIALS = { bucket: s3_config[Rails.env]['bucket'],
                      access_key_id: s3_config[Rails.env]['access_key_id'],

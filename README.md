@@ -17,9 +17,43 @@ The end result: create animated, parallax-scrolling sites via a CMS without need
 Setup
 -----
 
-Install the engine in your Rails app:
+Add the engine to your Rails app Gemfile:
 
-    gem install flms
+```ruby
+gem 'flms'
+```
+
+Then run:
+  
+    $ bundle install
+
+FLMS is now installed, now we need to tell your Rails app about its routes, add this block to config/routes.rb
+
+```ruby
+mount Flms::Engine => "/flms"
+```
+    
+FLMS uses [Carrierwave](https://github.com/carrierwaveuploader/carrierwave) to host assets.  Create config/s3.yml and fill in your s3 credentials (example below):
+
+```ruby
+development:
+  bucket: YOUR_BUCKET_ID
+  access_key_id: YOUR_KEY_ID
+  secret_access_key: YOUR_SECRET_ACCESS_KEY
+
+test:
+  bucket: YOUR_BUCKET_ID
+  access_key_id: YOUR_KEY_ID
+  secret_access_key: YOUR_SECRET_ACCESS_KEY
+
+production:
+  bucket: YOUR_BUCKET_ID
+  access_key_id: YOUR_KEY_ID
+  secret_access_key: YOUR_SECRET_ACCESS_KEY
+```
+FLMS automatically creates a config/s3.yml.example file in your app if you do not have one already.
+
+(For local development Carrierwave will use the local filesystem by default.)
 
 Install FLMS-related migrations to the host app and run them:
 
@@ -51,7 +85,7 @@ The following 'simplified' layer types are provided by FLMS:
 * Text: a textual string, with controls for text size and color.
 * Paragraph: a 'descriptive' block of text, with a header and body copy.
 * Embed: allows users to embed arbitrary HTML, very useful for things like video elements from YouTube.
-* Animation: users can upload an image containing animation frames vertically stiched together as a sprite, and specify how 'playback' of the animation frames is performed as the user scrolls.
+* Animation: users can upload an image containing animation frames vertically stitched together as a sprite, and specify how 'playback' of the animation frames is performed as the user scrolls.
 
 These layer types simplify the process of creating animations by placing some constraints on how the animations are constructed. Specifically, the layers contain only three keyframes, to specify the beginning ('start'), middle ('target'), and final ('end') state of the layer.  The keyframes allow for animation of a small set of common CSS attributes.  Even with these constraints, a wide variety of animations can be created.
 
@@ -95,6 +129,24 @@ or
     rake flms:destroy:assets
 
 to remove the added views or assets from you application.
+
+
+Development
+=============
+
+Contributions are very welcome! Fortunately Developing for FLMS is a breeze due to it's TDD nature:
+
+* First fork the repository [here](https://github.com/Originate/flms).
+
+* Check out your local fork, make changes.
+
+* run:
+
+    $ rspec
+
+To make sure all tests pass.
+
+* Submit changes as pull requests with test coverage.
 
 Credits
 =======
