@@ -5,28 +5,8 @@ unless Rails.env.test? or Rails.env.cucumber? or Rails.env.development?
   raise "Need to set S3_BUCKET, S3_ACCESS_KEY, and S3_SECRET_KEY in environment." if ENV['S3_BUCKET'] == nil || ENV['S3_ACCESS_KEY'] == nil || ENV['S3_SECRET_KEY'] == nil
 end
 
-if Rails.env.development?
-  unless File.exists? "#{Rails.root}/config/s3.yml.example"
-    File.open("#{Rails.root}/config/s3.yml.example","w+") do |fh|
-      content = 
-      %Q(development:
-  bucket: YOUR_BUCKET_ID
-  access_key_id: YOUR_KEY_ID
-  secret_access_key: YOUR_SECRET_ACCESS_KEY
-
-test:
-  bucket: YOUR_BUCKET_ID
-  access_key_id: YOUR_KEY_ID
-  secret_access_key: YOUR_SECRET_ACCESS_KEY
-
-production:
-  bucket: YOUR_BUCKET_ID
-  access_key_id: YOUR_KEY_ID
-  secret_access_key: YOUR_SECRET_ACCESS_KEY)
-      fh << content
-    end
-  end
-  unless File.exists? "#{Rails.root}/config/s3.yml"
+if Rails.env.production?
+  unless File.exists? "#{Rails.root}/config/s3.yml" or 
     print %Q(
              ERROR: NO config/s3.yml FOUND!
            
@@ -48,11 +28,15 @@ production:
                secret_access_key: YOUR_SECRET_ACCESS_KEY
                "
 
+             FLMS has created an example S3 file with these contents at 'config/s3.yml.example'.
              
-             For local development the filesystem is used instead of s3 but the file still must exist. There is an example S3 file at 'config/s3.yml.example'.)
+             For local development the filesystem is used instead of s3 but the file still must exist.
+             )
              puts "\n"
-    exit 1
   end
+end
+
+if Rails.env.development?
   s3_config = YAML.load_file "#{Rails.root}/config/s3.yml"
   S3_CREDENTIALS = { bucket: s3_config[Rails.env]['bucket'],
                      access_key_id: s3_config[Rails.env]['access_key_id'],
