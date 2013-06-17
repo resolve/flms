@@ -7,7 +7,6 @@ gemspec
 
 # jquery-rails is used by the dummy application
 gem "jquery-rails"
-gem 'modularity-rails'
 gem 'coveralls', require: false
 
 # Declare any dependencies that are still in development here instead of in
