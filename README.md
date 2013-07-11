@@ -1,7 +1,7 @@
-= Flms [![Build Status](https://travis-ci.org/Originate-Inc/flms.png?branch=travis)](https://travis-ci.org/Originate-Inc/flms) [![Code Climate](https://codeclimate.com/github/Originate-Inc/flms.png)](https://codeclimate.com/github/Originate-Inc/flms) [![Coverage Status](https://coveralls.io/repos/Originate/flms/badge.png?branch=master)](https://coveralls.io/r/Originate/flms) [![Dependency Status](https://gemnasium.com/Originate/flms.png)](https://gemnasium.com/Originate/flms)
-
 FLMS: the Floating Layer Management System
 ==========================================
+
+[![Build Status](https://travis-ci.org/Originate-Inc/flms.png?branch=travis)](https://travis-ci.org/Originate-Inc/flms) [![Code Climate](https://codeclimate.com/github/Originate-Inc/flms.png)](https://codeclimate.com/github/Originate-Inc/flms) [![Coverage Status](https://coveralls.io/repos/Originate/flms/badge.png?branch=master)](https://coveralls.io/r/Originate/flms) [![Dependency Status](https://gemnasium.com/Originate/flms.png)](https://gemnasium.com/Originate/flms)
 
 FLMS is a CMS for web pages that use interactive layers to present animated content.  Essentially, it is an easy way to leverage the excellent [skrollr.js library](https://github.com/Prinzhorn/skrollr), included in this plugin. Creating the numerous data-xxxx styling tags to animate skrollr content gets tedious quickly, so FLMS automates the task.
 
@@ -24,7 +24,7 @@ gem 'flms'
 ```
 
 Then run:
-  
+
     $ bundle install
 
 FLMS is now installed, now we need to tell your Rails app about its routes, add this block to config/routes.rb
@@ -32,7 +32,7 @@ FLMS is now installed, now we need to tell your Rails app about its routes, add 
 ```ruby
 mount Flms::Engine => "/flms"
 ```
-    
+
 FLMS uses [Carrierwave](https://github.com/carrierwaveuploader/carrierwave) to host assets.  Create config/s3.yml and fill in your s3 credentials (example below):
 
 ```ruby
