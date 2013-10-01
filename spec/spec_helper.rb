@@ -13,7 +13,8 @@ require 'faker'
 require 'database_cleaner'
 require 'capybara/rails'
 require 'capybara/rspec'
-
+require 'capybara/poltergeist'
+Capybara.javascript_driver = :poltergeist
 Rails.backtrace_cleaner.remove_silencers!
 Dir["#{File.dirname __FILE__}/support/**/*.rb"].each {|f| require f}
 

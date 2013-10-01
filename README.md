@@ -40,16 +40,19 @@ development:
   bucket: YOUR_BUCKET_ID
   access_key_id: YOUR_KEY_ID
   secret_access_key: YOUR_SECRET_ACCESS_KEY
+  cdn_url: YOUR_CDN_URL *optional
 
 test:
   bucket: YOUR_BUCKET_ID
   access_key_id: YOUR_KEY_ID
   secret_access_key: YOUR_SECRET_ACCESS_KEY
+  cdn_url: YOUR_CDN_URL *optional
 
 production:
   bucket: YOUR_BUCKET_ID
   access_key_id: YOUR_KEY_ID
   secret_access_key: YOUR_SECRET_ACCESS_KEY
+  cdn_url: YOUR_CDN_URL *optional
 ```
 FLMS automatically creates a config/s3.yml.example file in your app if you do not have one already.
 
