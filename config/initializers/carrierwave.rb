@@ -16,19 +16,19 @@ if Rails.env.production?
                bucket: YOUR_BUCKET_ID
                access_key_id: YOUR_KEY_ID
                secret_access_key: YOUR_SECRET_ACCESS_KEY
-               cdn_url: YOUR_CDN_URL *optional
+               cdn_host: CDN_HOST *optional
 
              test:
                bucket: YOUR_BUCKET_ID
                access_key_id: YOUR_KEY_ID
                secret_access_key: YOUR_SECRET_ACCESS_KEY
-               cdn_url: YOUR_CDN_URL *optional
+               cdn_host: CDN_HOST *optional
 
              production:
                bucket: YOUR_BUCKET_ID
                access_key_id: YOUR_KEY_ID
                secret_access_key: YOUR_SECRET_ACCESS_KEY
-               cdn_url: YOUR_CDN_URL *optional
+               cdn_host: CDN_HOST *optional
                "
 
              FLMS has created an example S3 file with these contents at 'config/s3.yml.example'.
@@ -44,13 +44,13 @@ if Rails.env.development?
   S3_CREDENTIALS = { bucket: s3_config[Rails.env]['bucket'],
                      access_key_id: s3_config[Rails.env]['access_key_id'],
                      secret_access_key: s3_config[Rails.env]['secret_access_key'],
-                     cdn_url: s3_config[Rails.env]['cdn_url']
+                     cdn_host: s3_config[Rails.env]['cdn_host']
                    }
 else
   S3_CREDENTIALS = { bucket: ENV['S3_BUCKET'],
                      access_key_id: ENV['S3_ACCESS_KEY'],
                      secret_access_key: ENV['S3_SECRET_KEY'],
-                     cdn_url: ENV['S3_CDN_URL'] }
+                     cdn_host: ENV['S3_CDN_HOST'] }
 end
 
 
@@ -73,6 +73,6 @@ CarrierWave.configure do |config|
     config.fog_directory  = S3_CREDENTIALS[:bucket]
     config.fog_public     = false
     config.fog_attributes = { 'Cache-Control' => 'max-age=315576000' }
-    config.asset_host = S3_CREDENTIALS[:cdn_url]
+    config.asset_host = S3_CREDENTIALS[:cdn_host] if S3_CREDENTIALS[:cdn_host]
   end
 end
