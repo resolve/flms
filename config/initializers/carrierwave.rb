@@ -17,18 +17,21 @@ if Rails.env.production?
                access_key_id: YOUR_KEY_ID
                secret_access_key: YOUR_SECRET_ACCESS_KEY
                cdn_host: CDN_HOST *optional
+               region: YOUR_REGION
 
              test:
                bucket: YOUR_BUCKET_ID
                access_key_id: YOUR_KEY_ID
                secret_access_key: YOUR_SECRET_ACCESS_KEY
                cdn_host: CDN_HOST *optional
+               region: YOUR_REGION
 
              production:
                bucket: YOUR_BUCKET_ID
                access_key_id: YOUR_KEY_ID
                secret_access_key: YOUR_SECRET_ACCESS_KEY
                cdn_host: CDN_HOST *optional
+               region: YOUR_REGION
                "
 
              FLMS has created an example S3 file with these contents at 'config/s3.yml.example'.
@@ -44,13 +47,15 @@ if Rails.env.development?
   S3_CREDENTIALS = { bucket: s3_config[Rails.env]['bucket'],
                      access_key_id: s3_config[Rails.env]['access_key_id'],
                      secret_access_key: s3_config[Rails.env]['secret_access_key'],
-                     cdn_host: s3_config[Rails.env]['cdn_host']
+                     cdn_host: s3_config[Rails.env]['cdn_host'],
+                     region: s3_config[Rails.env]['region']
                    }
 else
   S3_CREDENTIALS = { bucket: ENV['S3_BUCKET'],
                      access_key_id: ENV['S3_ACCESS_KEY'],
                      secret_access_key: ENV['S3_SECRET_KEY'],
-                     cdn_host: ENV['S3_CDN_HOST'] }
+                     cdn_host: ENV['S3_CDN_HOST'],
+                     region: ENV['S3_REGION'] }
 end
 
 
@@ -68,7 +73,7 @@ CarrierWave.configure do |config|
     config.fog_credentials = { :provider               => 'AWS',
                                :aws_access_key_id      => S3_CREDENTIALS[:access_key_id],
                                :aws_secret_access_key  => S3_CREDENTIALS[:secret_access_key],
-                               :region                 => 'us-west-1',
+                               :region                 => S3_CREDENTIALS[:region],
                                :host                   => 's3.amazonaws.com' }
     config.fog_directory  = S3_CREDENTIALS[:bucket]
     config.fog_public     = false
